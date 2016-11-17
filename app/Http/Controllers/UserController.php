@@ -146,13 +146,5 @@ class UserController extends Controller
         }
     }
 
-    public function test()
-    {
-    	$arr = [1,23,4,5,6,7,8];
-    	foreach($arr as $k=>$v){
-    		$arr[$k] *= 2;
-    	}
-    	// dd($arr);
-    }
 
 }
