@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
+<<<<<<< HEAD
         <title>404</title>
+=======
+        <title>404 NOT FOUND.</title>
+
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <style>
@@ -39,8 +44,13 @@
     <body>
         <div class="container">
             <div class="content">
+<<<<<<< HEAD
                 <iframe scrolling='no' frameborder='0' src='http://yibo.iyiyun.com/Home/Distribute/ad404/key/1219524' width='654' height='470' style='display:block;'></iframe>
                 <div class="title">404 Not Found.</div>
+=======
+				<iframe scrolling='no' frameborder='0' src='http://yibo.iyiyun.com/Home/Distribute/ad404/key/1219457' width='654' height='470' style='display:block;'></iframe>
+                <div class="title">404 NOT FOUND</div>
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
             </div>
         </div>
     </body>

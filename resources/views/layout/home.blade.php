@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+ <head> 
+  <title>Home</title> 
+  <link href="/homes/css/bootstrap.css" rel="stylesheet" type="text/css" /> 
+  <script src="/homes/js/jquery.min.js"></script> 
+  <script src="/homes/js/bootstrap.min.js"></script> 
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+  <script src="/homes/js/jquery.min.js"></script> 
+  <!-- Custom Theme files --> 
+  <link href="/homes/css/style.css" rel="stylesheet" type="text/css" /> 
+  <!-- Custom Theme files --> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>  
+  <!--webfonts----> 
+  <link href="http://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css" /> 
+  <style type="text/css">
+    #test{
+        width:300px;
+        height:20px;
+        overflow:hidden;
+        color:#ddd;
+    }
+  </style>
+ </head> 
+ <body> 
+  <div class="header">
+    <div class="container">
+      <div class="header_top">
+      <ul class="phone">
+        <li class="phone_left"><i class="mobile"> </i><span>1-200-346-2986</span></li>
+        <li class="phone_right">
+          <marquee id="test"  scrollamount="3" scrolldelay="200" direction="up">
+            <li>【最新公告】北京六环以内免费配送</li><br>
+            <li>【食品安全】食品安全有保障，绿色消费享健康</li><br>
+            <li>【食品安全】从源头抓质量，确保食品安全</li>
+          </marquee>
+        </li>
+        <div class="clearfix"></div>
+      </ul>
+      <div class="col-md-4">
+        <div class="account list-unstyle pull-right">
+          <ul>
+            <li>
+              <?php
+                if(!empty(session(['uid']))){
+                  echo "欢迎{$_SESSION['userInfo']['uname']}来访 <a href='/user/logout' style='text-decoration:none;color:red;'>退出</a>";
+                }else{
+                  echo "<a href='/user/login' style='text-decoration:none;'>您好,请登录</a> | <a href='/user/add' style='text-decoration:none;color:red;'>免费注册</a>";
+                }?>
+            </li>
+            <li><a href="account.html">个人中心</a></li>
+            <li><a href="account.html">个人中心</a></li>
+          </ul>
+      </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="header_bottom"> 
+     <div class="header_nav"> 
+      <div class="logo"> 
+       <a href="index.html"><img src="/homes/images/logo.png" style="width:120px;height:117px;" alt="" /><br /></a> 
+      </div> 
+      <nav class="navbar navbar-default menu" role="navigation">
+        <h3 class="nav_right">
+          <a href="index.html">
+            <img src="/homes/images/logo.png" class="img-responsive" alt="" />
+          </a>
+        </h3> 
+       <div class="container-fluid"> 
+        <!-- Brand and toggle get grouped for better mobile display --> 
+        <div class="navbar-header"> 
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
+        </div> 
+        <!-- Collect the nav links, forms, and other content for toggling --> 
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+         <ul class="nav navbar-nav menu1"> 
+          <li class="active"><a href="index.html">Specials</a></li> 
+          <li><a href="fruits.html">Fruits &amp; Veg</a></li> 
+          <li><a href="products.html">Food Products</a></li> 
+          <li><a href="store.html">Locate Store</a></li> 
+          <li><a href="club.html">Fan Club</a></li> 
+          <li><a href="contact.html">Contact</a></li> 
+         </ul> 
+        <!--  <ul class="login"> 
+          <a href="account.html"><li class="login_top"><i class="sign"> </i><span>登录</span></li></a> 
+          <a href="register.html"><li class="login_bottom"><i class="register"> </i><span>注册</span></li></a> 
+         </ul>  -->
+         <ul class="shopping_cart login">
+         <a href="#"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
+         <a href="#"><li class="shop_right"><span>我的订单</span></li></a>
+         <div class="clearfix"> </div>
+        </ul>
+         <div class="clearfix"></div> 
+        </div>
+        <!-- /.navbar-collapse --> 
+       </div>
+       <!-- /.container-fluid --> 
+      </nav> 
+      <div class="clearfix"></div> 
+     </div> 
+     <div class="search"> 
+      <input type="text" class="text" placeholder="请输入关键字" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Product Details';}" /> 
+      <input type="submit" value="搜索" /> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="main"> 
+   <div class="container"> 
+    <div class="banner"> 
+     <img src="/homes/images/banner.jpg" class="img-responsive" alt="" /> 
+    </div> 
+    <div class="row content"> 
+     <div class="col-md-3 content_top"> 
+      <div class="category_box"> 
+       <h3 class="cate_head">Categories</h3> 
+       <ul class="category"> 
+        <li><a href="#">Arts</a></li> 
+        <li><a href="#">Beauty</a></li> 
+        <li><a href="#">Books</a></li> 
+        <li><a href="#">Cart Software</a></li> 
+        <li><a href="#">Electronics</a></li> 
+        <li><a href="#">Fashion / Clothing</a></li> 
+        <li><a href="#">Food</a></li> 
+        <li><a href="#">Furniture</a></li> 
+        <li><a href="#">Home Goods</a></li> 
+        <li><a href="#">Jewelry</a></li> 
+        <li><a href="#">Lingerie</a></li> 
+        <li><a href="#">Music</a></li> 
+        <li><a href="#">Office Supplies</a></li> 
+        <li><a href="#">Printing</a></li> 
+        <li><a href="#">Software</a></li> 
+       </ul> 
+      </div> 
+      <ul class="product_reviews"> 
+       <h3><i class="arrow"> </i><span>Product Reviews</span></h3> 
+       <li> 
+        <ul class="review1"> 
+         <li class="review1_img"><img src="/homes/images/pic1.jpg" class="img-responsive" alt="" /></li> 
+         <li class="review1_desc"><h3><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</a></h3><p>Wed, June 2014</p></li> 
+         <div class="clearfix"> 
+         </div> 
+        </ul> </li> 
+       <li> 
+        <ul class="review1"> 
+         <li class="review1_img"><img src="/homes/images/pic2.jpg" class="img-responsive" alt="" /></li> 
+         <li class="review1_desc"><h3><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</a></h3><p>Wed, June 2014</p></li> 
+         <div class="clearfix"> 
+         </div> 
+        </ul> </li> 
+       <li> 
+        <ul class="review1"> 
+         <li class="review1_img"><img src="/homes/images/pic3.jpg" class="img-responsive" alt="" /></li> 
+         <li class="review1_desc"><h3><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</a></h3><p>Wed, June 2014</p></li> 
+         <div class="clearfix"> 
+         </div> 
+        </ul> </li> 
+       <div class="but"> 
+        <a href="#">More Reviews<i class="but_arrow"> </i></a> 
+       </div> 
+      </ul> 
+      <ul class="product_reviews"> 
+       <h3><i class="arrow"> </i><span>Payment Methods</span></h3> 
+       <img src="/homes/images/payment.png" class="img-responsive" alt="" /> 
+      </ul> 
+     </div> 
+     <div class="col-md-9"> 
+      <ul class="feature"> 
+       <h3><i class="arrow"> </i><span>Today's Featured Products</span></h3> 
+      </ul> 
+      <ul class="feature_grid"> 
+       <li class="grid1"><img src="/homes/images/f1.jpg" class="img-responsive" alt="" /> <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed</p> 
+        <div class="price">
+         Price: 
+         <span class="actual">$12.00</span> 
+        </div> 
+        <div class="but1"> 
+         <a href="#">Buy Now</a> 
+        </div> </li> 
+       <li class="grid1"><img src="/homes/images/f2.jpg" class="img-responsive" alt="" /> <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed</p> 
+        <div class="price">
+         Price: 
+         <span class="actual">$12.00</span> 
+        </div> 
+        <div class="but1"> 
+         <a href="#">Buy Now</a> 
+        </div> </li> 
+       <li class="grid2"><img src="/homes/images/f3.jpg" class="img-responsive" alt="" /> <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed</p> 
+        <div class="price">
+         Price: 
+         <span class="actual">$12.00</span> 
+        </div> 
+        <div class="but1"> 
+         <a href="#">Buy Now</a> 
+        </div> </li> 
+       <div class="clearfix"> 
+       </div> 
+      </ul> 
+      <ul class="feature"> 
+       <h3><i class="arrow"> </i><span>Popular products</span></h3> 
+      </ul> 
+      <div class="row content_bottom"> 
+       <div class="col-md-3"> 
+        <div class="content_box">
+         <a href="single.html"> 
+          <div class="view view-fifth"> 
+           <img src="/homes/images/p1.jpg" class="img-responsive" alt="" /> 
+           <div class="content_box-grid"> 
+            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+            <div class="price">
+             Price: 
+             <span class="actual">$12.00</span> 
+            </div> 
+            <ul class="product_but"> 
+             <li class="but3">Buy</li> 
+             <li class="like"><span>120</span><i class="like1"> </i></li> 
+             <div class="clearfix"> 
+             </div> 
+            </ul> 
+            <div class="mask"> 
+             <div class="info">
+              Quick View
+             </div> 
+            </div> 
+           </div> 
+          </div> </a> 
+        </div> 
+       </div> 
+       <div class="col-md-3"> 
+        <div class="content_box">
+         <a href="single.html"> 
+          <div class="view view-fifth"> 
+           <img src="/homes/images/p4.jpg" class="img-responsive" alt="" /> 
+           <div class="content_box-grid"> 
+            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+            <div class="price">
+             Price: 
+             <span class="actual">$12.00</span> 
+            </div> 
+            <ul class="product_but"> 
+             <li class="but3">Buy</li> 
+             <li class="like"><span>120</span><i class="like1"> </i></li> 
+             <div class="clearfix"> 
+             </div> 
+            </ul> 
+            <div class="mask"> 
+             <div class="info">
+              Quick View
+             </div> 
+            </div> 
+           </div> 
+          </div> </a> 
+        </div> 
+       </div> 
+       <div class="col-md-3"> 
+        <div class="content_box">
+         <a href="single.html"> 
+          <div class="view view-fifth"> 
+           <img src="/homes/images/p3.jpg" class="img-responsive" alt="" /> 
+           <div class="content_box-grid"> 
+            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+            <div class="price">
+             Price: 
+             <span class="actual">$12.00</span> 
+            </div> 
+            <ul class="product_but"> 
+             <li class="but3">Buy</li> 
+             <li class="like"><span>120</span><i class="like1"> </i></li> 
+             <div class="clearfix"> 
+             </div> 
+            </ul> 
+            <div class="mask"> 
+             <div class="info">
+              Quick View
+             </div> 
+            </div> 
+           </div> 
+          </div> </a> 
+        </div> 
+       </div> 
+       <div class="col-md-3"> 
+        <div class="content_box">
+         <a href="single.html"> 
+          <div class="view view-fifth"> 
+           <img src="/homes/images/p2.jpg" class="img-responsive" alt="" /> 
+           <div class="content_box-grid"> 
+            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+            <div class="price">
+             Price: 
+             <span class="actual">$12.00</span> 
+            </div> 
+            <ul class="product_but"> 
+             <li class="but3">Buy</li> 
+             <li class="like"><span>120</span><i class="like1"> </i></li> 
+             <div class="clearfix"> 
+             </div> 
+            </ul> 
+            <div class="mask"> 
+             <div class="info">
+              Quick View
+             </div> 
+            </div> 
+           </div> 
+          </div> </a> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="row content_bottom1"> 
+       <div class="col-md-3"> 
+        <div class="content_box">
+         <a href="single.html"> 
+          <div class="view view-fifth"> 
+           <img src="/homes/images/p8.jpg" class="img-responsive" alt="" /> 
+           <div class="content_box-grid"> 
+            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+            <div class="price">
+             Price: 
+             <span class="actual">$12.00</span> 
+            </div> 
+            <ul class="product_but"> 
+             <li class="but3">Buy</li> 
+             <li class="like"><span>120</span><i class="like1"> </i></li> 
+             <div class="clearfix"> 
+             </div> 
+            </ul> 
+            <div class="mask"> 
+             <div class="info">
+              Quick View
+             </div> 
+            </div> 
+           </div> 
+          </div> </a> 
+        </div> 
+       </div> 
+       <div class="col-md-3"> 
+        <div class="content_box">
+         <a href="single.html"> 
+          <div class="view view-fifth"> 
+           <img src="/homes/images/p7.jpg" class="img-responsive" alt="" /> 
+           <div class="content_box-grid"> 
+            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+            <div class="price">
+             Price: 
+             <span class="actual">$12.00</span> 
+            </div> 
+            <ul class="product_but"> 
+             <li class="but3">Buy</li> 
+             <li class="like"><span>120</span><i class="like1"> </i></li> 
+             <div class="clearfix"> 
+             </div> 
+            </ul> 
+            <div class="mask"> 
+             <div class="info">
+              Quick View
+             </div> 
+            </div> 
+           </div> 
+          </div> </a> 
+        </div> 
+       </div> 
+       <div class="col-md-3"> 
+        <div class="content_box">
+         <a href="single.html"> 
+          <div class="view view-fifth"> 
+           <img src="/homes/images/p6.jpg" class="img-responsive" alt="" /> 
+           <div class="content_box-grid"> 
+            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+            <div class="price">
+             Price: 
+             <span class="actual">$12.00</span> 
+            </div> 
+            <ul class="product_but"> 
+             <li class="but3">Buy</li> 
+             <li class="like"><span>120</span><i class="like1"> </i></li> 
+             <div class="clearfix"> 
+             </div> 
+            </ul> 
+            <div class="mask"> 
+             <div class="info">
+              Quick View
+             </div> 
+            </div> 
+           </div> 
+          </div> </a> 
+        </div> 
+       </div> 
+       <div class="col-md-3"> 
+        <div class="content_box">
+         <a href="single.html"> 
+          <div class="view view-fifth"> 
+           <img src="/homes/images/p5.jpg" class="img-responsive" alt="" /> 
+           <div class="content_box-grid"> 
+            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+            <div class="price">
+             Price: 
+             <span class="actual">$12.00</span> 
+            </div> 
+            <ul class="product_but"> 
+             <li class="but3">Buy</li> 
+             <li class="like"><span>120</span><i class="like1"> </i></li> 
+             <div class="clearfix"> 
+             </div> 
+            </ul> 
+            <div class="mask"> 
+             <div class="info">
+              Quick View
+             </div> 
+            </div> 
+           </div> 
+          </div> </a> 
+        </div> 
+       </div> 
+      </div> 
+      <ul class="dc_pagination dc_paginationA dc_paginationA06"> 
+       <li><a href="#">1</a></li> 
+       <li><a href="#" class="current">2</a></li> 
+       <li><a href="#">3</a></li> 
+       <li><a href="#">4</a></li> 
+       <li><a href="#">5</a></li> 
+       <li><a href="#">...</a></li> 
+       <li><a href="#">19</a></li> 
+       <li><a href="#">20</a></li> 
+       <li><a href="#" class="previous">Next&gt;</a></li> 
+       <li><a href="#" class="next">Last&gt;&gt;</a></li> 
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <div class="footer"> 
+   <div class="container"> 
+    <div class="footer-grid footer-grid1"> 
+     <h3 class="m_2">Company</h3> 
+     <ul class="list1"> 
+      <li><a href="#">Home</a></li> 
+      <li><a href="#">About Us</a></li> 
+      <li><a href="#">Blog</a></li> 
+      <li><a href="#">Latest News</a></li> 
+      <li><a href="#">Login</a></li> 
+      <li><a href="#">Join Us</a></li> 
+     </ul> 
+    </div> 
+    <div class="footer-grid footer-grid2"> 
+     <h3 class="m_2">Company</h3> 
+     <ul class="list1"> 
+      <li><a href="#">Lorem ipsum dolor sit amet</a></li> 
+      <li><a href="#">diam nonummy nibh euismod</a></li> 
+      <li><a href="#">nostrud exerci tation</a></li> 
+      <li><a href="#">hendrerit in vulputate velit</a></li> 
+      <li><a href="#">soluta nobis eleifend option</a></li> 
+      <li><a href="#">dynamicus, qui sequitur</a></li> 
+     </ul> 
+    </div> 
+    <div class="footer-grid footer-grid3"> 
+     <h3 class="m_2">Information</h3> 
+     <ul class="list1"> 
+      <li><a href="#">My Account</a></li> 
+      <li><a href="#">Rewards</a></li> 
+      <li><a href="#">Terms &amp; Conditions</a></li> 
+      <li><a href="#">Buying Guide</a></li> 
+      <li><a href="#">FAQ</a></li> 
+     </ul> 
+    </div> 
+    <div class="footer-grid footer-grid4"> 
+     <h3 class="m_2">Share to</h3> 
+     <ul class="footer_social"> 
+      <div class="bshare-custom icon-medium">
+        <a title="分享到QQ好友" class="bshare-qqim">
+        </a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+        <a title="分享到微信" class="bshare-weixin"></a>
+        <a title="分享到QQ空间" class="bshare-qzone"></a>
+        <a title="分享到i贴吧" class="bshare-itieba"></a>
+        <a title="分享到人人网" class="bshare-renren"></a>
+       </div>
+      <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=1&amp;lang=zh"></script>
+      <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+      <div class="clearfix"> 
+      </div> 
+     </ul> 
+     <h3 class="m_3">Subscribe</h3> 
+     <p class="m_4">aliquam erat volutpat. Ut wisi</p> 
+     <div class="footer_search"> 
+      <input type="text" class="text" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}" /> 
+      <input type="submit" value="Search" /> 
+     </div> 
+    </div> 
+    <div class="footer-grid footer-grid_last"> 
+     <ul class="secure"> 
+      <li class="secure_img"><img src="/homes/images/secure.png" alt="" /></li> 
+      <li class="secure_desc">Lorem ipsum dolor coadipiscing</li> 
+      <div class="clearfix"> 
+      </div> 
+     </ul> 
+     <ul class="secure"> 
+      <li class="secure_img"><img src="/homes/images/order.png" alt="" /></li> 
+      <li class="secure_desc">Lorem ipsum dolor coadipiscing</li> 
+      <div class="clearfix"> 
+      </div> 
+     </ul> 
+    </div> 
+    <div class="clearfix"> 
+    </div> 
+    <div class="copy pull-center"> 
+     <p>Copyright &copy; 2016.ZMXQN Co.Ltd All rights reserved.</p> 
+    </div> 
+   </div> 
+  </div> 
+  <div style="display:none">
+   <script src="http://v7.cnzz.com/stat.php?id=155540&amp;web_id=155540" language="JavaScript" charset="gb2312"></script>
+  </div>  
+ </body>
+</html>

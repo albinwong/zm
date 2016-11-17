@@ -10,7 +10,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <!-- Plugin Stylesheets first to ease overrides -->
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="{{asset('/admins/plugins/colorpicker/colorpicker.css')}}" media="screen">
+=======
+<link rel="stylesheet" type="text/css" href="/admins/plugins/colorpicker/colorpicker.css" media="screen">
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
 <link rel="stylesheet" type="text/css" href="/admins/custom-plugins/wizard/wizard.css" media="screen">
 
 <!-- Required Stylesheets -->
@@ -32,14 +36,64 @@
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
+<<<<<<< HEAD
 <link rel="stylesheet" href="/admins/css/main.css">
 
 <title>@yield('title')</title>
+=======
+
+<title>MWS Admin - Dashboard</title>
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
 
 </head>
 
 <body>
 
+<<<<<<< HEAD
+=======
+	<!-- Themer (Remove if not needed) -->  
+	<div id="mws-themer">
+        <div id="mws-themer-content">
+        	<div id="mws-themer-ribbon"></div>
+            <div id="mws-themer-toggle">
+                <i class="icon-bended-arrow-left"></i> 
+                <i class="icon-bended-arrow-right"></i>
+            </div>
+        	<div id="mws-theme-presets-container" class="mws-themer-section">
+	        	<label for="mws-theme-presets">Color Presets</label>
+            </div>
+            <div class="mws-themer-separator"></div>
+        	<div id="mws-theme-pattern-container" class="mws-themer-section">
+	        	<label for="mws-theme-patterns">Background</label>
+            </div>
+            <div class="mws-themer-separator"></div>
+            <div class="mws-themer-section">
+                <ul>
+                    <li class="clearfix"><span>Base Color</span> <div id="mws-base-cp" class="mws-cp-trigger"></div></li>
+                    <li class="clearfix"><span>Highlight Color</span> <div id="mws-highlight-cp" class="mws-cp-trigger"></div></li>
+                    <li class="clearfix"><span>Text Color</span> <div id="mws-text-cp" class="mws-cp-trigger"></div></li>
+                    <li class="clearfix"><span>Text Glow Color</span> <div id="mws-textglow-cp" class="mws-cp-trigger"></div></li>
+                    <li class="clearfix"><span>Text Glow Opacity</span> <div id="mws-textglow-op"></div></li>
+                </ul>
+            </div>
+            <div class="mws-themer-separator"></div>
+            <div class="mws-themer-section">
+	            <button class="btn btn-danger small" id="mws-themer-getcss">Get CSS</button>
+            </div>
+        </div>
+        <div id="mws-themer-css-dialog">
+        	<form class="mws-form">
+            	<div class="mws-form-row">
+		        	<div class="mws-form-item">
+                    	<textarea cols="auto" rows="auto" readonly="readonly"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Themer End -->
+
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
 	<!-- Header -->
 	<div id="mws-header" class="clearfix">
     
@@ -48,7 +102,11 @@
         
         	<!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
         	<div id="mws-logo-wrap">
+<<<<<<< HEAD
                 <span style="font-size:20px;color:white;">后台管理</span>
+=======
+            	<img src="/admins/images/mws-logo.png" alt="mws admin">
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
 			</div>
         </div>
         
@@ -60,7 +118,11 @@
             	<a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-exclamation-sign"></i></a>
                 
                 <!-- Unread notification count -->
+<<<<<<< HEAD
                 <span class="mws-dropdown-notif">3</span>
+=======
+                <span class="mws-dropdown-notif">35</span>
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
                 
                 <!-- Notifications dropdown -->
                 <div class="mws-dropdown-box">
@@ -119,7 +181,11 @@
             	<a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-envelope"></i></a>
                 
                 <!-- Unred messages count -->
+<<<<<<< HEAD
                 <span class="mws-dropdown-notif">3</span>
+=======
+                <span class="mws-dropdown-notif">35</span>
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
                 
                 <!-- Messages dropdown -->
                 <div class="mws-dropdown-box">
@@ -229,6 +295,7 @@
             <div id="mws-navigation">
                 <ul>
                     <li>
+<<<<<<< HEAD
                         <a href="#"><i class="icon-user"></i> 用户管理</a>
                         <ul class="closed">
                             <li><a href="/user/add">添加用户</a></li>
@@ -259,6 +326,29 @@
                         <a href="#"><i class="icon-list"></i> 留言管理</a>
                         <ul class="closed">
                             <li><a href="/liuyan/index">留言列表</a></li>
+=======
+                        <a href="#"><i class="icon-list" ></i> 用户管理</a>
+                        <ul style="display:none">
+                            <li><a href="form_layouts.html">添加用户</a></li>
+                            <li><a href="form_elements.html">用户列表</a></li>
+                            <li><a href="form_wizard.html">Wizard</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i> 分类管理</a>
+                        <ul style="display:none">
+                            <li><a href="form_layouts.html">添加分类</a></li>
+                            <li><a href="form_elements.html">分类列表</a></li>
+                            <li><a href="form_wizard.html">Wizard</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i> 商品管理</a>
+                        <ul style="display:none">
+                            <li><a href="/goods/add">添加商品</a></li>
+                            <li><a href="form_elements.html">商品列表</a></li>
+                            <li><a href="form_wizard.html">Wizard</a></li>
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
                         </ul>
                     </li>
                 </ul>
@@ -270,14 +360,27 @@
         
         	<!-- Inner Container Start -->
             <div class="container">
+<<<<<<< HEAD
                 @section('content')
                 @show
+=======
+            @section('content')
+
+
+
+            @show
+            
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
             </div>
             <!-- Inner Container End -->
                        
             <!-- Footer -->
             <div id="mws-footer">
+<<<<<<< HEAD
             	Copyright erqi.com 2012. All Rights Reserved.
+=======
+            	Copyright Your Website 2012. All Rights Reserved.
+>>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
             </div>
             
         </div>
