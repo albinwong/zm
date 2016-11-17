@@ -15,9 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('/admin',function(){
 	return view('layout.admin');
 });
 
 Route::get('/goods/add','GoodsController@add');
 Route::post('/goods','GoodsController@insert');
+=======
+Route::get('/home', function () {
+    return view('home');
+});
+
+
+>>>>>>> ddf0ad63efa70754e07e8703ddd1d5c7661fe94a
