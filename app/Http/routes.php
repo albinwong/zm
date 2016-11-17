@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin',function(){
+	return view('layout.admin');
+});
+
+Route::get('/goods/add','GoodsController@add');
+Route::post('/goods','GoodsController@insert');
