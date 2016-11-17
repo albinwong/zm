@@ -19,7 +19,6 @@
         width:300px;
         height:20px;
         overflow:hidden;
-        color:#ddd;
     }
   </style>
  </head> 

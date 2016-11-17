@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
 @extends('layout.admin')
 
 @section('content')
 
-<<<<<<< HEAD
 <script type="text/javascript" charset="utf-8" src="/admins/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" charset="utf-8" src="/admins/ueditor/ueditor.all.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="/admins/ueditor/lang/zh-cn/zh-cn.js"></script>
@@ -79,7 +74,6 @@
 <script type="text/javascript">
      var ue = UE.getEditor('editor');
 </script>
-=======
 <div class="mws-panel grid_8">
 	<div class="mws-panel-header">
     	<span>商品添加</span>
@@ -147,6 +141,4 @@
     	</form>
     </div>    	
 </div>
-
->>>>>>> 58fd43743d922b94362687f5dac9e6cb8ad516ac
 @endsection
