@@ -27,5 +27,7 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/test','GoodsController@index');
+
 
 
