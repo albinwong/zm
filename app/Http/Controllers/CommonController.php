@@ -35,6 +35,9 @@ class CommonController extends Controller
         }
    }
 
+   /**
+    * 退出登录
+    */
    public function logout()
    {
       session()->flush();
