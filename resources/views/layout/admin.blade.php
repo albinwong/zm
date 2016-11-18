@@ -68,7 +68,7 @@
             	<img src="/admins/images/mws-logo.png" alt="mws admin">
 			</div>
         </div>
-        
+        <!-- {{session('uid')}} -->
         <!-- User Tools (notifications, logout, profile, change password) -->
         <div id="mws-user-tools" class="clearfix">
         
