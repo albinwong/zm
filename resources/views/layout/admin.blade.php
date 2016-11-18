@@ -280,13 +280,6 @@
                             <li><a href="/liuyan/index">留言列表</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#"><i class="icon-list"></i> 商品管理</a>
-                        <ul style="display:none">
-                            <li><a href="/goods/add">添加商品</a></li>
-                            <li><a href="form_elements.html">商品列表</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>         
         </div>

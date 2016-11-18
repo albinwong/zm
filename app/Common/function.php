@@ -10,4 +10,8 @@
 		//返回结果
 		return $info->name;
 	}
+
+	
+
+
  ?>

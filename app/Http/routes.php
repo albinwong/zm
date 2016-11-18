@@ -36,11 +36,10 @@ Route::group(['middleware'=>'login'],function(){
 	Route::controller('cate','CateController');
 
 	//商品管理
-	// Route::controller('goods','GoodsController');
-	Route::get('/goods/add','GoodsController@add');
-	Route::post('/goods','GoodsController@insert');
+	Route::controller('goods','GoodsController');
 
 });
+
 
 
 Route::get('/home', function () {
