@@ -42,4 +42,12 @@ class HomeController extends Controller
         dd($res);
     }
 
+    /**
+     * 购物车
+     */
+    public function cart()
+    {
+        return view('home.user.cart');
+    }
+
 }

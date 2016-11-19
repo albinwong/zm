@@ -3,7 +3,9 @@
  <head> 
   <title>@yield('title')</title> 
   <link href="/homes/css/bootstrap.css" rel="stylesheet" type="text/css" /> 
+  <link href="/homes/css/cart.css" rel="stylesheet" type="text/css" /> 
   <script src="/homes/js/jquery.min.js"></script> 
+  <script src="/homes/js/cart.js"></script> 
   <script src="/homes/js/bootstrap.min.js"></script> 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
   <script src="/homes/js/jquery.min.js"></script> 
