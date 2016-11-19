@@ -40,24 +40,11 @@ Route::group(['middleware'=>'login'],function(){
 
 });
 
-
-
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('register',function(){
-	return view('home.user.register');
-});
-
-
 /**
  * 商品列表
  */
-Route::get('/glist',function(){
-	return view('home.glist');
-});
+Route::get('glist','Homecontroller@glist');
 
 //用户注册
 Route::get('register','HomeController@register');
 Route::post('doregister','HomeController@doregister');
-

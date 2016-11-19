@@ -42,4 +42,13 @@ class HomeController extends Controller
         dd($res);
     }
 
+    public function glist(Request $request)
+    {
+         $goods = DB::table('goods')->orderBy('id','desc')
+            ->select('goods.*','pics.path as paths')
+            ->join('pics','goods_id','=','goods.id')
+            ->get();
+        return view('home.goods.glist',['goods'=>$goods]);
+    }
+
 }

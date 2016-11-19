@@ -15,7 +15,7 @@
         <form class="mws-form" action="/goods/doedit" method="post" enctype="multipart/form-data">
          @if (count($errors) > 0)
             <div class="mws-form-message error">
-                 @foreach ($errors->all() as $error) 
+                 @foreach ($errors->all() as $error)
                     {{ $error }}
                  @endforeach
             </div>
@@ -36,7 +36,7 @@
                 <div class="mws-form-row">
                     <label class="mws-form-label">菜品库存</label>
                     <div class="mws-form-item">
-                        <input class="small" type="text" name="kucun" value="{{$goods->price}}">
+                        <input class="small" type="text" name="kucun" value="{{$goods->kucun}}">
                     </div>
                 </div>
                <div class="mws-form-row">
@@ -50,7 +50,7 @@
                         </select>
                     </div>
                 </div>
-               
+
                 <div class="mws-form-row">
                     <label class="mws-form-label" >菜品图片</label>
                     <div class="mws-form-item" style="width:455px;">
@@ -69,7 +69,7 @@
                 <input value="修改" class="btn btn-danger" type="submit">
             </div>
         </form>
-    </div>      
+    </div>
 </div>
 <script type="text/javascript">
      var ue = UE.getEditor('editor');
