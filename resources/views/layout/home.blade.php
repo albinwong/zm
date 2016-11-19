@@ -71,7 +71,7 @@
                 }?>
             </li>
             <li><a href="#">个人中心</a></li>
-            <li><a href="#">我的订单</a></li>
+            <li><a href="/order">我的订单</a></li>
           </ul>
       </div>
       </div>

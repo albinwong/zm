@@ -41,5 +41,9 @@ class HomeController extends Controller
         $res['kd'] = str_random();
         dd($res);
     }
+    public function order()
+    {
+        return view('home.user.order');
+    }
 
 }

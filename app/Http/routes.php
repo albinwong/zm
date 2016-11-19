@@ -60,4 +60,6 @@ Route::get('/glist',function(){
 //用户注册
 Route::get('register','HomeController@register');
 Route::post('doregister','HomeController@doregister');
+//个人中心
+Route::get('order','HomeController@order');
 
