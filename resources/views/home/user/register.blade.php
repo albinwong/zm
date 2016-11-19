@@ -1,4 +1,5 @@
 @extends('layout.home')
+@section('title','用户注册')
 @section('header')
 @show
 @section('content')
@@ -11,25 +12,31 @@
     <div class="main">
 		<div class="container">
 		  <div class="panel-body" style="padding: 40px;">
-    		<form id="login-form" name="login-form" class="nobottommargin" action="#" method="post">
+    		<form class="nobottommargin" action="/doregister" method="post">
 
-                <h3>Login to your Account</h3>
+                <h3>注册</h3>
 
-                <div class="col_full">
-                    <label for="login-form-username">Username:</label>
-                    <input id="login-form-username" name="login-form-username" value="" class="form-control" type="text">
+                <div class="col_small">
+                    <label for="login-form-username">用户名:</label>
+                    <input id="login-form-username" name="username" class="form-control" type="text">
                 </div>
 
-                <div class="col_full">
-                    <label for="login-form-password">Password:</label>
-                    <input id="login-form-password" name="login-form-password" value="" class="form-control" type="password">
+                <div class="col_small">
+                    <label for="login-form-password">邮箱:</label>
+                    <input id="login-form-password" name="email" class="form-control" type="email">
                 </div>
 
-                <div class="col_full nobottommargin">
-                    <button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
-                    <a href="#" class="fright">Forgot Password?</a>
-                </div>
 
+                <div class="col_small">
+                    <label for="login-form-password">密码:</label>
+                    <input id="login-form-password" name="password" class="form-control" type="password">
+                </div>
+                <div class="col_small">
+                    <label for="login-form-password">确认密码:</label>
+                    <input id="login-form-password" name="repassword" class="form-control" type="password">
+                </div>
+                {{csrf_field()}}
+                <button>登录</button>
             </form>
     	</div>
 	  </div>
