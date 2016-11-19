@@ -116,7 +116,7 @@ class GoodsController extends Controller
             foreach($files as $k=>$v){
                 //拼接文件名
                 $fileName = time().rand(100000,999999);
-                //获取上传文件的后缀名  .jpg
+                //获取上传文件的后缀名  .jpg   getClientOriginalExtension
                 $suffix = $v->getClientOriginalExtension();
                 //拼接文件名
                 $fileName = $fileName.'.'.$suffix;
@@ -140,6 +140,9 @@ class GoodsController extends Controller
         $id = $request->all();
         if(!empty($id)){
             $res = DB::table('goods')->where('id',$id)->delete();
+        }
+        if(!empty($id)){
+            $res = DB::table('pics')->where('goods_id',$id)->delete();
         }
         return redirect('/goods');
     }

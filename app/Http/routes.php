@@ -21,6 +21,8 @@ Route::get('/test','UserController@test');
 
 Route::get('/admin/login','CommonController@login');
 Route::post('/admin/login','CommonController@dologin');
+// Route::get('/logout','CommonController@logout');
+Route::get('/logout','CommonController@logout');
 
 //后台路由组
 Route::group(['middleware'=>'login'],function(){
@@ -44,4 +46,15 @@ Route::group(['middleware'=>'login'],function(){
 
 Route::get('/home', function () {
     return view('home');
+});
+Route::get('register',function(){
+	return view('home.user.register');
+});
+
+
+/**
+ * 商品列表
+ */
+Route::get('/glist',function(){
+	return view('home.glist');
 });

@@ -23,14 +23,24 @@ class CommonController extends Controller
         if(!$res){
             return back();
         }else{
+            // dd($res);
             //检测密码
             if(Hash::check($request->input('password'),$res->password)){
-                    session(['uid' => $res->id]);
+                    session(['uid' => $res->id,'uname'=>$res->username]);
                     return redirect('/admin');
-
+                    // dd(session('uname'));
             }else{
                 return back();
             }
         }
+   }
+
+   /**
+    * 退出登录
+    */
+   public function logout()
+   {
+      session()->flush();
+      return redirect('/home');
    }
 }

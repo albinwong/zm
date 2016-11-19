@@ -13,7 +13,7 @@ class LoginMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public static function handle($request, Closure $next)
     {
         //检测
         if(session('uid')){

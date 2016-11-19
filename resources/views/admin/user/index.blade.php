@@ -88,7 +88,12 @@
 			<td class=" ">{{$v->phone}}</td>
 			<td class=" "></td>
 			<td class=" "></td>
-            <td class=" "><a href="/user/edit?id={{$v->id}}" style="color:blue">修改</a>&nbsp;&nbsp;<a style="color:blue"  href="/user/delete?id={{$v->id}}">删除</a></td></tr>
+			<td class=" ">
+                <span class="btn-group">
+                    <a href="/user/edit?id={{$v->id}}" class="btn btn-small"><i class="icon-pencil"></i></a>
+                    <a href="/user/delete?id={{$v->id}}" class="btn btn-small"><i class="icon-trash"></i></a>
+                </span>
+            </td>
         @endforeach
         </tbody>
       </table>

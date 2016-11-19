@@ -20,9 +20,16 @@
         height:20px;
         overflow:hidden;
     }
+  .daohang{
+    position:relative;
+    padding-bottom:100px;
+    top:-20px;
+    color:#ddd; 
+  }
   </style>
  </head> 
  <body> 
+ @section('header')
   <div class="header">
     <div class="container">
       <div class="header_top">
@@ -37,19 +44,33 @@
         </li>
         <div class="clearfix"></div>
       </ul>
-      <div class="col-md-4">
-        <div class="account list-unstyle pull-right">
-          <ul>
+      <div class="col-md-6 col-md-offset-2 pull-right">
+        <div class="account">
+          <ul class="list-unstyled list-inline pull-right daohang">
             <li>
-              <?php
-                if(!empty(session(['uid']))){
-                  echo "欢迎{$_SESSION['userInfo']['uname']}来访 <a href='/user/logout' style='text-decoration:none;color:red;'>退出</a>";
+              <?php 
+                $t = date("H",time());
+                if ($t>=7 && $t<9) {
+                  echo "早上好";
+                }else if($t>=9 && $t<11){
+                  echo '上午好';
+                }else if($t>=11 && $t<13){
+                  echo '中午好';
+                }else if($t>=13 && $t<19){
+                  echo "下午好";
+                }else if($t>=19 && $t<23){
+                  echo '晚上好';
                 }else{
-                  echo "<a href='/user/login' style='text-decoration:none;'>您好,请登录</a> | <a href='/user/add' style='text-decoration:none;color:red;'>免费注册</a>";
+                  echo '凌晨好';
+                }
+                if(!empty(session('uid'))){
+                  echo "&emsp;欢迎".session('uname')."来访 <a href='/logout' style='text-decoration:none;color:red;'>退出</a>";
+                }else{
+                  echo "&emsp;<a href='/login' style='text-decoration:none;'>请登录</a> | <a href='/register' style='text-decoration:none;color:red;'>免费注册</a>";
                 }?>
             </li>
-            <li><a href="account.html">个人中心</a></li>
-            <li><a href="account.html">个人中心</a></li>
+            <li><a href="#">个人中心</a></li>
+            <li><a href="#">我的订单</a></li>
           </ul>
       </div>
       </div>
@@ -105,6 +126,8 @@
     </div> 
    </div> 
   </div> 
+  @show
+  @section('content')
   <div class="main"> 
    <div class="container"> 
     <div class="banner"> 
@@ -427,6 +450,8 @@
     </div> 
    </div> 
   </div> 
+  @show
+  @section('footer')
   <div class="footer"> 
    <div class="container"> 
     <div class="footer-grid footer-grid1"> 
@@ -510,3 +535,4 @@
   </div>  
  </body>
 </html>
+@show
