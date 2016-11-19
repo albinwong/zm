@@ -12,16 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
-Route::get('/test','UserController@test');
-
-
+//用户后台登录
 Route::get('/admin/login','CommonController@login');
 Route::post('/admin/login','CommonController@dologin');
-// Route::get('/logout','CommonController@logout');
+//用户退出
 Route::get('/logout','CommonController@logout');
 
 //后台路由组
@@ -44,10 +42,6 @@ Route::group(['middleware'=>'login'],function(){
 
 });
 
-
-Route::get('/home', function () {
-    return view('home');
-});
-Route::get('register',function(){
-	return view('home.user.register');
-});
+//用户注册
+Route::get('register','HomeController@register');
+Route::post('doregister','HomeController@doregister');
