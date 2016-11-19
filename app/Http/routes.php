@@ -50,13 +50,18 @@ Route::get('/home', function () {
 /**
  * 商品列表
  */
-Route::get('/glist',function(){
-	return view('home.glist');
-});
+Route::get('glist','HomeController@glist');
 
 //用户注册
 Route::get('/register','HomeController@register');
 Route::post('/doregister','HomeController@doregister');
 
+
 //购物车
 Route::get('/cart','HomeController@cart');
+
+//我的订单
+Route::get('order','HomeController@order');
+
+
+

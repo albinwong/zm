@@ -41,6 +41,19 @@ class HomeController extends Controller
         $res['kd'] = str_random();
         dd($res);
     }
+    public function order()
+    {
+        return view('home.user.order');
+    }
+
+    public function glist(Request $request)
+    {
+         $goods = DB::table('goods')->orderBy('id','desc')
+            ->select('goods.*','pics.path as paths')
+            ->join('pics','goods_id','=','goods.id')
+            ->get();
+        return view('home.goods.glist',['goods'=>$goods]);
+    }
 
     /**
      * 购物车

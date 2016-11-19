@@ -7,6 +7,11 @@
   <script src="/homes/js/jquery.min.js"></script> 
   <script src="/homes/js/cart.js"></script> 
   <script src="/homes/js/bootstrap.min.js"></script> 
+  <script src="/homes/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/homes/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/homes/bootstrap/css/bootstrap-theme.min.css">
+  <script type="text/javascript" src="/homes/bootstrap/js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="/homes/bootstrap/js/bootstrap.min.js"></script> 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
   <script src="/homes/js/jquery.min.js"></script> 
   <!-- Custom Theme files --> 
@@ -73,7 +78,7 @@
                 }?>
             </li>
             <li><a href="#">个人中心</a></li>
-            <li><a href="#">我的订单</a></li>
+            <li><a href="/order">我的订单</a></li>
           </ul>
       </div>
       </div>
@@ -81,9 +86,9 @@
     </div>
     <div class="header_bottom"> 
      <div class="header_nav"> 
-      <div class="logo"> 
-       <a href="index.html"><img src="/homes/images/logo.png" style="width:120px;height:117px;" alt="" /><br /></a> 
-      </div> 
+      <a href="#"><div class="logo"> 
+       <img src="/homes/images/logo.png" style="width:120px;height:117px;">
+      </div> </a>
       <nav class="navbar navbar-default menu" role="navigation">
         <h3 class="nav_right">
           <a href="index.html">
@@ -123,7 +128,7 @@
       <div class="clearfix"></div> 
      </div> 
      <div class="search"> 
-      <input type="text" class="text" placeholder="请输入关键字" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Product Details';}" /> 
+      <input type="text" class="text" placeholder="请输入关键字" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入关键字';}" /> 
       <input type="submit" value="搜索" /> 
      </div> 
     </div> 
@@ -134,15 +139,66 @@
   <div class="main"> 
    <div class="container"> 
    <!-- 轮播 start-->
-   <!--  <div class="banner"> 
-     <img src="/homes/images/banner.jpg" class="img-responsive" alt="" /> 
-    </div>  -->
+
+    <div class="banner"> 
+      <div id="carousel-example-generic" class="carousel slide img-responsive" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="/homes/images/banner1.jpg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="/homes/images/banner2.jpg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="/homes/images/banner3.jpg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="/homes/images/banner4.jpg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="/homes/images/banner5.jpg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="/homes/images/banner6.jpg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        </a>
+      </div>
+   
+    </div> 
     <!-- 轮播 end-->
     <div class="row content"> 
      <div class="col-md-3 content_top"> 
      <!-- 菜单 start -->
       <div class="category_box">
-     <h3 class="cate_head">Categories</h3> 
+     <h3 class="cate_head">特色菜系</h3> 
       <div class="box">
         <ul>
             <li><a href="#">导航1</a>
@@ -541,7 +597,7 @@
                       </li>
                   </ul>
               </li>
-          </ul>
+        </ul>
       </div>
   </div>
      <!-- 菜单 end -->
@@ -578,8 +634,9 @@
       </ul> 
      </div> 
      <div class="col-md-9"> 
+      <!-- 今日热销 start -->
       <ul class="feature"> 
-       <h3><i class="arrow"> </i><span>Today's Featured Products</span></h3> 
+       <h3><i class="arrow"> </i><span>今日热销</span></h3> 
       </ul> 
       <ul class="feature_grid"> 
        <li class="grid1"><img src="/homes/images/f1.jpg" class="img-responsive" alt="" /> <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed</p> 
@@ -609,6 +666,7 @@
        <div class="clearfix"> 
        </div> 
       </ul> 
+      <!-- 今日热销 end -->
       <ul class="feature"> 
        <h3><i class="arrow"> </i><span>Popular products</span></h3> 
       </ul> 
