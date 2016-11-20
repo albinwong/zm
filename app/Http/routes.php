@@ -41,9 +41,12 @@ Route::group(['middleware'=>'login'],function(){
 });
 
 /**
- * 商品列表
+ * 前台
  */
-Route::get('glist','Homecontroller@glist');
+  	//商品列表
+	Route::get('glist','HomeController@glist');
+	//商品详情
+	Route::get('detail','HomeController@detail');
 
 //用户注册
 Route::get('register','HomeController@register');

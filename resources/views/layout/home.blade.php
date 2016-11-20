@@ -5,10 +5,10 @@
   <link href="/homes/css/bootstrap.css" rel="stylesheet" type="text/css" /> 
   <script src="/homes/js/jquery.min.js"></script> 
   <script src="/homes/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="/homes/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/homes/bootstrap/css/bootstrap-theme.min.css">
-  <script type="text/javascript" src="/homes/bootstrap/js/jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" src="/homes/bootstrap/js/bootstrap.min.js"></script> 
+  <link rel="stylesheet" href="/homes/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/homes/css/bootstrap-theme.min.css">
+  <script type="text/javascript" src="/homes/js/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script> 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
   <script src="/homes/js/jquery.min.js"></script> 
   <!-- Custom Theme files --> 
@@ -132,7 +132,7 @@
    </div> 
   </div> 
   @show
-  @section('content')
+  
   <div class="main"> 
    <div class="container"> 
    <!-- 轮播 start-->
@@ -630,7 +630,9 @@
        <img src="/homes/images/payment.png" class="img-responsive" alt="" /> 
       </ul> 
      </div> 
+
      <div class="col-md-9"> 
+     @section('content')
       <!-- 今日热销 start -->
       <ul class="feature"> 
        <h3><i class="arrow"> </i><span>今日热销</span></h3> 

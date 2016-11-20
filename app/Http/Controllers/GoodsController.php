@@ -79,8 +79,25 @@ class GoodsController extends Controller
                         $query->where('goods.name','like','%'.$k.'%');
                     }
                 })->paginate($request->input('num',10));
+
         //解析模版  分配变量
         return view('admin.goods.index',['request'=>$request,'goods'=>$goods]);
+    }
+
+    //上下架修改
+    public function getSta(Request $request)
+    {
+        $id = $request->input('id');
+        $status = $request->input('status');
+        if($status==0){
+            $res = DB::table('goods')->where('id',$id)->update(['status'=>1]);
+            // dd($res);
+            return redirect('/goods/index')->with('info','上架成功');
+        }else{
+             $res = DB::table('goods')->where('id',$id)->update(['status'=>0]);
+            // dd($res);
+            return redirect('/goods/index')->with('info','下架成功');
+        }
     }
 
     //显示要修改的内容
@@ -103,10 +120,7 @@ class GoodsController extends Controller
     //执行修改
     public function postDoedit(Request $request)
     {
-         $res = $request->except(['_token','path']);
-
-        // $res['color'] = implode('@',$res['color']);
-        // $res['size'] = implode('@',$res['size']);
+        $res = $request->except(['_token','path']);
         $gid = DB::table('goods')->insertGetId($res);
         if($request->hasFile('path')){
             //待拼接的数据

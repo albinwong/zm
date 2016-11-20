@@ -44,6 +44,7 @@
     }
 </style>
 
+</script>
 <div class="mws-panel grid_8">
   <div class="mws-panel-header">
     <span>
@@ -83,10 +84,13 @@
             <td class=" ">{{$v->name}}</td> 
             <td class=" ">{{$v->price}}</td>
             <td class=" ">{{$v->names}}</td>
-            <td class=" "><span class="badge badge-success">已上架</span></td>
+            <td class=" ">
+            
+               @if($v->status == 0) <span class="badge badge-warning">已下架</span> @else <span class="badge badge-success">已上架</span> @endif
+                </td>
             <td class=" ">
              <span class="btn-group">
-                <a href="#" class="btn btn-small"><i class="icon-pencil">上架</i></a>
+                <a href="/goods/sta?id={{$v->id}}&status={{$v->status}}" class="btn btn-small"><i >上、下架</i></a>
                 <a href="/goods/edit?id={{$v->id}}" class="btn btn-small"><i class="icon-pencil"></i></a>
                 <a href="/goods/delete?id={{$v->id}}" class="btn btn-small"><i class="icon-trash"></i></a>
             </span></td></tr>
