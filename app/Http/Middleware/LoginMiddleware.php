@@ -16,10 +16,10 @@ class LoginMiddleware
     public static function handle($request, Closure $next)
     {
         //检测
-        if(session('uid')){
+        if(session('uid') && session('auth') == 2){
             return $next($request);
         }else{
-            return redirect('/admin/login');
+            return redirect('/admin/login')->with('alert','用户不存在或权限不足');
         }
        
     }

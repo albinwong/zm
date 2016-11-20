@@ -3,7 +3,9 @@
  <head> 
   <title>@yield('title')</title> 
   <link href="/homes/css/bootstrap.css" rel="stylesheet" type="text/css" /> 
+  <link href="/homes/css/cart.css" rel="stylesheet" type="text/css" /> 
   <script src="/homes/js/jquery.min.js"></script> 
+  <script src="/homes/js/bootstrap.min.js"></script> 
   <script src="/homes/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="/homes/css/bootstrap.min.css">
   <link rel="stylesheet" href="/homes/css/bootstrap-theme.min.css">
@@ -29,7 +31,7 @@
     position:relative;
     padding-bottom:100px;
     top:-20px;
-    color:#ddd; 
+    color:#abc; 
   }
   </style>
  </head> 
@@ -49,20 +51,20 @@
         </li>
         <div class="clearfix"></div>
       </ul>
-      <div class="col-md-6 col-md-offset-5 pull-right">
+      <div class="col-md-6 col-lg-offset-4 pull-right">
         <div class="account">
           <ul class="list-unstyled list-inline pull-right daohang">
             <li>
               <?php 
                 $t = date("H",time());
                 if ($t>=7 && $t<9) {
-                  echo "早上好";
+                  echo '早上好';
                 }else if($t>=9 && $t<11){
                   echo '上午好';
                 }else if($t>=11 && $t<13){
                   echo '中午好';
                 }else if($t>=13 && $t<19){
-                  echo "下午好";
+                  echo '下午好';
                 }else if($t>=19 && $t<23){
                   echo '晚上好';
                 }else{
@@ -71,11 +73,9 @@
                 if(!empty(session('uid'))){
                   echo "&emsp;欢迎".session('uname')."来访 <a href='/logout' style='text-decoration:none;color:red;'>退出</a>";
                 }else{
-                  echo "&emsp;<a href='/login' style='text-decoration:none;'>请登录</a> | <a href='/register' style='text-decoration:none;color:red;'>免费注册</a>";
+                  echo "&emsp;<a href='/login' style='text-decoration:none;color:#abc'>请登录</a> | <a href='/register' style='text-decoration:none;color:red;'>免费注册</a>";
                 }?>
-            </li>
-            <li><a href="#">个人中心</a></li>
-            <li><a href="#">我的订单</a></li>
+            </li><li>&nbsp;<a href="#" style="color:#abc">个人中心</a></li><li>&nbsp;<a href="/order" style="color:#abc">我的订单</a></li>
           </ul>
       </div>
       </div>
@@ -107,13 +107,9 @@
           <li><a href="club.html">Fan Club</a></li> 
           <li><a href="contact.html">Contact</a></li> 
          </ul> 
-        <!--  <ul class="login"> 
-          <a href="account.html"><li class="login_top"><i class="sign"> </i><span>登录</span></li></a> 
-          <a href="register.html"><li class="login_bottom"><i class="register"> </i><span>注册</span></li></a> 
-         </ul>  -->
          <ul class="shopping_cart login">
-         <a href="#"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
-         <a href="#"><li class="shop_right"><span>我的订单</span></li></a>
+         <a href="cart"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
+         <a href="order"><li class="shop_right"><span>我的订单</span></li></a>
          <div class="clearfix"> </div>
         </ul>
          <div class="clearfix"></div> 
@@ -626,7 +622,7 @@
        </div> 
       </ul> 
       <ul class="product_reviews"> 
-       <h3><i class="arrow"> </i><span>Payment Methods</span></h3> 
+       <h3><i class="arrow"> </i><span>支付方式</span></h3> 
        <img src="/homes/images/payment.png" class="img-responsive" alt="" /> 
       </ul> 
      </div> 
@@ -904,12 +900,12 @@
     <div class="footer-grid footer-grid1"> 
      <h3 class="m_2">Company</h3> 
      <ul class="list1"> 
-      <li><a href="#">Home</a></li> 
-      <li><a href="#">About Us</a></li> 
-      <li><a href="#">Blog</a></li> 
+      <li><a href="/">主页</a></li> 
+      <li><a href="#">关于我们</a></li> 
+      <li><a href="#">新浪微博</a></li> 
       <li><a href="#">Latest News</a></li> 
-      <li><a href="#">Login</a></li> 
-      <li><a href="#">Join Us</a></li> 
+      <li><a href="/admin">管理中心</a></li> 
+      <li><a href="#">加入我们</a></li> 
      </ul> 
     </div> 
     <div class="footer-grid footer-grid2"> 
@@ -972,13 +968,10 @@
     </div> 
     <div class="clearfix"> 
     </div> 
-    <div class="copy pull-center"> 
+    <div class="copy col-md-offset-4"> 
      <p>Copyright &copy; 2016.ZMXQN Co.Ltd All rights reserved.</p> 
     </div> 
    </div> 
-  </div> 
-  <div style="display:none">
-   <script src="http://v7.cnzz.com/stat.php?id=155540&amp;web_id=155540" language="JavaScript" charset="gb2312"></script>
   </div>  
  </body>
 </html>

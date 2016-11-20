@@ -20,19 +20,17 @@ class CommonController extends Controller
    {
         //读取用户名信息
         $res = DB::table('users')->where('username',$request->input('username'))->first();
-        if(!$res){
-            return back();
-        }else{
-            // dd($res);
-            //检测密码
-            if(Hash::check($request->input('password'),$res->password)){
-                    session(['uid' => $res->id,'uname'=>$res->username]);
-                    return redirect('/admin');
-                    // dd(session('uname'));
-            }else{
-                return back();
-            }
-        }
+          if(!$res){
+            return back()->with('alert','用户名或密码不正确');
+          }else{
+              //检测密码
+              if(Hash::check($request->input('password'),$res->password)){
+                      session(['uid' => $res->id,'uname'=>$res->username]);
+                      return redirect('/admin');
+              }else{
+                  return back()->with('alert','用户名或密码不正确');
+              }
+          }
    }
 
    /**
@@ -41,6 +39,6 @@ class CommonController extends Controller
    public function logout()
    {
       session()->flush();
-      return redirect('/home');
+      return back();
    }
 }
