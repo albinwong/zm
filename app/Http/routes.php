@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
-
+//====================后台===========================
 //用户后台登录
 Route::get('/admin/login','CommonController@login');
 Route::post('/admin/login','CommonController@dologin');
@@ -40,9 +36,11 @@ Route::group(['middleware'=>'login'],function(){
 
 });
 
-
-
-Route::get('/home', function () {
+//======================前台========================
+/**
+ * 前台首页
+ */
+Route::get('/', function () {
     return view('home');
 });
 
@@ -56,12 +54,26 @@ Route::get('glist','HomeController@glist');
 Route::get('/register','HomeController@register');
 Route::post('/doregister','HomeController@doregister');
 
+//用户激活账号验证
+Route::get('/activate','HomeController@activate');
+// 找回密码
+Route::get('/forget','HomeController@forget');
+
+
+// 前台用户登录
+Route::get('/login','HomeController@login');
+Route::post('/dologin','HomeController@dologin');
+
 
 //购物车
 Route::get('/cart','HomeController@cart');
 
 //我的订单
 Route::get('order','HomeController@order');
+
+// 下面我们可以设置相应的router访问这个验证码图片, 修改router.php：
+
+Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
 
 

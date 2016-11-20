@@ -42,9 +42,19 @@
                     </div>
                     <div id="mws-login-remember" class="mws-form-row mws-inset">
                         <ul class="mws-form-list inline">
-                            <li>
-                                <input id="remember" type="checkbox"> 
-                                <label for="remember">记住我</label>
+                            <li> 
+                                <label for="remember">
+                                    @if(session('info'))
+                                        {{session('info')}}
+                                    @endif
+
+                                    @if(session('error'))
+                                        {{session('error')}}
+                                    @endif
+                                    @if(session('alert'))
+                                        {{session('alert')}}
+                                    @endif
+                                </label>
                             </li>
                         </ul>
                     </div>

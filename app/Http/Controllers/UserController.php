@@ -29,7 +29,7 @@ class UserController extends Controller
 			'username'=>'required|regex:/^\w{8,18}$/|unique:users,username',
 			'password'=>'required|regex:/^\S{6,20}$/|same:repassword',
 			'email'=>'regex:/^\w+@\w+\.\w+$/',
-			'phone'=>'regex:/^[3-8]\d{9}$/'
+			'phone'=>'regex:/^1[3-8]\d{9}$/'
 		],[
 			'username.required'=>'用户名不能为空',
 			'username.regex'=>'用户名格式不正确',
