@@ -18,8 +18,8 @@
 	如果您是追梦在线订餐网站的新用户,或在修改您的注册Email时使用了本地址,我们需要对您的地址有效性进行验证以避免垃圾邮件或地址被滥用。
 
 	您只需点击下面的链接即可激活您的帐号：
-	<a href="http://zm.com/jihuo?id={{$id}}&kd={{$kd}}">点击激活</a>
-	http://zm.com/jihuo?id={{$id}}&kd={{$kd}}
+	<a href="http://zm.com/activate?id={{$id}}&kd={{$kd}}">点击激活</a>
+	http://zm.com/activate?id={{$id}}&kd={{$kd}}
 	(如果上面不是链接形式，请将该地址手工粘贴到浏览器地址栏再访问)
 
 	感谢您的访问，祝您使用愉快！

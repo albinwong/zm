@@ -128,6 +128,7 @@
    </div> 
   </div> 
   @show
+     @section('content')
   
   <div class="main"> 
    <div class="container"> 
@@ -628,7 +629,6 @@
      </div> 
 
      <div class="col-md-9"> 
-     @section('content')
       <!-- 今日热销 start -->
       <ul class="feature"> 
        <h3><i class="arrow"> </i><span>今日热销</span></h3> 
