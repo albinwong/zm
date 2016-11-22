@@ -11,6 +11,14 @@
 		return $info->name;
 	}
 
+	function getUserAuth($id)
+	{
+		switch ($id) {
+			case '0':return '未激活';break;
+			case '1':return '会员';break;
+			default:return '管理员';break;
+		}
+	}
 	
 
 

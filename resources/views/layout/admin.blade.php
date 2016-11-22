@@ -64,8 +64,9 @@
         
         	<!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
         	<div id="mws-logo-wrap">
+                <a href="/"><img src="/homes/images/logo.png" alt="mws admin"></a>
                 <span style="font-size:20px;color:white;">后台管理</span>
-            	<img src="/admins/images/mws-logo.png" alt="mws admin">
+            	
 			</div>
         </div>
         <!-- {{session('uid')}} -->
@@ -198,21 +199,38 @@
             
             <!-- User Information and functions section -->
             <div id="mws-user-info" class="mws-inset">
-            
             	<!-- User Photo -->
             	<div id="mws-user-photo">
-                	<img src="/admins/example/profile.jpg" alt="User Photo">
+                    <?php 
+                        $res = DB::table('users')->where('id',session('uid'))->first();
+                        // if(empty($res)) return false;
+                    ?>
+                        <img src="{{$res->profile}}" alt="User Photo">
                 </div>
                 
                 <!-- Username and Functions -->
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        Hello, John Doe
+                <?php 
+                    $t = date("H",time());
+                    if ($t>=7 && $t<9) {
+                      echo '早上好';
+                    }else if($t>=9 && $t<11){
+                      echo '上午好';
+                    }else if($t>=11 && $t<13){
+                      echo '中午好';
+                    }else if($t>=13 && $t<19){
+                      echo '下午好';
+                    }else if($t>=19 && $t<23){
+                      echo '晚上好';
+                    }else{
+                      echo '凌晨好';
+                    }
+                    echo ',&nbsp;'.session('uname')?>
                     </div>
-                    <ul>
-                    	<li><a href="#">Profile</a></li>
-                        <li><a href="#">Change Password</a></li>
-                        <li><a href="index.html">Logout</a></li>
+                    <ul> 
+                        <li><a href="/user/edit?id={{session('uid')}}">修改资料</a></li>
+                        <li><a href="/logout">退出</a></li>
                     </ul>
                 </div>
             </div>
@@ -234,14 +252,6 @@
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
-            
-        	<!-- Searchbox -->
-        	<div id="mws-searchbox" class="mws-inset">
-            	<form action="typography.html">
-                	<input type="text" class="mws-search-input" placeholder="Search...">
-                    <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
-                </form>
             </div>
             
             <!-- Main Navigation -->

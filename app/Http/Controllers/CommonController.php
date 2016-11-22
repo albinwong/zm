@@ -25,7 +25,7 @@ class CommonController extends Controller
           }else{
               //检测密码
               if(Hash::check($request->input('password'),$res->password)){
-                      session(['uid' => $res->id,'uname'=>$res->username]);
+                      session(['uid' => $res->id,'uname'=>$res->username,'auth'=>$res->auth]);
                       return redirect('/admin');
               }else{
                   return back()->with('alert','用户名或密码不正确');
@@ -41,4 +41,8 @@ class CommonController extends Controller
       session()->flush();
       return back();
    }
+
+  
+
+
 }

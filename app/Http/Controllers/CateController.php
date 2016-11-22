@@ -131,15 +131,33 @@ class CateController extends Controller
     public static function getCateInfo()
     {
         //读取内容
-        $res = DB::table('cates')->select(db::raw('*,concat(path,",",id) as paths'))->orderBy('paths')->get();
+        $res = DB::table('cates')->select(db::raw('*,concat(path,",",id) as paths'))->orderBy('paths','asc')->get();
         //遍历
         foreach($res as $k=>$v){
-            $total = count(explode(',',$v->path));   //path 0,1
-            $v->name = str_repeat('|-------',$total-1).$v->name;
+            $total = count(explode(',',$v->path))-1;   //path 0,1
+            if($total!=0){
+                $v->name = str_repeat('&nbsp;',9*$total).'|---'.$v->name;
+            }
         }
         return $res;
     
     }
-
+    
+    /**
+     * 递归获取分类信息
+     * 根据分类ID来获取当前分类下的子分类
+     */
+    public static function getAllCates($pid)
+    {
+        $cates = DB::table('cates')->where('pid',$pid)->get();
+        // dd($cates);
+        $arr = [];
+        foreach($cates as $k=>$v){
+            // 递归获取当前子分类
+            $v->subcate = self::getAllCates($v->id);
+            $arr[] = $v;
+        }
+        return $arr;
+    }
 
 }

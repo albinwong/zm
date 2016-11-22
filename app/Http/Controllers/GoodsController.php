@@ -12,19 +12,18 @@ use DB;
 
 class GoodsController extends Controller
 {
-/**
- * 作者: 桓超  11-17
- */
+	/**
+	 * 作者: 桓超  11-17
+	 */
     //商品的添加
     public function getAdd()
     {
         //读取分类信息
-        // $res = CateController::getCateInfo();
          $res = DB::table('cates')->select(db::raw('*, concat(path,",",id) as paths'))->orderBy('paths')->get();
             foreach($res as $k=>$v){
                 $total = count(explode(',',$v->path))-1;
             if($total>0){
-                $v->name = str_repeat('&nbsp;', 10*$total). '|-----'.$v->name;
+                $v->name = str_repeat('&nbsp;', 10*$total). '|---'.$v->name;
             }
         }
         //解析模版   分配变量
@@ -103,12 +102,12 @@ class GoodsController extends Controller
     //显示要修改的内容
     public function getEdit(Request $request)
     {
-         $cates = DB::table('cates')->select(db::raw('*, concat(path,",",id) as paths'))->orderBy('paths')->get();
+        $cates = DB::table('cates')->select(db::raw('*, concat(path,",",id) as paths'))->orderBy('paths')->get();
             foreach($cates as $k=>$v){
                 $total = count(explode(',',$v->path))-1;
-            if($total>0){
-                $v->name = str_repeat('&nbsp;', 10*$total). '|-----'.$v->name;
-            }
+	            if($total>0){
+	                $v->name = str_repeat('&nbsp;', 10*$total). '|-----'.$v->name;
+	            }
         }
         $id = $request->all();
         // // dd($id);
@@ -160,6 +159,5 @@ class GoodsController extends Controller
         }
         return redirect('/goods');
     }
- 
-
+   
 }   

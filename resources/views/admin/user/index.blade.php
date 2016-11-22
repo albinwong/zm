@@ -86,8 +86,8 @@
             <td class=" "><img src="{{$v->profile}}" width="40" alt=""></td>
             <td class=" ">{{$v->address}}</td>
 			<td class=" ">{{$v->phone}}</td>
-			<td class=" "></td>
-			<td class=" "></td>
+			<td class=" "><?=date('Y-m-d',$v->regtime)?></td>
+			<td class=" ">{{getUserAuth($v->auth)}}</td>
 			<td class=" ">
                 <span class="btn-group">
                     <a href="/user/edit?id={{$v->id}}" class="btn btn-small"><i class="icon-pencil"></i></a>

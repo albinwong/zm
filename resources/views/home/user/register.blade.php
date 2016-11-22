@@ -7,18 +7,33 @@
 .main {
     background:url("/homes/images/reg_bg.jpg") no-repeat;
 }
-
+.form-control{
+    width:500px;
+    /*margin:0 auto;*/
+}
+.nobottommargin{
+    margin-left:100px;
+}
+.col_small{
+    width:150px;
+    margin:0px 0px 0px 0px;
+}
+.h3{
+    font-weight:bold;
+    margin:0 auto;
+}
 </style>
     <div class="main">
 		<div class="container">
 		  <div class="panel-body" style="padding: 40px;">
     		<form class="nobottommargin" action="/doregister" method="post">
-
-                <h3>注册</h3>
+                <div class="col_small">
+                    <h3>注册</h3>
+                </div>
+                
 
                 <div class="col_small">
-                    <label for="login-form-username">用户名:</label>
-                    <input id="login-form-username" name="username" class="form-control" type="text">
+                    用户名:<input id="login-form-username" name="username" class="form-control" type="text">
                 </div>
 
                 <div class="col_small">
@@ -35,8 +50,15 @@
                     <label for="login-form-password">确认密码:</label>
                     <input id="login-form-password" name="repassword" class="form-control" type="password">
                 </div>
+                <div class="col_small">
+                    <label for="login-form-password">验证码:</label>
+                    <input id="login-form-password" name="repassword" class="form-control" type="password">
+                </div>
                 {{csrf_field()}}
-                <button>登录</button>
+                <div class="col_small">
+                    <button>注册</button>
+                </div>
+                
             </form>
     	</div>
 	  </div>
