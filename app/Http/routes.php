@@ -33,6 +33,8 @@ Route::group(['middleware'=>'login'],function(){
 
 	//商品管理
 	Route::controller('goods','GoodsController');
+	//友情链接
+	Route::controller('frlink','LinkController');
 
 });
 
