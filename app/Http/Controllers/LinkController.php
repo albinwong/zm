@@ -8,6 +8,7 @@ use App\Http\Requests;
 // use App\Http\Requests\NetworkAddRequest;
 use App\Http\Controllers\Controller;
 use DB;
+
 class LinkController extends Controller
 {
 	 public function getAdd(){
@@ -19,18 +20,29 @@ class LinkController extends Controller
     public function postAdd(Request $request){
     	//进行表单验证
 		$this->validate($request,[
-			'url'=>'required|regex:/^([a-zA-Z\d][a-zA-Z\d-_]+\.)+[a-zA-Z\d-_][^ ]*$/|unique:frlink,url'
+			'url'=>'required|regex:/^[a-zA-z]+:\/\/[^\s]*$/|unique:frlink,url'
 		],[
-			'url.required'=>'用户名不能为空',
-			'url.regex'=>'用户名格式不正确',
-			
+			'url.required'=>'连接地址不能为空',
+			'url.regex'=>'连接地址格式不正确',
+			'url.unique'=>'连接地址已存在'
 		]);
         $res = $request->except('_token');
+        // echo $res->hasFile('logo');die;
+
+        //处理图标
+        if($request->hasFile('logo')){
+            $fileName = time().rand(100000,9999999);
+            $suffix = $request->file('logo')->getClientOriginalExtension();
+            $fileName = $fileName.".".$suffix;
+            $request->file('logo')->move('./Uploads/',$fileName);
+            $res['logo'] = '/Uploads/links/'.$fileName;
+        }
+        // dd($res);
         $data = DB::table('frlink')->insert($res);
         if($data){
             return redirect('/frlink/index')->with('info','添加成功');
         }else{
-            return redirect('/frlink/index')->with('info','添加失败');
+            return back()->with('info','添加失败');
         }
         
     }
@@ -39,6 +51,7 @@ class LinkController extends Controller
     public function getIndex(Request $request){
         // 通过数据库查询就查询的数据传过去
         $data = DB::table('frlink')->paginate($request->input('num',10));
+        dd($data);
         // dd($data);
         return view('admin.frlink.index',['list'=>$data,'request'=>$request->all()]);
     }

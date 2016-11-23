@@ -19,7 +19,7 @@
   <!-- Custom Theme files --> 
   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>  
-  <!--webfonts----> 
+  <!--webfonts--> 
   <link href="http://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css" /> 
   <style type="text/css">
     #test{
@@ -36,12 +36,13 @@
   </style>
  </head> 
  <body> 
+ <!-- 头部start -->
  @section('header')
   <div class="header">
     <div class="container">
       <div class="header_top">
       <ul class="phone">
-        <li class="phone_left"><i class="mobile"> </i><span>1-200-346-2986</span></li>
+        <li class="phone_left"><iframe width="300" scrolling="no" height="15" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=11&color=%23C6C6C6&bgc=%23&icon=1"></iframe></li>
         <li class="phone_right">
           <marquee id="test"  scrollamount="3" scrolldelay="200" direction="up">
             <li>【最新公告】北京六环以内免费配送</li><br>
@@ -134,12 +135,13 @@
    </div> 
   </div> 
   @show
-   
-  
+  <!-- 头部end -->
+ 
+  @section('content')
   <div class="main"> 
    <div class="container"> 
    <!-- 轮播 start-->
-  @section('lun')
+   @section('lun')
     <div class="banner"> 
       <div id="carousel-example-generic" class="carousel slide img-responsive" data-ride="carousel">
         <!-- Indicators -->
@@ -191,39 +193,43 @@
         <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
         </a>
       </div>
-   
     </div> 
     <!-- 轮播 end-->
-   @show
-    <div class="row content"> 
-     <div class="col-md-3 content_top"> 
-     <!-- 菜单 start -->
-      <div class="category_box">
-     <h3 class="cate_head">特色菜系</h3> 
-      <div class="box">
-      <?php 
-        $cates = \App\Http\Controllers\CateController::getAllCates(0);
-       ?>
-        <ul>
-       @foreach($cates as $k=>$v)
-            <li><a href="#">{{$v->name}}</a>
-                <ul>
-                  @foreach($v->subcate as $a=>$b)
-                  <li><a href="#" class="">{{$b->name}}</a>
-                    <ul>
-                      @foreach($b->subcate as $c=>$d)
-                      <li><a href="#" class="thirdh">{{$d->name}}</a></li>
-                      @endforeach
-                    </ul>
-                  </li>
-                  @endforeach
-                  </ul>
-            </li>
-        @endforeach
-        </ul>
-      </div>
-  </div>
-     <!-- 菜单 end -->
+   @show 
+   
+    <div class="row content">
+	<!-- 左侧内容start -->
+    @section('content_left')
+     <div class="col-md-3 content_top">
+     @section('menu')
+	     <!-- 菜单 start -->
+	      <div class="category_box">
+	     	<h3 class="cate_head">特色菜系</h3> 
+		      <div class="box">
+		      <?php 
+		        $cates = \App\Http\Controllers\CateController::getAllCates(0);
+		       ?>
+		        <ul>
+		       @foreach($cates as $k=>$v)
+		            <li><a href="#">{{$v->name}}</a>
+		                <ul>
+		                  @foreach($v->subcate as $a=>$b)
+		                  <li><a href="#" class="">{{$b->name}}</a>
+		                    <ul>
+		                      @foreach($b->subcate as $c=>$d)
+		                      <li><a href="#" class="thirdh">{{$d->name}}</a></li>
+		                      @endforeach
+		                    </ul>
+		                  </li>
+		                  @endforeach
+		                  </ul>
+		            </li>
+		        @endforeach
+		        </ul>
+		      </div>
+	  	  </div>
+	     <!-- 菜单 end -->
+     @show
       <ul class="product_reviews"> 
        <h3><i class="arrow"> </i><span>Product Reviews</span></h3> 
        <li> 
@@ -256,7 +262,12 @@
        <img src="/homes/images/payment.png" class="img-responsive" alt="" /> 
       </ul> 
      </div> 
-     @section('rexiao')
+    @show
+    <!-- 左侧内容end -->
+    <!-- 右侧内容start -->
+    @section('content_right')
+    	@section('rexiao')
+     <!-- 内容右侧start -->
      <div class="col-md-9"> 
       <!-- 今日热销 start -->
       <ul class="feature"> 
@@ -290,251 +301,158 @@
        <div class="clearfix"> 
        </div> 
       </ul> 
-      <!-- 今日热销 end -->
-      @show
-      @section('detail')
-      <ul class="feature"> 
-       <h3><i class="arrow"> </i><span>Popular products</span></h3> 
-      </ul> 
-      <div class="row content_bottom"> 
-       <div class="col-md-3"> 
-        <div class="content_box">
-         <a href="single.html"> 
-          <div class="view view-fifth"> 
-           <img src="/homes/images/p1.jpg" class="img-responsive" alt="" /> 
-           <div class="content_box-grid"> 
-            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-            <div class="price">
-             Price: 
-             <span class="actual">$12.00</span> 
-            </div> 
-            <ul class="product_but"> 
-             <li class="but3">Buy</li> 
-             <li class="like"><span>120</span><i class="like1"> </i></li> 
-             <div class="clearfix"> 
-             </div> 
-            </ul> 
-            <div class="mask"> 
-             <div class="info">
-              Quick View
-             </div> 
-            </div> 
-           </div> 
-          </div> </a> 
-        </div> 
-       </div> 
-       <div class="col-md-3"> 
-        <div class="content_box">
-         <a href="single.html"> 
-          <div class="view view-fifth"> 
-           <img src="/homes/images/p4.jpg" class="img-responsive" alt="" /> 
-           <div class="content_box-grid"> 
-            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-            <div class="price">
-             Price: 
-             <span class="actual">$12.00</span> 
-            </div> 
-            <ul class="product_but"> 
-             <li class="but3">Buy</li> 
-             <li class="like"><span>120</span><i class="like1"> </i></li> 
-             <div class="clearfix"> 
-             </div> 
-            </ul> 
-            <div class="mask"> 
-             <div class="info">
-              Quick View
-             </div> 
-            </div> 
-           </div> 
-          </div> </a> 
-        </div> 
-       </div> 
-       <div class="col-md-3"> 
-        <div class="content_box">
-         <a href="single.html"> 
-          <div class="view view-fifth"> 
-           <img src="/homes/images/p3.jpg" class="img-responsive" alt="" /> 
-           <div class="content_box-grid"> 
-            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-            <div class="price">
-             Price: 
-             <span class="actual">$12.00</span> 
-            </div> 
-            <ul class="product_but"> 
-             <li class="but3">Buy</li> 
-             <li class="like"><span>120</span><i class="like1"> </i></li> 
-             <div class="clearfix"> 
-             </div> 
-            </ul> 
-            <div class="mask"> 
-             <div class="info">
-              Quick View
-             </div> 
-            </div> 
-           </div> 
-          </div> </a> 
-        </div> 
-       </div> 
-       <div class="col-md-3"> 
-        <div class="content_box">
-         <a href="single.html"> 
-          <div class="view view-fifth"> 
-           <img src="/homes/images/p2.jpg" class="img-responsive" alt="" /> 
-           <div class="content_box-grid"> 
-            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-            <div class="price">
-             Price: 
-             <span class="actual">$12.00</span> 
-            </div> 
-            <ul class="product_but"> 
-             <li class="but3">Buy</li> 
-             <li class="like"><span>120</span><i class="like1"> </i></li> 
-             <div class="clearfix"> 
-             </div> 
-            </ul> 
-            <div class="mask"> 
-             <div class="info">
-              Quick View
-             </div> 
-            </div> 
-           </div> 
-          </div> </a> 
-        </div> 
-       </div> 
-      </div> 
-      <div class="row content_bottom1"> 
-       <div class="col-md-3"> 
-        <div class="content_box">
-         <a href="single.html"> 
-          <div class="view view-fifth"> 
-           <img src="/homes/images/p8.jpg" class="img-responsive" alt="" /> 
-           <div class="content_box-grid"> 
-            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-            <div class="price">
-             Price: 
-             <span class="actual">$12.00</span> 
-            </div> 
-            <ul class="product_but"> 
-             <li class="but3">Buy</li> 
-             <li class="like"><span>120</span><i class="like1"> </i></li> 
-             <div class="clearfix"> 
-             </div> 
-            </ul> 
-            <div class="mask"> 
-             <div class="info">
-              Quick View
-             </div> 
-            </div> 
-           </div> 
-          </div> </a> 
-        </div> 
-       </div> 
-       <div class="col-md-3"> 
-        <div class="content_box">
-         <a href="single.html"> 
-          <div class="view view-fifth"> 
-           <img src="/homes/images/p7.jpg" class="img-responsive" alt="" /> 
-           <div class="content_box-grid"> 
-            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-            <div class="price">
-             Price: 
-             <span class="actual">$12.00</span> 
-            </div> 
-            <ul class="product_but"> 
-             <li class="but3">Buy</li> 
-             <li class="like"><span>120</span><i class="like1"> </i></li> 
-             <div class="clearfix"> 
-             </div> 
-            </ul> 
-            <div class="mask"> 
-             <div class="info">
-              Quick View
-             </div> 
-            </div> 
-           </div> 
-          </div> </a> 
-        </div> 
-       </div> 
-       <div class="col-md-3"> 
-        <div class="content_box">
-         <a href="single.html"> 
-          <div class="view view-fifth"> 
-           <img src="/homes/images/p6.jpg" class="img-responsive" alt="" /> 
-           <div class="content_box-grid"> 
-            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-            <div class="price">
-             Price: 
-             <span class="actual">$12.00</span> 
-            </div> 
-            <ul class="product_but"> 
-             <li class="but3">Buy</li> 
-             <li class="like"><span>120</span><i class="like1"> </i></li> 
-             <div class="clearfix"> 
-             </div> 
-            </ul> 
-            <div class="mask"> 
-             <div class="info">
-              Quick View
-             </div> 
-            </div> 
-           </div> 
-          </div> </a> 
-        </div> 
-       </div> 
-       <div class="col-md-3"> 
-        <div class="content_box">
-         <a href="single.html"> 
-          <div class="view view-fifth"> 
-           <img src="/homes/images/p5.jpg" class="img-responsive" alt="" /> 
-           <div class="content_box-grid"> 
-            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-            <div class="price">
-             Price: 
-             <span class="actual">$12.00</span> 
-            </div> 
-            <ul class="product_but"> 
-             <li class="but3">Buy</li> 
-             <li class="like"><span>120</span><i class="like1"> </i></li> 
-             <div class="clearfix"> 
-             </div> 
-            </ul> 
-            <div class="mask"> 
-             <div class="info">
-              Quick View
-             </div> 
-            </div> 
-           </div> 
-          </div> </a> 
-        </div> 
-       </div> 
-      </div> 
-      <ul class="dc_pagination dc_paginationA dc_paginationA06"> 
-       <li><a href="#">1</a></li> 
-       <li><a href="#" class="current">2</a></li> 
-       <li><a href="#">3</a></li> 
-       <li><a href="#">4</a></li> 
-       <li><a href="#">5</a></li> 
-       <li><a href="#">...</a></li> 
-       <li><a href="#">19</a></li> 
-       <li><a href="#">20</a></li> 
-       <li><a href="#" class="previous">Next&gt;</a></li> 
-       <li><a href="#" class="next">Last&gt;&gt;</a></li> 
-      </ul> 
-     </div> 
-    </div> 
-   </div> 
-  </div> 
+    	@show
+     	 <!-- 今日热销 end -->
+      	<!-- 右侧下部start -->
+     	 @section('detail')
+	      <ul class="feature"> 
+	       <h3><i class="arrow"> </i><span>促销</span></h3> 
+	      </ul> 
+	      <div class="row content_bottom"> 
+	       <div class="col-md-3"> 
+	        <div class="content_box">
+	         <a href="single.html"> 
+	          <div class="view view-fifth"> 
+	           <img src="/homes/images/p1.jpg" class="img-responsive" alt="" /> 
+	           <div class="content_box-grid"> 
+	            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+	            <div class="price">
+	             Price: 
+	             <span class="actual">$12.00</span> 
+	            </div> 
+	            <ul class="product_but"> 
+	             <li class="but3">Buy</li> 
+	             <li class="like"><span>120</span><i class="like1"> </i></li> 
+	             <div class="clearfix"> 
+	             </div> 
+	            </ul> 
+	            <div class="mask"> 
+	             <div class="info">
+	              Quick View
+	             </div> 
+	            </div> 
+	           </div> 
+	          </div> </a> 
+	        </div> 
+	       </div> 
+	       <div class="col-md-3"> 
+	        <div class="content_box">
+	         <a href="single.html"> 
+	          <div class="view view-fifth"> 
+	           <img src="/homes/images/p4.jpg" class="img-responsive" alt="" /> 
+	           <div class="content_box-grid"> 
+	            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+	            <div class="price">
+	             Price: 
+	             <span class="actual">$12.00</span> 
+	            </div> 
+	            <ul class="product_but"> 
+	             <li class="but3">Buy</li> 
+	             <li class="like"><span>120</span><i class="like1"> </i></li> 
+	             <div class="clearfix"> 
+	             </div> 
+	            </ul> 
+	            <div class="mask"> 
+	             <div class="info">
+	              Quick View
+	             </div> 
+	            </div> 
+	           </div> 
+	          </div> </a> 
+	        </div> 
+	       </div> 
+	       <div class="col-md-3"> 
+	        <div class="content_box">
+	         <a href="single.html"> 
+	          <div class="view view-fifth"> 
+	           <img src="/homes/images/p3.jpg" class="img-responsive" alt="" /> 
+	           <div class="content_box-grid"> 
+	            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+	            <div class="price">
+	             Price: 
+	             <span class="actual">$12.00</span> 
+	            </div> 
+	            <ul class="product_but"> 
+	             <li class="but3">Buy</li> 
+	             <li class="like"><span>120</span><i class="like1"> </i></li> 
+	             <div class="clearfix"> 
+	             </div> 
+	            </ul> 
+	            <div class="mask"> 
+	             <div class="info">
+	              Quick View
+	             </div> 
+	            </div> 
+	           </div> 
+	          </div> </a> 
+	        </div> 
+	       </div> 
+	       <div class="col-md-3"> 
+	        <div class="content_box">
+	         <a href="single.html"> 
+	          <div class="view view-fifth"> 
+	           <img src="/homes/images/p2.jpg" class="img-responsive" alt="" /> 
+	           <div class="content_box-grid"> 
+	            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+	            <div class="price">
+	             Price: 
+	             <span class="actual">$12.00</span> 
+	            </div> 
+	            <ul class="product_but"> 
+	             <li class="but3">Buy</li> 
+	             <li class="like"><span>120</span><i class="like1"> </i></li> 
+	             <div class="clearfix"> 
+	             </div> 
+	            </ul> 
+	            <div class="mask"> 
+	             <div class="info">
+	              Quick View
+	             </div> 
+	            </div> 
+	           </div> 
+	          </div> </a> 
+	        </div> 
+	       </div> 
+	      </div> 
+	 	 @show
+		<!-- 右侧下部end -->
+
+      
+     	<!-- 分页start -->
+   	 	@section('fenye')
+      	<ul class="dc_pagination dc_paginationA dc_paginationA06"> 
+	       <li><a href="#">1</a></li> 
+	       <li><a href="#" class="current">2</a></li> 
+	       <li><a href="#">3</a></li> 
+	       <li><a href="#">4</a></li> 
+	       <li><a href="#">5</a></li> 
+	       <li><a href="#">...</a></li> 
+	       <li><a href="#">19</a></li> 
+	       <li><a href="#">20</a></li> 
+	       <li><a href="#" class="previous">Next&gt;</a></li> 
+	       <li><a href="#" class="next">Last&gt;&gt;</a></li> 
+        </ul>
+   	 	@show
+	      <!-- 分页end  -->
+	     </div> 
+	    </div> 
+	   </div> 
+	  </div> 
+  	@show
+  <!-- 内容右部 end-->
   @show
+  <!-- 内容end -->
+  <!-- 顶部start -->
   @section('footer')
   <div class="footer"> 
    <div class="container"> 
     <div class="footer-grid footer-grid1"> 
-     <h3 class="m_2">Company</h3> 
+     <h3 class="m_2">关于我们</h3> 
      <ul class="list1"> 
       <li><a href="/">主页</a></li> 
       <li><a href="#">关于我们</a></li> 
       <li><a href="#">新浪微博</a></li> 
-      <li><a href="#">Latest News</a></li> 
+      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes"">在线客服</a></li> 
       <li><a href="/admin">管理中心</a></li> 
       <li><a href="#">加入我们</a></li> 
      </ul> 
@@ -542,7 +460,7 @@
     <div class="footer-grid footer-grid2"> 
      <h3 class="m_2">Company</h3> 
      <ul class="list1"> 
-      <li><a href="#">Lorem ipsum dolor sit amet</a></li> 
+      <li><a href="/links">友情链接</a></li>
       <li><a href="#">diam nonummy nibh euismod</a></li> 
       <li><a href="#">nostrud exerci tation</a></li> 
       <li><a href="#">hendrerit in vulputate velit</a></li> 
@@ -603,7 +521,8 @@
      <p>Copyright &copy; 2016.ZMXQN Co.Ltd All rights reserved.</p> 
     </div> 
    </div> 
-  </div>  
+  </div> 
+  @show
+<!-- 底部end --> 
  </body>
 </html>
-@show

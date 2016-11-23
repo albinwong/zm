@@ -1,7 +1,6 @@
 @extends('layout.home')
 @section('title','用户注册')
-@section('header')
-@show
+
 @section('content')
 <style type="text/css">
 .main {
@@ -24,9 +23,9 @@
 }
 </style>
     <div class="main">
-		<div class="container">
-		  <div class="panel-body" style="padding: 40px;">
-    		<form class="nobottommargin" action="/doregister" method="post">
+        <div class="container">
+          <div class="panel-body" style="padding: 40px;">
+            <form class="nobottommargin" action="/doregister" method="post">
                 <div class="col_small">
                     <h3>注册</h3>
                 </div>
@@ -60,14 +59,8 @@
                 </div>
                 
             </form>
-    	</div>
-	  </div>
-	</div>
+        </div>
+      </div>
+    </div>
 <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
-</body>
-</html>
-
 @endsection
-
-<!-- @section('footer')
-@endsection -->

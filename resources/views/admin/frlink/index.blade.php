@@ -73,6 +73,9 @@
                            ID
                        </th>
                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width:50px;" aria-label="Browser: activate to sort column ascending">
+                           网站logo
+                       </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width:50px;" aria-label="Browser: activate to sort column ascending">
                            网站名称
                        </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 70px;" aria-label="CSS grade: activate to sort column ascending">
@@ -94,6 +97,7 @@
                             <tr class="even">
                             @endif
                                 <td class="  sorting_1">{{$v->id}}</td>
+                                <td class=" ">{$v->logo}}</td>
                                 <td class=" ">{{$v->linkname}}</td>
                                 <td class=" ">{{$v->url}}</td> 
                                 <td class=" ">{{$v->content}}</td>

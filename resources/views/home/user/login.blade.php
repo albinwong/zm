@@ -97,17 +97,17 @@ button {
         <form action="/dologin" method="post">  
             <div class="name">  
             用户名：
-            <input type="text" name="username" placeholder="请输入您的用户名"><span>用户名已存在</span>
+            <input type="text" name="username" placeholder="请输入您的用户名"><span></span>
             </div>  
             <div class="password">  
            密&emsp;码：
-            <input type="password"  maxlength="16" name="password" placeholder="请输入您的密码"><span>用户名已存在</span>
+            <input type="password"  maxlength="16" name="password" placeholder="请输入您的密码"><span></span>
             </div>  
             <div class="code">  
                 验证码：  
                 <input id="code" type="text" maxlength="6" placeholder="请输入验证码" name="code">
                 <div class="codeImg">
-                    <a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="40" id="codeImg" border="0"><span>验证码输入有误</span>
+                    <a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="40" id="codeImg" border="0"><span></span>
                 </div> 
 
                 {{csrf_field()}}

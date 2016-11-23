@@ -7,24 +7,30 @@
         <span>添加友情链接</span>
     </div>
      <div class="mws-panel-body no-padding">
-        <form class="mws-form" method="post" action="/frlink/add">
+        <form class="mws-form" method="post" action="/frlink/add" enctype="multipart/form-data">
                 <div class="mws-form-inline">
                     <div class="mws-form-row">
                         <label class="mws-form-label">链接名称</label>
                         <div class="mws-form-item">
-                            <input class="small" name="linkname" type="text" value="{{old('linkname')}}">
+                            <input class="small" name="linkname" type="text">
                         </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">链接地址</label>
                         <div class="mws-form-item">
-                            <input class="small" name="url" type="text" value="{{old('url')}}">
+                            <input class="small" name="url" type="text">
                         </div>
                     </div>
+                     <div class="mws-form-row">
+                        <label class="mws-form-label">图标</label>
+                        <div class="mws-form-item">
+                            <input class="small" type="file" name="logo">
+                        </div>
+                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">网站描述</label>
                         <div class="mws-form-item">
-                            <input class="small" name="content" type="text" value="{{old('content')}}">
+                            <input class="small" name="content" type="text">
                         </div>
                     </div>
                 </div>

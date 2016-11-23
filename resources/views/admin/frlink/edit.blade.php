@@ -8,7 +8,6 @@
         </div>
         <div class="mws-panel-body no-padding">
             <form class="mws-form" method="post" action="/frlink/edit">
-                {{csrf_field()}}
                 <input type="hidden" name = "id" value = "{{$list->id}}">
                 <div class="mws-form-inline">
                     <div class="mws-form-row">
@@ -16,6 +15,13 @@
                         <div class="mws-form-item">
                             <input class="small" name="linkname" type="text" value="{{$list->linkname}}">
                         </div>
+                    </div>
+                    <div class="mws-form-row">
+                    <label class="mws-form-label">连接图标</label>
+                    <div class="mws-form-item">
+                        <img src="{{$list->logo}}" width="200" alt="">
+                        <input class="small" type="file" name="logo">
+                    </div>
                     </div>
                     <div class="mws-form-row">
                         <label class="mws-form-label">友情链接地址</label>
@@ -30,6 +36,7 @@
                         </div>
                     </div>
                 <div class="mws-button-row">
+                    {{csrf_field()}}
                     <input value="提交" class="btn btn-danger" type="submit">
                     <a href="/admin/frlink/edit"><input value="重置" class="btn " type="button"></a>
                 </div>

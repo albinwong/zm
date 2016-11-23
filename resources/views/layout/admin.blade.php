@@ -293,7 +293,8 @@
                     <li>
                         <a href="#"><i class="icon-list"></i> 友情链接管理</a>
                         <ul class="closed">
-                            <li><a href="/liuyan/index">链接列表</a></li>
+                            <li><a href="/frlink/add">添加链接</a></li>
+                            <li><a href="/frlink/index">链接列表</a></li>
                         </ul>
                     </li>
                 </ul>

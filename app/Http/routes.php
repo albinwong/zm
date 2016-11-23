@@ -33,7 +33,7 @@ Route::group(['middleware'=>'login'],function(){
 
 	//商品管理
 	Route::controller('goods','GoodsController');
-	//友情链接
+	//友情链接管理
 	Route::controller('frlink','LinkController');
 
 });
@@ -51,10 +51,10 @@ Route::get('/', function () {
  * 前台
  */
 
-  	//商品列表
-	Route::get('glist','HomeController@glist');
-	//商品详情
-	Route::get('detail','HomeController@detail');
+//商品列表
+Route::get('glist','HomeController@glist');
+//商品详情
+Route::get('detail','HomeController@detail');
 
 
 //用户注册
@@ -72,14 +72,21 @@ Route::get('/login','HomeController@login');
 Route::post('/dologin','HomeController@dologin');
 
 
-//购物车
-Route::get('/cart','HomeController@cart');
-
-//我的订单
-Route::get('order','HomeController@order');
-
 // 下面我们可以设置相应的router访问这个验证码图片, 修改router.php：
-
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
+// 友情链接显示
+Route::get('/links', function () {
+    return view('home.link');
+});
 
+//加入购物车操作
+Route::get('/cart/add','CartController@add');
+Route::get('/cart','CartController@index');
+
+
+//我的订单
+Route::post('/order/add','OrderController@add');
+Route::get('/order/confirm','OrderController@confirm');
+
+Route::get('/address/add','AddressController@add');
