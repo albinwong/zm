@@ -281,7 +281,7 @@
                     <li>
                         <a href="#"><i class="icon-list"></i> 订单管理</a>
                         <ul class="closed">
-                            <li><a href="/order/index">订单列表</a></li>
+                            <li><a href="/dlist/index">订单列表</a></li>
                         </ul>
                     </li>
                     <li>

@@ -36,6 +36,9 @@ Route::group(['middleware'=>'login'],function(){
 	//友情链接管理
 	Route::controller('frlink','LinkController');
 
+	//订单管理
+	Route::controller('dlist','DlistController');
+
 });
 
 //======================前台========================
