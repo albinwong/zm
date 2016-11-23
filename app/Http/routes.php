@@ -33,6 +33,8 @@ Route::group(['middleware'=>'login'],function(){
 
 	//商品管理
 	Route::controller('goods','GoodsController');
+	//友情链接
+	Route::controller('frlink','LinkController');
 
 });
 
@@ -43,7 +45,7 @@ Route::group(['middleware'=>'login'],function(){
 Route::get('/', function () {
     return view('home');
 });
-
+// Route::get('/','CommonController@index');
 
 /**
  * 前台
@@ -79,6 +81,5 @@ Route::get('order','HomeController@order');
 // 下面我们可以设置相应的router访问这个验证码图片, 修改router.php：
 
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
-
 
 

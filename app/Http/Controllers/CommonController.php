@@ -41,4 +41,8 @@ class CommonController extends Controller
       session()->flush();
       return back();
    }
+
+  
+
+
 }
