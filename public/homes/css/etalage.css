@@ -18,7 +18,7 @@
 
 /* Large thumbnail: */
 #etalage .etalage_thumb{
-	background:url(../images/loading.gif) center no-repeat;
+	/*background:url(../images/loading.gif) center no-repeat;*/
 	border: 1px solid #eee;
 	padding: 6px;
 }
@@ -42,7 +42,7 @@
 /* Zoomed image area: */
 #etalage .etalage_zoom_area,
 .etalage_zoom_area{
-	background: white url(../images/loading.gif) center no-repeat;
+	/*background: white url(../images/loading.gif) center no-repeat;*/
 	border: 1px solid #EEE;
 	padding: 6px;
 }
@@ -62,7 +62,7 @@
 
 /* Hint that will apear at the top right of the large thumbnail (optional): */
 #etalage .etalage_hint{
-	background: url(../images/hint.gif) no-repeat;
+	/*background: url(../images/hint.gif) no-repeat;*/
 	width: 130px;
 	height: 57px;
 }

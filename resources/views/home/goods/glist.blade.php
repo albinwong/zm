@@ -1,6 +1,14 @@
 @extends('layout.home')
+   @section('rexiao')
+   @endsection
+   @section('lun')
+   @endsection
+@section('detail')
 
-@section('content')
+
+     <div class="col-md-9" style="padding-top:10px;"> 
+
+			<!-- 分类标签 start -->
 			<div class="col-md-12"  >
 				<ol class="breadcrumb">
 					<li><span class="glyphicon glyphicon-tags"></span></li>
@@ -9,11 +17,14 @@
 					@endforeach
 				</ol>
 		    </div><br><br>
+			<!-- 分类标签 end -->
+			<!-- 商品列表 start -->
+
     	    <div class="row content_bottom"> 
     	    	@foreach($goods as $k=>$v)
     	    	@if($v->status != 0)
 			   	   <div class="col-md-3">
-			   	   	<div class="content_box">
+			   	   	<div class="content_box"  style="margin-bottom:20px;">
 			   	   		
 			   	   	  	<div class="view view-fifth">
 				   	   	  	<a href="/detail?id={{$v->id}}">
@@ -26,25 +37,26 @@
 							  	</div>
 								<ul class="product_but">
 								 	<a href="#"><li class="but3">加入购物车</li></a>
-								  	<li> <span class="glyphicon glyphicon-hand-right col-xs-2" style="color:red">:{{$v->buy}}</span><span> </span></li>
+								  	<li> <span class="glyphicon glyphicon-hand-right col-xs-2" style="color:red">:{{$v->sold}}</span><span> </span></li>
 								  	<div class="clearfix"> </div>
 								</ul>
 							   	<div class="mask">
-		                         	<div class="info">Quick View</div>
-				               	</div>
-				            </div>
-				   	   	</div>
-			   	   	  </div>
-			   	   </div>
-			   	   @endif
-			   	@endforeach
-			</div>
+                      <div class="info">Quick View</div>
+	               	</div>
+	            </div>
+	   	   	</div>
+   	   	  </div>
+   	   </div>
+   	   @endif
+   	@endforeach
+</div>
 				
-	    </div>
-	  </div>
-	 </div>
-	</div>
-    
-	@endsection
+</div>
+</div>
+</div>
+</div>
+</div> 
+<div class="clearfix"> </div>
+@endsection
 
 

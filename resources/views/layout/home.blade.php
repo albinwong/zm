@@ -83,22 +83,28 @@
     </div>
     <div class="header_bottom"> 
      <div class="header_nav"> 
-      <a href="#"><div class="logo"> 
-       <img src="/homes/images/logo.png" style="width:120px;height:117px;">
-      </div> </a>
+      <div class="logo"> 
+      <a href="/" style="position:relative;"><img src="/homes/images/logo.png" style="width:120px;height:117px;"></a>
+      </div>
       <nav class="navbar navbar-default menu" role="navigation">
+
         <h3 class="nav_right">
           <a href="index.html">
             <img src="/homes/images/logo.png" class="img-responsive" alt="" />
           </a>
         </h3> 
+
        <div class="container-fluid"> 
+
         <!-- Brand and toggle get grouped for better mobile display --> 
         <div class="navbar-header"> 
+
          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
         </div> 
         <!-- Collect the nav links, forms, and other content for toggling --> 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
+       
+
          <ul class="nav navbar-nav menu1"> 
           <li class="active"><a href="index.html">Specials</a></li> 
           <li><a href="fruits.html">Fruits &amp; Veg</a></li> 
@@ -128,12 +134,12 @@
    </div> 
   </div> 
   @show
-     @section('content')
+   
   
   <div class="main"> 
    <div class="container"> 
    <!-- 轮播 start-->
-
+  @section('lun')
     <div class="banner"> 
       <div id="carousel-example-generic" class="carousel slide img-responsive" data-ride="carousel">
         <!-- Indicators -->
@@ -188,409 +194,32 @@
    
     </div> 
     <!-- 轮播 end-->
+   @show
     <div class="row content"> 
      <div class="col-md-3 content_top"> 
      <!-- 菜单 start -->
       <div class="category_box">
      <h3 class="cate_head">特色菜系</h3> 
       <div class="box">
+      <?php 
+        $cates = \App\Http\Controllers\CateController::getAllCates(0);
+       ?>
         <ul>
-            <li><a href="#">导航1</a>
+       @foreach($cates as $k=>$v)
+            <li><a href="#">{{$v->name}}</a>
                 <ul>
-                  <li><a href="#" class="">导航1_1</a>
+                  @foreach($v->subcate as $a=>$b)
+                  <li><a href="#" class="">{{$b->name}}</a>
                     <ul>
-                      <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                      <li><a href="#">导航1_1_2</a></li>
-                      <li><a href="#">导航1_1_3</a></li>
-                      <li><a href="#">导航1_1_4</a></li>
+                      @foreach($b->subcate as $c=>$d)
+                      <li><a href="#" class="thirdh">{{$d->name}}</a></li>
+                      @endforeach
                     </ul>
                   </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
+                  @endforeach
                   </ul>
-              </li>
-              <li><a href="#">导航2</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-            <li><a href="#">导航3</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li><a href="#">导航4</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-            <li><a href="#">导航5</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li><a href="#">导航6</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-            <li><a href="#">导航7</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li><a href="#">导航8</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li><a href="#">导航9</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-            <li><a href="#">导航10</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
-              <li><a href="#">导航11</a>
-                <ul>
-                      <li><a href="#" class="">导航1_1</a>
-                <ul>
-                            <li><a href="#" class="thirdh">导航1_1_1</a></li>
-                              <li><a href="#">导航1_1_2</a></li>
-                              <li><a href="#">导航1_1_3</a></li>
-                              <li><a href="#">导航1_1_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_2</a>
-                        <ul>
-                            <li><a href="#" class="thirdh">导航1_2_1</a></li>
-                              <li><a href="#">导航1_2_2</a></li>
-                              <li><a href="#">导航1_2_3</a></li>
-                              <li><a href="#">导航1_2_4</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_3</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_3_1</a></li>
-                            <li><a href="#">导航1_3_2</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="#">导航1_4</a>
-                        <ul>
-                          <li><a href="#" class="thirdh">导航1_4_1</a></li>
-                            <li><a href="#">导航1_4_2</a></li>
-                              <li><a href="#">导航1_4_3</a></li>
-                              <li><a href="#">导航1_4_4</a></li>
-                              <li><a href="#">导航1_4_5</a></li>
-                              <li><a href="#">导航1_4_6</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-              </li>
+            </li>
+        @endforeach
         </ul>
       </div>
   </div>
@@ -627,7 +256,7 @@
        <img src="/homes/images/payment.png" class="img-responsive" alt="" /> 
       </ul> 
      </div> 
-
+     @section('rexiao')
      <div class="col-md-9"> 
       <!-- 今日热销 start -->
       <ul class="feature"> 
@@ -662,6 +291,8 @@
        </div> 
       </ul> 
       <!-- 今日热销 end -->
+      @show
+      @section('detail')
       <ul class="feature"> 
        <h3><i class="arrow"> </i><span>Popular products</span></h3> 
       </ul> 

@@ -34,6 +34,12 @@
                     </div>
                 </div>
                 <div class="mws-form-row">
+                    <label class="mws-form-label">菜品描述</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="text" name="price" value="{{old('title')}}">
+                    </div>
+                </div>
+                <div class="mws-form-row">
                     <label class="mws-form-label">菜品库存</label>
                     <div class="mws-form-item">
                         <input class="small" type="text" name="kucun" value="{{old('kucun')}}">
