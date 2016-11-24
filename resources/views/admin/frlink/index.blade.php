@@ -91,13 +91,9 @@
                 </thead>      
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
                     @foreach($list as $k=>$v)
-                            @if($k%2==0)
-                            <tr class="odd">
-                            @else
-                            <tr class="even">
-                            @endif
-                                <td class="  sorting_1">{{$v->id}}</td>
-                                <td class=" ">{$v->logo}}</td>
+                            <tr class="@if($k % 2 == 1) odd @else even @endif">
+                                <td class="sorting_1">{{$v->id}}</td>
+                                <td class=" "><img src="{{$v->logo}}" alt=""></td>
                                 <td class=" ">{{$v->linkname}}</td>
                                 <td class=" ">{{$v->url}}</td> 
                                 <td class=" ">{{$v->content}}</td>

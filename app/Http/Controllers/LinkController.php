@@ -34,7 +34,7 @@ class LinkController extends Controller
             $fileName = time().rand(100000,9999999);
             $suffix = $request->file('logo')->getClientOriginalExtension();
             $fileName = $fileName.".".$suffix;
-            $request->file('logo')->move('./Uploads/',$fileName);
+            $request->file('logo')->move('./Uploads/links/',$fileName);
             $res['logo'] = '/Uploads/links/'.$fileName;
         }
         // dd($res);
@@ -50,9 +50,13 @@ class LinkController extends Controller
 		// 查看友情链接
     public function getIndex(Request $request){
         // 通过数据库查询就查询的数据传过去
-        $data = DB::table('frlink')->paginate($request->input('num',10));
-        dd($data);
-        // dd($data);
+        $data = DB::table('frlink')->orderBy('id','asc')->where(function($query) use ($request){
+        //获取关键字的内容
+        $k = $request->input('keyword');
+        if(!empty($k)){
+            $query->where('linkename','like','%'.$k.'%');
+        }
+        })->paginate($request->input('num', 10));
         return view('admin.frlink.index',['list'=>$data,'request'=>$request->all()]);
     }
 
@@ -64,6 +68,7 @@ class LinkController extends Controller
         // dd($data);
         return view('admin.frlink.edit',['list'=>$data]);
     }
+
     // 进行友情链接的修改
     public function postEdit(Request $request){
     	$id = $request->input('id');
@@ -88,6 +93,20 @@ class LinkController extends Controller
         }else{
             return back()->with('info','删除失败');
         }
+    }
+
+    public function show()
+    {
+        $res = DB::table('frlink')->get();
+        // foreach($datas as $K=>$v){
+        //     $v->logo;
+        // }
+        // if($datas['log']==null){
+        //     dd(111);
+        // }else{
+        //     dd(2222);
+        // }
+        return view('home.link',['res'=>$res]);
     }
 
 

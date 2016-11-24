@@ -79,9 +79,7 @@ Route::post('/dologin','HomeController@dologin');
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
 // 友情链接显示
-Route::get('/links', function () {
-    return view('home.link');
-});
+Route::get('/links','LinkController@show');
 
 //加入购物车操作
 Route::get('/cart/add','CartController@add');
@@ -93,3 +91,4 @@ Route::post('/order/add','OrderController@add');
 Route::get('/order/confirm','OrderController@confirm');
 
 Route::get('/address/add','AddressController@add');
+
