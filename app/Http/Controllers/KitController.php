@@ -7,29 +7,25 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-//å¼•ç”¨å¯¹åº”çš„å‘½åç©ºé—´
+//ÒıÓÃ¶ÔÓ¦µÄÃüÃû¿Õ¼ä
 use Gregwar\Captcha\CaptchaBuilder;
 use Session;
 
 class KitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function captcha($tmp)
     {
-        //ç”ŸæˆéªŒè¯ç å›¾ç‰‡çš„Builderå¯¹è±¡ï¼Œé…ç½®ç›¸åº”å±æ€§
+        //Éú³ÉÑéÖ¤ÂëÍ¼Æ¬µÄBuilder¶ÔÏó£¬ÅäÖÃÏàÓ¦ÊôĞÔ
         $builder = new CaptchaBuilder;
-        //å¯ä»¥è®¾ç½®å›¾ç‰‡å®½é«˜åŠå­—ä½“
-        $builder->build($width = 100, $height = 40, $font = null);
-        //è·å–éªŒè¯ç çš„å†…å®¹
+        //¿ÉÒÔÉèÖÃÍ¼Æ¬¿í¸ß¼°×ÖÌå
+        $builder->build();
+        //»ñÈ¡ÑéÖ¤ÂëµÄÄÚÈİ
         $phrase = $builder->getPhrase();
 
-        //æŠŠå†…å®¹å­˜å…¥session
+        //°ÑÄÚÈİ´æÈësession
         Session::flash('milkcaptcha', $phrase);
-        //ç”Ÿæˆå›¾ç‰‡
+        //Éú³ÉÍ¼Æ¬
         header("Cache-Control: no-cache, must-revalidate");
         header('Content-Type: image/jpeg');
         $builder->output();
@@ -37,12 +33,9 @@ class KitController extends Controller
 
 
     public function testPhrase($phrase)
-
-     {
-
-     return ($this->builder->niceize($phrase) == $this->builder->niceize($this->getPhrase()));
-
-     }
+    {
+        return ($this->builder->niceize($phrase) == $this->builder->niceize($this->getPhrase()));
+    }
 
      
 }

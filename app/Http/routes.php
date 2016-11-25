@@ -92,3 +92,6 @@ Route::get('/order/confirm','OrderController@confirm');
 
 Route::get('/address/add','AddressController@add');
 
+Route::get('test',function(){
+	return view('motai');
+});

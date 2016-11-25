@@ -95,17 +95,12 @@ class LinkController extends Controller
         }
     }
 
+    /**
+     * 前台友情链接显示页面
+     */
     public function show()
     {
         $res = DB::table('frlink')->get();
-        // foreach($datas as $K=>$v){
-        //     $v->logo;
-        // }
-        // if($datas['log']==null){
-        //     dd(111);
-        // }else{
-        //     dd(2222);
-        // }
         return view('home.link',['res'=>$res]);
     }
 
