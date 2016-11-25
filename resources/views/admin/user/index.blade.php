@@ -86,7 +86,7 @@
             <td class=" "><img src="{{$v->profile}}" width="40" alt=""></td>
             <td class=" ">{{$v->address}}</td>
 			<td class=" ">{{$v->phone}}</td>
-			<td class=" "><?=date('Y-m-d',$v->regtime)?></td>
+			<td class=" ">{{date('Y-m-d H:i:s',$v->regtime)}}</td>
 			<td class=" ">{{getUserAuth($v->auth)}}</td>
 			<td class=" ">
                 <span class="btn-group">
@@ -94,7 +94,6 @@
                     <a href="/user/delete?id={{$v->id}}" class="btn btn-small"><i class="icon-trash"></i></a>
                 </span>
             </td>
-          <tr>
         @endforeach
         </tbody>
       </table>

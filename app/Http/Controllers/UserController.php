@@ -16,6 +16,7 @@ class UserController extends Controller
 	public function getAdd()
 	{
 		return view('admin.user.add');
+
 	}
 
 	/**
@@ -144,6 +145,12 @@ class UserController extends Controller
             return $data['profile'];
         }
     }
-
+    /**
+     * 用户的个人中心  
+     */
+    public function center()
+    {
+    	return view('home.user.center');
+    }
 
 }

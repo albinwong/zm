@@ -1,4 +1,5 @@
 @extends('layout.home')
+@section('title','个人中心')
 @section('content')
 <section id="content">
 	<div class="content-wrap" style="padding:20px;">
@@ -7,6 +8,12 @@
 		<!-- 左侧菜单 start -->
 			<div class="col-md-3">
 				<div class="list-group">
+					<a href="#" class="list-group-item">
+						修改个人信息
+					</a>
+					<a href="/order/index" class="list-group-item">
+						订单
+					</a>
 					<a href="#" class="list-group-item active">
 						收货地址
 					</a>
