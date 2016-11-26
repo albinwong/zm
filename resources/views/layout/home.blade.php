@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head> 
-  <title>@yield('title')</title> 
+  <title>@yield('title','追梦在线订餐网')</title> 
   <link href="/homes/css/bootstrap.css" rel="stylesheet" type="text/css" /> 
   <link href="/homes/css/cart.css" rel="stylesheet" type="text/css" /> 
   <script src="/homes/js/jquery.min.js"></script> 
@@ -20,8 +20,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>  
   <!--webfonts--> 
-  <link href="http://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css" /> 
-  <style type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" type="image/x-icon" href="/homes/images/logo.ico" media="screen" />
+  <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <style type="text/css">  
+
+
+
+.login{
+    padding:20px;
+    margin:20px;
+}
+
+ul,li {
+    list-style: none;
+}
+
+.login-box {
+    padding: 50px;
+    border-radius: 10px;
+    border:1px solid #ddd;
+    background:#ddd;
+    opacity:0.8;
+
+}
+
+.login-box .name,.login-box .password,.login-box .code,.login-box{
+    font-size: 16px;
+    /*color:orange;*/
+}
+
+.login-box label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    vertical-align: middle;
+}
+
+
+
+.modal-content input[type=text],input[type=password] {
+  width: 220px;
+  height: 42px;
+  margin-top: 30px;
+  padding:  0px 15px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 6px;
+  letter-spacing: 2px;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+button {
+    cursor: pointer;
+    width: 100%;
+    height: 44px;
+    padding: 0;
+    background: #ef4300;
+    border: 1px solid #ff730e;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: 15px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
     #test{
         width:300px;
         height:20px;
@@ -74,7 +136,7 @@
                 if(!empty(session('uid'))){
                   echo "&emsp;欢迎".session('uname')."来访 <a href='/logout' style='text-decoration:none;color:red;'>退出</a>";
                 }else{
-                  echo "&emsp;<a href='/login' style='text-decoration:none;color:#abc'>请登录</a> | <a href='/register' style='text-decoration:none;color:red;'>免费注册</a>";
+                  echo "&emsp;<a href='/login' id='userLogin' onclick='return false;' style='text-decoration:none;color:#abc'>请登录</a> | <a href='/register' style='text-decoration:none;color:red;'>免费注册</a>";
                 }?>
             </li><li>&nbsp;<a href="#" style="color:#abc">个人中心</a></li><li>&nbsp;<a href="/order" style="color:#abc">我的订单</a></li>
           </ul>
@@ -136,9 +198,13 @@
   </div> 
   @show
   <!-- 头部end -->
+  <!-- 左侧内容start -->
  
   @section('content')
   <div class="main"> 
+  @section('advert')
+  
+  @show
    <div class="container"> 
    <!-- 轮播 start-->
    @section('lun')
@@ -524,5 +590,50 @@
   </div> 
   @show
 <!-- 底部end --> 
+<!-- 模态提示框 start-->
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <!-- 模态表单start -->
+        <div class="login-box">  
+        <h1 style="text-align:center">会员登录</h1><br><br>
+        <form action="/dologin" method="post">  
+            <div class="name">  
+            用户名：
+            <input type="text" name="username" placeholder="请输入您的用户名"><span></span>
+            </div>  
+            <div class="password">  
+           密&emsp;码：
+            <input type="password"  maxlength="16" name="password" placeholder="请输入您的密码"><span></span>
+            </div>  
+            <div class="code">  
+                验证码：  
+                <input id="code" type="text" maxlength="6" placeholder="请输入验证码" name="code">
+                    <a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="40" id="codeImg" border="0"><span></span>
+
+                {{csrf_field()}}
+            </div>
+            <div class="login">  
+                <button>登录</button>  
+            </div> 
+             <span><a href="#" style="text-decoration:none;">忘记密码</a></span> 
+        </form>  
+        <!-- 模态表单end -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+  $(function(){
+    $('#userLogin').click(function(){
+      $('.modal').modal();
+    }); 
+  });
+  function re_captcha() {
+    $url = "{{ URL('kit/captcha') }}";
+        $url = $url + "/" + Math.random();
+        document.getElementById('codeImg').src=$url;
+  }
+</script> 
+<!-- 模态提示框 end-->
  </body>
 </html>

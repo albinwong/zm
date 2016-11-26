@@ -31,14 +31,18 @@ class HomeController extends Controller
         // 表单验证
         $this->validate($request, [
             'username' =>'required|regex:/^\w{8,18}$/|unique:users,username',
-            'password' => 'required|regex:/^\S{6,20}$/|same:repassword'
+            'password' => 'required|regex:/^\S{6,20}$/|same:repassword',
+            'code'=>'required'
         ],[
             'username.required' => '用户名不能为空',
             'username.regex' => '用户名格式不正确',
             'password.regex'=>'密码格式不正确',
-            'password.same'=>'两次密码不一致'
+            'password.same'=>'两次密码不一致',
+            'code'=>'验证码不能为空'
         ]);
-        
+        if(session('milkcaptcha')!= $request->input('code')){
+            return back()->with('error','验证码输入错误');
+        }
         $data = $request->except(['_token','repassword']);
         // 处理密码
         $data['password'] = Hash::make($data['password']);
@@ -97,18 +101,6 @@ class HomeController extends Controller
      * 前台用户登录验证
      */
     public function dologin(Request $request){
-        // $builder = new CaptchaBuilder;
-
-        // $userInput = $request->get('captcha');
-        // dd($userInput);
-        // if($builder->testPhrase($userInput)) {
-        //     //用户输入验证码正确
-        //     return '您输入验证码正确';
-        // } else {
-        //     //用户输入验证码错误
-        //     return '您输入验证码错误';
-        // }
-        // dd(222);
         //进行表单验证
         $this->validate($request,[
             'username'=>'required|regex:/^\w{8,18}$/',
@@ -118,27 +110,31 @@ class HomeController extends Controller
             'username.required'=>'用户名不能为空',
             'username.regex'=>'用户名格式不正确',
             'password.regex'=>'密码格式不正确',
+            'code'=>'验证码输入错误'
         ]);
 
-        
+        // 验证输入的验证码
+        if($request->input('code')== session('milkcaptcha')) {
+            return back()->with('error','您输入验证码错误');
+        }
+
         //读取用户名信息
         $res = DB::table('users')->where('username',$request->input('username'))->first();
         if(!$res){
-            return back();
+            return back()->with('info','您输入用户名或密码错误');;
         }else{
             //检测密码
             if(Hash::check($request->input('password'),$res->password)){
                     session(['uid' => $res->id,'uname'=>$res->username]);
                     return redirect('/');
             }else{
-                return back();
+                return back()->with('error','您输入用户名或密码错误');;
             }
         }
     }
 
 
-
-    /**吴
+    /**
      * 用户订单
      */
     public function order()
@@ -164,6 +160,7 @@ class HomeController extends Controller
         }
     }
 
+
     /**
      * 商品列表页
      */
@@ -179,6 +176,7 @@ class HomeController extends Controller
     }
 
 
+    
 
 
 }

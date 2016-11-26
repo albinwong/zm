@@ -39,6 +39,12 @@ Route::group(['middleware'=>'login'],function(){
 	//订单管理
 	Route::controller('dlist','DlistController');
 
+	//评价管理
+	Route::controller('comment','CommonController');
+	
+	//广告管理
+	Route::controller('advert','AdvertController');
+
 });
 
 //======================前台========================
@@ -91,4 +97,11 @@ Route::post('/order/add','OrderController@add');
 Route::get('/order/confirm','OrderController@confirm');
 
 Route::get('/address/add','AddressController@add');
+
+//前台评价
+Route::get('/assess/add','CommonController@comment');
+
+Route::get('test',function(){
+	return view('motai');
+});
 
