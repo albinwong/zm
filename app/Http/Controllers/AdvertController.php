@@ -8,57 +8,47 @@ use App\Http\Controllers\Controller;
 use DB;
 use Hash; 
 
-class UserController extends Controller
+class AdvertController extends Controller
 {
 	/**
-	 * 用户的添加页面
+	 * 广告的添加页面
 	 */
 	public function getAdd()
 	{
-		return view('admin.user.add');
-
+		return view('admin.advert.add');
 	}
 
 	/**
-	 * 用户的插入动作
+	 * 广告添加
 	 */
 	public function postInsert(Request $request)
 	{	
 		//进行表单验证
 		$this->validate($request,[
-			'username'=>'required|regex:/^\w{8,18}$/|unique:users,username',
-			'password'=>'required|regex:/^\S{6,20}$/|same:repassword',
-			'email'=>'regex:/^\w+@\w+\.\w+$/',
-			'phone'=>'regex:/^1[3-8]\d{9}$/'
+			'url'=>'required|regex:/^[a-zA-z]+:\/\/[^\s]*$/|unique:frlink,url'
 		],[
-			'username.required'=>'用户名不能为空',
-			'username.regex'=>'用户名格式不正确',
-			'password.regex'=>'密码格式不正确',
-			'password.same'=>'两次密码不一致',
-			'email.regex'=>'邮箱格式不正确',
-			'phone.regex'=>'手机号格式不正确'
+			'url.required'=>'连接地址不能为空',
+			'url.regex'=>'连接地址格式不正确',
+			'url.unique'=>'连接地址已存在'
 		]);
-
 		//获取数据
-		$data = $request->except(['repassword','_token']);
-		//加密密码
-		$data['password'] = Hash::make($data['password']);
-		//处理头像
-		if($request->hasFile('profile')){
+        $data = $request->except('_token');
+		//处理图片
+		if($request->hasFile('pics')){
 			$fileName = time().rand(100000,9999999);
-			$suffix = $request->file('profile')->getClientOriginalExtension();
+			$suffix = $request->file('pics')->getClientOriginalExtension();
 			$fileName = $fileName.".".$suffix;
-			$request->file('profile')->move('./Uploads/',$fileName);
-			$data['profile'] = '/Uploads/'.$fileName;
+			$request->file('pics')->move('./Uploads/',$fileName);
+			$data['pics'] = '/Uploads/'.$fileName;
 		}
 
 		//插入数据库
-    	$res = DB::table('users')->insert($data);
+    	$res = DB::table('advert')->insert($data);
 		
 		//检测
 		if($res){
 			//跳转
-			return redirect('/user/index')->with('info','插入成功');	
+			return redirect('/advert/index')->with('info','插入成功');	
 		}else{
 			//回跳
 			return back()->with('info','插入失败!!!!!!!!!!!!!!!!');
@@ -71,32 +61,32 @@ class UserController extends Controller
 	public function getIndex(Request $request)
 	{
 		//读取数据
-		$users = DB::table('users')->orderBy('id','asc')->where(function($query) use ($request){
+		$advert = DB::table('advert')->orderBy('id','asc')->where(function($query) use ($request){
 		//获取关键字的内容
 		$k=$request->input('keyword');
 		if(!empty($k)){
-			$query->where('username','like','%'.$k.'%');
+			$query->where('content','like','%'.$k.'%');
 		}
 		})->paginate($request->input('num', 10));
 		//分配变量  解析模板
-		return view('admin.user.index',['users'=>$users,'request'=>$request]);
+		return view('admin.advert.index',['advert'=>$advert,'request'=>$request]);
 	}
 
 	/**
-	 * 用户的修改页面
+	 * 广告的的修改页面
 	 */
 	public function getEdit(Request $request)
 	{
 		//读取当前的id的用户信息
 		$id = $request->input('id');
 		//读取数据库
-		$user = DB::table('users')->where('id',$id)->first();
+		$advert = DB::table('advert')->where('id',$id)->first();
 		//解析模板
-		return view('admin.user.edit',['user'=>$user]);
+		return view('admin.advert.edit',['advert'=>$advert]);
 	}
 
 	/**
-	 * 用户的更新操作
+	 * 广告的更新操作
 	 */
 	public function postUpdate(Request $request)
 	{
@@ -106,15 +96,16 @@ class UserController extends Controller
 		//处理文件上传
 		$path = $this->upload($request);
 		if(!empty($path)){
-			$data['profile'] = $path;
+			$data['pics'] = $path;
 		}
 		//更新
-		$res = DB::table('users')->where('id',$request->input('id'))->update($data);
+		$res = DB::table('advert')->where('id',$request->input('id'))->update($data);
 		if($res){
-			return redirect('/user/index')->with('info','更新成功');
+			return redirect('/advert/index')->with('info','更新成功');
 		}else{
 			return back()->with('info','更新失败!!!');
 		}
+
 	}
 
 	/**
@@ -124,13 +115,14 @@ class UserController extends Controller
 	{
 		$id = $request->input('id');
 		//执行删除
-        $res = DB::table('users')->where('id', $id) -> delete();
+        $res = DB::table('advert')->where('id', $id) -> delete();
         if($res) {
             return back()->with('info','删除成功');
         }else{
             return back()->with('info','删除失败');
         }
 	}
+
 	 /**
      * 封装上传操作代码
      */
@@ -145,12 +137,4 @@ class UserController extends Controller
             return $data['profile'];
         }
     }
-    /**
-     * 用户的个人中心  
-     */
-    public function center()
-    {
-    	return view('home.user.center');
-    }
-
 }

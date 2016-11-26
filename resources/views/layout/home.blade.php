@@ -200,6 +200,9 @@ button {
  
   @section('content')
   <div class="main"> 
+  @section('advert')
+  
+  @show
    <div class="container"> 
    <!-- 轮播 start-->
    @section('lun')
