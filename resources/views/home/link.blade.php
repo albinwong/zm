@@ -122,7 +122,7 @@ p {
         <td class="test2">代码：
           <form id="form1" name="form1" method="post" action="">
             <label>
-            <textarea style="overflow-x:visible;overflow-y:visible;"" rows="5" cols="40">&lt;a href="http://www.zm.com" target="_blank"&gt;&lt;img src="http://www.zm.com/homes/images/logo_bg.jpg" alt="追梦订餐网" title="追梦订餐网" border="0" /&gt;&lt;/a&gt;</textarea>
+            <textarea style="overflow-x:visible;overflow-y:visible;" rows="5" cols="40">&lt;a href="http://www.zm.com" target="_blank"&gt;&lt;img src="http://www.zm.com/homes/images/logo_bg.jpg" alt="追梦订餐网" title="追梦订餐网" border="0" /&gt;&lt;/a&gt;</textarea>
             </label>
             </form>
         </td>

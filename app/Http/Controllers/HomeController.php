@@ -154,7 +154,7 @@ class HomeController extends Controller
     {
         $id = $request->input('id');
         $goods = DB::table('goods')->get();
-        
+        // dd($goods);
         $one = DB::table('goods')->where('id',$id)->first();
         $pics = DB::table('pics')->where('goods_id',$id)->first();
         if(!empty($one)){

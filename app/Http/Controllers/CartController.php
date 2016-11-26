@@ -17,8 +17,9 @@ class CartController extends Controller
      */
     public function add(Request $request)
     {
+
         // 提取信息
-        $data = $request->except(['_tocken']);
+        $data = $request->except(['_token']);
         //检测菜品是否存在购物车中
         $status = $this->checkGoodsExists($data['goods_id']);
         if(!$status){
@@ -35,6 +36,8 @@ class CartController extends Controller
     {
         //读取用户的购物车信息
         $carts = $request->session()->get('user.cart');
+        // dd($carts);
+
         //读取
         if(!empty($carts)){
             foreach($carts as $k => $v){

@@ -1,5 +1,6 @@
 @extends('layout.home')
 @section('content')
+
 <div class="container clearfix">
 	<div class="col-md-12" style="height:80px;background:#f3f3f3;border:1px solid #e9e9e9;">
 		<div class="col-md-3 col-md-offset-1" style="padding-top:15px;"><a href="/">首页</a> / 购物车</div>
@@ -20,6 +21,7 @@
 		</thead>
 		<form action="/order/add" method="post">
 			<tbody>
+
 			@if(!empty($carts))
 				@foreach($carts as $k=>$v)
 				<tr class="cart_item">
@@ -45,10 +47,9 @@
 					<td class="cart-product-quantity">
 						<div class="quantity clearfix">
 							<input value="-" class="minus" type="button">
-							<input name="num" value="data[{{$v['goods_id']}}][num]" class="qty" type="text">
+							<input name="num" style="width:20px;text-align:center;" value="{{$v['num']}}" class="qty" type="text">
 							<input value="+" class="plus" type="button">
-							<input type="hidden" name="data[{{$v['goods_id']}}][color]" value="{{$v['color']}}">
-							<input type="hidden" name="data[{{$v['goods_id']}}][size]" value="{{$v['size']}}">
+							<input type="hidden" name="data[{{$v['goods_id']}}][kouwei]" value="{{$v['kouwei']}}">
 						</div>
 					</td>
 

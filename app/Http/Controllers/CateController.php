@@ -26,7 +26,7 @@ class CateController extends Controller
     {
         //检测
         $this->validate($request,[
-            'name'=>'unique:cates,name'
+            'name'=>'required|unique:cates,name'
         ],[
             'name.unique'=>'分类名称已经存在!!!!!!' 
         ]);
