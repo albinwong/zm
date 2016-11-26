@@ -25,7 +25,7 @@
 					</a>
 					
 				</div>
-			</div>
+			</div> 
 		<!-- 左侧菜单 end -->
 		<!-- 右侧菜单 start -->
 		<div class="col-md-5 col-md-offset-2">

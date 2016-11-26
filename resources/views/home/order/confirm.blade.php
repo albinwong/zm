@@ -12,8 +12,11 @@
 	.addr p{
 		margin:0px;
 	}
-	.button{
+	.tj{
 		float:right;
+		width:200px;
+
+		font-size: 16px;
 	}
 	#addresses .active{
 		border:dashed 2px green;
@@ -45,7 +48,7 @@
 				<input type="hidden" name="address_id" value="">
 				<input type="hidden" name="order_id" value="{{$request->input('orderid')}}">
 				{{csrf_field()}}
-				<div><button  class="button button-3d nomargin fright">确认订单并支付</button></div>
+				<div><input class="tj" type="submit" value="提交订单并支付"></div>
 			</form>
 		</div>
 	</div>

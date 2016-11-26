@@ -18,7 +18,12 @@
 <link rel="stylesheet" href="/homes/css/etalage.css">
 <script src="/homes/js/jquery.etalage.min.js"></script>
 <script src="/homes/js/jQuery.js"></script>
+<style type="text/css">
+	.flavor label{
+		
 
+	}
+</style>
 <div class="col-md-9">
    <div class="single_image">
 	     <ul id="etalage" class="etalage" style="display: block; width: 314px; height: 552px;">
@@ -61,17 +66,81 @@
         	<p class="m_5">{{$one->title}}</p>
         	<div class="price_single">
 			  <span class="reducedfrom">￥66.00</span>
-			  <span class="actual1">￥:{{$one->price}}</span><a href="#">click for offer</a>
+			  <span class="actual1">￥:{{$one->price}}</span>
 			</div>
-        	
+			<style type="text/css">
+				#flavor1 li{
+					text-align:center;
+					width:60px;
+					text-align:center;
+					background:white;
+					margin-left:10px;
+					cursor:pointer;
+				}
+			</style>
 			<div class="btn_form">
-			   <form>
+			   <form action="/cart/add" method="post">
+			   		<span class="">订购份数:</span>
+			   		<div class="btn-group btn-group-sm">
+					  <button type="button" class="btn btn-default" id="btn1">-</button>
+					  <input type="text" id = "cou" name="num" style="width:20px;height:30px;text-align:center 
+					  " value="1">
+					  <button type="button" class="btn btn-default pull-right" id="btn2">+</button>
+					</div>
+					<br>
+					<br>
+					<div id="flavor1">
+						<ul class="list-unstyled list-inline" name = "kouwei">口味:
+							<li class="flavor">正常</li>
+							<li class="flavor">清淡</li>
+							<li class="flavor">偏重</li>
+							<li class="flavor">免辣</li>
+						</ul>
+					</div>
+					<script type="text/javascript">
+						var btn1 = document.getElementById('btn1');
+						var btn2 = document.getElementById('btn2');
+						var count = document.getElementById('cou');
+						//数量减
+						btn1.onclick = function(){
+							var jian = count.value;
+							if(jian<=1){
+								return false;
+							}
+							count.value = (--jian);
+						}
+						//数量加
+						btn2.onclick = function(){
+							var jian = count.value;
+							count.value = (++jian);
+						}
+						$('.flavor').click(function(){
+							//给所有同辈元素设置背景色
+							$(this).siblings().css('background','whrite');
+							//给自己设置背景色
+							$(this).css('background','#ddd');
+							//获取当前点击的li里的内容
+							var v = $(this).html();
+							//给隐藏域name="kouwei"的val赋值
+							$('input[name="kouwei"]').val(v);
+						});
+
+
+					</script>
+					<br> 
+					{{csrf_field()}}
+					<input type="hidden" name="goods_id" value="{{$one->id}}">
+					<input type="hidden" name="kouwei" value="">
+			   		<br>
+			   		<div id="clearfix"></div>
 				 <input value="加入购物车" title="" type="submit">
+				
 			  </form>
 			</div>
 			<ul class="add-to-links">
               <li><img src="/homes/images/wish.png" alt=""><a href="#">销量: {{$one->sold}}</a></li>
             </ul>
+            
 			<!-- 分享  start -->
             <div class="col-xs-12  col-sm-6  col-md-4">
               <!-- JiaThis Button BEGIN --><div id="ckepop">

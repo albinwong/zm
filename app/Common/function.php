@@ -20,6 +20,18 @@
 		}
 
 	}
+	
+	function getSendStatus($send)
+	{
+		switch($send){
+			case '1':return '准备出库';break;
+			case '2':return '已发货';break;
+			case '3':return '已到货';break;
+		}
+	}
+
+
+	
 	function getAreaName($id)
 	{
 		$res = DB::table('destoon_area')->where('areaid',$id)->first();

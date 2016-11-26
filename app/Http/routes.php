@@ -52,9 +52,9 @@ Route::get('/', function () {
  */
 
 //商品列表
-Route::get('glist','HomeController@glist');
+Route::get('/glist','HomeController@glist');
 //商品详情
-Route::get('detail','HomeController@detail');
+Route::get('/detail','HomeController@detail');
 
 
 //用户注册
@@ -81,8 +81,8 @@ Route::get('/links', function () {
 });
 
 //加入购物车操作
-Route::get('/cart/add','CartController@add');
-Route::get('/cart','CartController@index');
+Route::post('/cart/add','CartController@add');
+Route::get('/cart/index','CartController@index');
 
 
 //订单创建

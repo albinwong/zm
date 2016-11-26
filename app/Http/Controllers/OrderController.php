@@ -70,7 +70,7 @@ class OrderController extends Controller
 		
 		// 修改订单状态 为已确认
 		$data['status'] = 1;
-		dd($request->input('order_id'));
+		// dd($request->input('order_id'));
 		
 		// 更新表  
 		$res = DB::table('orders')->where('id',$request->input('order_id'))->update($data);
@@ -96,7 +96,7 @@ class OrderController extends Controller
 		foreach($goods as $key => $value){
 			// 通过商品的id获取商品的单价
 			$value->price = DB::table('goods')->where('id',$value->goods_id)->value('price');
-			dd($value);
+			
 			$total += $value->price * $value->num;
 		}
 		return $total;
@@ -107,7 +107,7 @@ class OrderController extends Controller
 			// 读取订单信息
 			 $orders = DB::table('orders')->where('user_id',session('uid'))->get();
 			foreach($orders as $k => $v){
-				$v->$goods = DB::table('goods_order')->leftJoin('goods','goods.id','=','goods_order.goods_id')->where('goods_order.order_id',$v->id)->get();
+				$v->$goods = DB::table('goods_order')->join('goods','goods.id','=','goods_order.goods_id')->where('goods_order.order_id',$v->id)->get();
 			}
 			
 			// 显示模板
