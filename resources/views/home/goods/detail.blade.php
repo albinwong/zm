@@ -19,9 +19,9 @@
 <script src="/homes/js/jquery.etalage.min.js"></script>
 <script src="/homes/js/jQuery.js"></script>
 <style type="text/css">
-	.flavor label{
-		
-
+	.btn{
+		width:30px;
+		height:30px;
 	}
 </style>
 <div class="col-md-9">
@@ -97,36 +97,9 @@
 							<li class="flavor">免辣</li>
 						</ul>
 					</div>
-					<script type="text/javascript">
-						var btn1 = document.getElementById('btn1');
-						var btn2 = document.getElementById('btn2');
-						var count = document.getElementById('cou');
-						//数量减
-						btn1.onclick = function(){
-							var jian = count.value;
-							if(jian<=1){
-								return false;
-							}
-							count.value = (--jian);
-						}
-						//数量加
-						btn2.onclick = function(){
-							var jian = count.value;
-							count.value = (++jian);
-						}
-						$('.flavor').click(function(){
-							//给所有同辈元素设置背景色
-							$(this).siblings().css('background','whrite');
-							//给自己设置背景色
-							$(this).css('background','#ddd');
-							//获取当前点击的li里的内容
-							var v = $(this).html();
-							//给隐藏域name="kouwei"的val赋值
-							$('input[name="kouwei"]').val(v);
-						});
-
-
-					</script>
+					<div class="pull-right">
+						<span><a href="">点击收藏</a></span>
+					</div>
 					<br> 
 					{{csrf_field()}}
 					<input type="hidden" name="goods_id" value="{{$one->id}}">
@@ -155,83 +128,36 @@
 		   </div>
 	    	<!-- 菜品  end -->
 
-		  
-		   <!----product-rewies---->
 			<div class="product-reviwes">
-				<!--vertical Tabs-script-->
-				<!---responsive-tabs---->
-					<script src="/homes/js/easyResponsiveTabs.js" type="text/javascript"></script>
-					<script type="text/javascript">
-						$(document).ready(function () {
-							 $('#horizontalTab').easyResponsiveTabs({
-									type: 'default', //Types: default, vertical, accordion           
-									width: 'auto', //auto or any width like 600px
-									fit: true,   // 100% fit in a container
-									closed: 'accordion', // Start closed if in accordion view
-									activate: function(event) { // Callback function if tab is switched
-									var $tab = $(this);
-									var $info = $('#tabInfo');
-									var $name = $('span', $info);
-										$name.text($tab.text());
-										$info.show();
-									}
-								});
-													
-							 $('#verticalTab').easyResponsiveTabs({
-									type: 'vertical',
-									width: 'auto',
-									fit: true
-								 });
-						 });
-					</script>
-				
+				<script src="/homes/js/easyResponsiveTabs.js" type="text/javascript"></script>
+				<script type="/homes/js/zengjian.js"></script>
 				<div class=" col-md-12 pull-right" style="position:absolute;top:200px;">
-					
-		            
-				     <div class="clearfix"> </div>
-		      </div>
+				<div class="clearfix"> </div>
+		    </div>
 		      
 		      <!-- 细说菜品  start -->
 
-		      <div class="col-md-8 pull-right" style="border:solid 0px red">
+		     <div class="col-md-8 pull-right" style="border:solid 0px red">
 		        <div id="myTabs">
-
-					  <!-- Nav tabs -->
-					  <ul class="nav nav-tabs" role="tablist">
-					    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">菜品介绍</a></li>
-					    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">菜品追溯</a></li>
-					    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">菜品评价</a></li>
-					    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
-					  </ul>
-
-					  <!-- Tab panes -->
-					  <div class="tab-content">
-					    <div role="tabpanel" class="tab-pane active" id="home">{{$one->zuof}}</div>
-					    <div role="tabpanel" class="tab-pane" id="profile">菜品追溯内容</div>
-					    <div role="tabpanel" class="tab-pane" id="messages">菜品评价</div>
-					    <div role="tabpanel" class="tab-pane" id="settings">...</div>
-					  </div>
-					  <script type="text/javascript">
-		      		$("#myTabs a").click(function (e) {
-					  e.preventDefault()
-					  $(this).tab('show') 
-					})
-						$('#myTabs a[href="#profile"]').tab('show');
-						$('#myTabs a:first').tab('show');
-						$('#myTabs a:last').tab('show');
-						$('#myTabs li:eq(2) a').tab('show');
-		      </script>
-
-					</div></div>
+				  <ul class="nav nav-tabs" role="tablist">
+				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">菜品介绍</a></li>
+				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">菜品追溯</a></li>
+				    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">菜品评价</a></li>
+				    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
+				  </ul>
+				  <div class="tab-content">
+				    <div role="tabpanel" class="tab-pane active" id="home">{{$one->zuof}}</div>
+				    <div role="tabpanel" class="tab-pane" id="profile">菜品追溯内容</div>
+				    <div role="tabpanel" class="tab-pane" id="messages">菜品评价</div>
+				    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+				  </div>
+				</div>
+			</div>
 		      <!-- 细说菜品  end -->
-
 				<div class="clearfix"> </div>
-				
 		      	<div class="col-md-9 pull-right" style="border:solid 1px red ">
 		      	{{$one->detail}}
-		     
 		      </div>
-		      
 		   	<div class="clearfix"> </div>
 			</div>
 				

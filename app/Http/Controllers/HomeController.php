@@ -41,7 +41,7 @@ class HomeController extends Controller
             'code'=>'验证码不能为空'
         ]);
         if(session('milkcaptcha')!= $request->input('code')){
-            return back()->('error','验证码输入错误');
+            return back()->with('error','验证码输入错误');
         }
         $data = $request->except(['_token','repassword']);
         // 处理密码
