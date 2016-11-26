@@ -16,7 +16,6 @@ class UserController extends Controller
 	public function getAdd()
 	{
 		return view('admin.user.add');
-
 	}
 
 	/**
