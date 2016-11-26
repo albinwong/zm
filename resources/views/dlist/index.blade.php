@@ -74,9 +74,9 @@
             <tr>
                 <th >订单号:</th>
                 <th >用户ID:</th>
-                <th >用户名:</th>
+                <th >收货人:</th>
                 <th >联系电话:</th>
-                <th >联系地址:</th>
+                <th >收货地址:</th>
                 <th >订单时间:</th>
                 <th >商品价格:</th>
                 <th >物流状态:</th>
@@ -92,7 +92,7 @@
                 <td class=" ">{{$v->oaddress}}</td>
                 <td class=" ">{{$v->otime}}</td>
                 <td class=" ">{{$v->tprice}}</td>
-                <td class=" ">{{$v->send}}</td>
+                <td class=" ">{{getSendStatus($v->send)}}</td>
             </tr>
         </tbody>
         @endforeach

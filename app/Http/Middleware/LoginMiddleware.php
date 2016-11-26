@@ -19,6 +19,7 @@ class LoginMiddleware
         if(session('uid') && session('auth') == 2){
             return $next($request);
         }else{
+            session(['redirect'=>$request->path()]);
             return redirect('/admin/login')->with('alert','用户不存在或权限不足');
         }
        
