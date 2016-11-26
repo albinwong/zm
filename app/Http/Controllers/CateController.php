@@ -45,7 +45,6 @@ class CateController extends Controller
         //提醒
         if($res){
             return redirect('/cate/index')->with('info','添加成功');
-
         }else{
             return redirect('/cate/index')->with('info','添加失败');
         }

@@ -39,15 +39,6 @@ body {
     float:none;
 }
 
-.login-box .codeImg {
-    /*float: l;*/
-  /*  margin-top: 1px;/**/
-    /*float:right;
-    position:relative;
-    left:0px;
-    top:0px;*/*/
-}
-
 .login-box img {
     width: 130px;
     height: 40px;

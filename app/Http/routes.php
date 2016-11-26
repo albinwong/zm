@@ -68,6 +68,7 @@ Route::post('/doregister','HomeController@doregister');
 Route::get('/activate','HomeController@activate');
 // 找回密码
 Route::get('/forget','HomeController@forget');
+Route::post('/forget','HomeController@doforget');
 
 
 // 前台用户登录

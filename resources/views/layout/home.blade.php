@@ -23,10 +23,7 @@
   <link href="http://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" type="image/x-icon" href="/homes/images/logo.ico" media="screen" />
   <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <style type="text/css">  
-
-
-
+  <style type="text/css">  
 .login{
     padding:20px;
     margin:20px;
@@ -104,7 +101,8 @@ button {
     <div class="container">
       <div class="header_top">
       <ul class="phone">
-        <li class="phone_left"><iframe width="300" scrolling="no" height="15" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=11&color=%23C6C6C6&bgc=%23&icon=1"></iframe></li>
+        <li class="phone_left">
+        <iframe width="300" scrolling="no" height="15" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=11&color=%23C6C6C6&bgc=%23&icon=1"></iframe></li>
         <li class="phone_right">
           <marquee id="test"  scrollamount="3" scrolldelay="200" direction="up">
             <li>【最新公告】北京六环以内免费配送</li><br>
@@ -607,13 +605,12 @@ button {
                 验证码：  
                 <input id="code" type="text" maxlength="6" placeholder="请输入验证码" name="code">
                     <a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="40" id="codeImg" border="0"><span></span>
-
                 {{csrf_field()}}
             </div>
             <div class="login">  
                 <button>登录</button>  
             </div> 
-             <span><a href="#" style="text-decoration:none;">忘记密码</a></span> 
+             <span><a href="/forget" style="text-decoration:none;">忘记密码</a></span> 
         </form>  
         <!-- 模态表单end -->
     </div><!-- /.modal-content -->
@@ -630,6 +627,7 @@ button {
         $url = $url + "/" + Math.random();
         document.getElementById('codeImg').src=$url;
   }
+  
 </script> 
 <!-- 模态提示框 end-->
  </body>
