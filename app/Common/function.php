@@ -18,6 +18,7 @@
 			case '1':return '会员';break;
 			default:return '管理员';break;
 		}
+
 	}
 	
 	function getSendStatus($send)
@@ -30,4 +31,38 @@
 	}
 
 
+	
+	function getAreaName($id)
+	{
+		$res = DB::table('destoon_area')->where('areaid',$id)->first();
+		
+		
+		return $res->areaname;
+	}
+	function getOnePicByGoodsId($goods_id)
+	{
+		return DB::table('pics')->where('goods_id',$goods_id)->value('path');
+	}
+
+	function getStatusNameById($id)
+	{
+		switch ($id) {
+			case '0':
+			case '1':
+				return '待付款';
+				break;
+			case '2':
+				return '已付款';
+				break;
+			case '3':
+				return '已派送';
+				break;
+			case '4':
+				return '待评价';
+				break;
+			default:
+				
+				break;
+		}
+	}
  ?>

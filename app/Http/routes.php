@@ -39,6 +39,12 @@ Route::group(['middleware'=>'login'],function(){
 	//订单管理
 	Route::controller('dlist','DlistController');
 
+	//评价管理
+	Route::controller('comment','CommonController');
+	
+	//广告管理
+	Route::controller('advert','AdvertController');
+
 });
 
 //======================前台========================
@@ -68,6 +74,7 @@ Route::post('/doregister','HomeController@doregister');
 Route::get('/activate','HomeController@activate');
 // 找回密码
 Route::get('/forget','HomeController@forget');
+Route::post('/forget','HomeController@doforget');
 
 
 // 前台用户登录
@@ -79,19 +86,37 @@ Route::post('/dologin','HomeController@dologin');
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
 // 友情链接显示
-Route::get('/links','LinkController@show');
+Route::get('/links', function () {
+    return view('home.link');
+});
 
 //加入购物车操作
 Route::post('/cart/add','CartController@add');
 Route::get('/cart/index','CartController@index');
 
 
-//我的订单
+//订单创建
 Route::post('/order/add','OrderController@add');
 Route::get('/order/confirm','OrderController@confirm');
+Route::post('/order/confirm','OrderController@doconfirm');
+
 
 Route::get('/address/add','AddressController@add');
+Route::get('/address/get','AddressController@get');
+Route::post('/address/insert','AddressController@insert');
+
+//个人中心
+Route::get('/center','UserController@center');
+
+// 订单列表
+Route::get('/order/index','OrderController@lists');
+
+
+//前台评价
+Route::get('/assess/add','CommonController@comment');
 
 Route::get('test',function(){
 	return view('motai');
 });
+
+

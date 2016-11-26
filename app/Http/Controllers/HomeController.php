@@ -175,7 +175,18 @@ class HomeController extends Controller
         return view('home.goods.glist',['goods'=>$goods,'cate'=>$cate]);
     }
 
+    
 
+    /**
+     * 密码找回
+     */
+    public function forget()
+    {
+        return view('home.user.forget');
+    }
+
+
+    
 
 
 }
