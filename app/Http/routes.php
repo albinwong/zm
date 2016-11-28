@@ -115,8 +115,10 @@ Route::get('/order/index','OrderController@lists');
 //前台评价
 Route::get('/assess/add','CommonController@comment');
 
-Route::get('test',function(){
-	return view('motai');
-});
 
+//添加关注
+Route::get('/guan','GuanController@guan');
+
+//菜谱采集
+Route::get('/caiji','CaipuController@index');
 

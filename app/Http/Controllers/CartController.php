@@ -17,7 +17,7 @@ class CartController extends Controller
      */
     public function add(Request $request)
     {
-
+        // dd($request->all());    
         // 提取信息
         $data = $request->except(['_token']);
         //检测菜品是否存在购物车中

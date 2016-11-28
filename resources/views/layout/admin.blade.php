@@ -279,7 +279,13 @@
                     <li>
                         <a href="#"><i class="icon-list"></i> 订单管理</a>
                         <ul class="closed">
-                            <li><a href="/order/index">订单列表</a></li>
+                            <li><a href="/dlist">订单列表</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i> 优惠管理</a>
+                        <ul class="closed">
+                            <li><a href="/shou">优惠列表</a></li>
                         </ul>
                     </li>
                     <li>

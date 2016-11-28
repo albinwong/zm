@@ -54,8 +54,6 @@ ul,li {
     vertical-align: middle;
 }
 
-
-
 .modal-content input[type=text],input[type=password] {
   width: 220px;
   height: 42px;
@@ -167,12 +165,12 @@ button {
        
 
          <ul class="nav navbar-nav menu1"> 
-          <li class="active"><a href="index.html">Specials</a></li> 
+          <li><a href="/">首页</a></li> 
           <li><a href="fruits.html">Fruits &amp; Veg</a></li> 
           <li><a href="products.html">Food Products</a></li> 
           <li><a href="store.html">Locate Store</a></li> 
           <li><a href="club.html">Fan Club</a></li> 
-          <li><a href="contact.html">Contact</a></li> 
+          <li><a href="/notes/show">留言板</a></li> 
          </ul> 
          <ul class="shopping_cart login">
          <a href="cart"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
@@ -516,8 +514,8 @@ button {
       <li><a href="/">主页</a></li> 
       <li><a href="#">关于我们</a></li> 
       <li><a href="#">新浪微博</a></li> 
-      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes"">在线客服</a></li> 
-      <li><a href="/admin">管理中心</a></li> 
+      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes">在线客服</a></li> 
+      <li><a href="/admin" target="_blank">管理中心</a></li> 
       <li><a href="#">加入我们</a></li> 
      </ul> 
     </div> 

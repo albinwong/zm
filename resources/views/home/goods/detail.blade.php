@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/homes/css/etalage.css">
 <script src="/homes/js/jquery.etalage.min.js"></script>
 <script src="/homes/js/jQuery.js"></script>
+<script type="/homes/js/zengjian.js"></script>
 <style type="text/css">
 	.btn{
 		width:30px;
@@ -79,6 +80,19 @@
 				}
 			</style>
 			<div class="btn_form">
+			<ul class="product_but"> 
+	             <button id="guan" style="background:#FFFFF2;width:100px;height:40px;" class="pull-right"><li class="like">关注</a><i class="like1"> </i></li> </button>
+	             <div class="clearfix"></div> 
+            </ul>
+            <script type="text/javascript">
+            	var guan = $('#guan');
+            	var goods_id = {{$one->id}};
+            	guan.click(function(){
+            		$.get('/guan', {{'uid'.'='.session('uid')}},{{'goods_id'.'='.$one->id}}, function(data){
+						alert(data);
+					});
+            	});
+            </script>
 			   <form action="/cart/add" method="post">
 			   		<span class="">订购份数:</span>
 			   		<div class="btn-group btn-group-sm">
@@ -97,9 +111,38 @@
 							<li class="flavor">免辣</li>
 						</ul>
 					</div>
-					<div class="pull-right">
-						<span><a href="">点击收藏</a></span>
-					</div>
+					
+					<script type="text/javascript">
+						//数量的增减
+						var btn1 = document.getElementById('btn1');
+						var btn2 = document.getElementById('btn2');
+						var count = document.getElementById('cou');
+						//数量减
+						btn1.onclick = function(){
+							var jian = count.value;
+							if(jian<=1){
+								return false;
+							}
+							count.value = (--jian);
+						}
+						//数量加
+						btn2.onclick = function(){
+							var jian = count.value;
+							count.value = (++jian);
+						}
+						$('.flavor').click(function(){
+							//给所有同辈元素设置背景色
+							$(this).siblings().css('background','whrite');
+							//给自己设置背景色
+							$(this).css('background','#ddd');
+							//获取当前点击的li里的内容
+							var v = $(this).html();
+							//给隐藏域name="kouwei"的val赋值
+							$('input[name="kouwei"]').val(v);
+						});
+						
+					</script>
+					
 					<br> 
 					{{csrf_field()}}
 					<input type="hidden" name="goods_id" value="{{$one->id}}">
@@ -113,7 +156,36 @@
 			<ul class="add-to-links">
               <li><img src="/homes/images/wish.png" alt=""><a href="#">销量: {{$one->sold}}</a></li>
             </ul>
-            
+            <a href=# onclick="javascript:addFavorite2()" rel="sidebar">加入收藏</a>
+			<!-- 收藏 start-->
+			<script type="text/javascript">
+				function addFavorite2() {
+				    var url = window.location;
+				    var title = document.title;
+				    var ua = navigator.userAgent.toLowerCase();
+				    if (ua.indexOf("360se") > -1) {
+				        alert("由于功能受限制，请按 Ctrl+D 手动收藏！");
+				    }
+				    else if (ua.indexOf("msie 8") > -1) {
+				        window.external.AddToFavoritesBar(url, title); //IE8
+				    }
+				    else if (document.all) {
+				  try{
+				   		window.external.addFavorite(url, title);
+				  }catch(e){
+				   alert('您的浏览器不支持,请按 Ctrl+D 手动收藏!');
+				  }
+				    }
+				    else if (window.sidebar) {
+				        window.sidebar.addPanel(title, url, "http://zm.com");
+				    }
+				    else {
+				  alert('您的浏览器不支持,请按 Ctrl+D 手动收藏!');
+				    }
+				}
+			</script>
+			<!-- 收藏 end-->
+           
 			<!-- 分享  start -->
             <div class="col-xs-12  col-sm-6  col-md-4">
               <!-- JiaThis Button BEGIN --><div id="ckepop">
@@ -130,7 +202,7 @@
 
 			<div class="product-reviwes">
 				<script src="/homes/js/easyResponsiveTabs.js" type="text/javascript"></script>
-				<script type="/homes/js/zengjian.js"></script>
+				
 				<div class=" col-md-12 pull-right" style="position:absolute;top:200px;">
 				<div class="clearfix"> </div>
 		    </div>

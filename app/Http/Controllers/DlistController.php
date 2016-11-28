@@ -10,6 +10,10 @@ use DB;
 
 class DlistController extends Controller
 {
+	/**
+	 * 订单列表
+	 */
+
     public function getIndex(Request $request)
     {   
         $list = DB::table('order')->orderBy('user_id')
