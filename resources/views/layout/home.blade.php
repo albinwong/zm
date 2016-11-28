@@ -23,10 +23,7 @@
   <link href="http://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" type="image/x-icon" href="/homes/images/logo.ico" media="screen" />
   <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <style type="text/css">  
-
-
-
+  <style type="text/css">  
 .login{
     padding:20px;
     margin:20px;
@@ -56,8 +53,6 @@ ul,li {
     text-align: right;
     vertical-align: middle;
 }
-
-
 
 .modal-content input[type=text],input[type=password] {
   width: 220px;
@@ -104,7 +99,8 @@ button {
     <div class="container">
       <div class="header_top">
       <ul class="phone">
-        <li class="phone_left"><iframe width="300" scrolling="no" height="15" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=11&color=%23C6C6C6&bgc=%23&icon=1"></iframe></li>
+        <li class="phone_left">
+        <iframe width="300" scrolling="no" height="15" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=11&color=%23C6C6C6&bgc=%23&icon=1"></iframe></li>
         <li class="phone_right">
           <marquee id="test"  scrollamount="3" scrolldelay="200" direction="up">
             <li>【最新公告】北京六环以内免费配送</li><br>
@@ -169,12 +165,12 @@ button {
        
 
          <ul class="nav navbar-nav menu1"> 
-          <li class="active"><a href="index.html">Specials</a></li> 
+          <li><a href="/">首页</a></li> 
           <li><a href="fruits.html">Fruits &amp; Veg</a></li> 
           <li><a href="products.html">Food Products</a></li> 
           <li><a href="store.html">Locate Store</a></li> 
           <li><a href="club.html">Fan Club</a></li> 
-          <li><a href="contact.html">Contact</a></li> 
+          <li><a href="/notes/show">留言板</a></li> 
          </ul> 
          <ul class="shopping_cart login">
          <a href="cart"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
@@ -190,8 +186,10 @@ button {
       <div class="clearfix"></div> 
      </div> 
      <div class="search"> 
-      <input type="text" class="text" placeholder="请输入关键字" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入关键字';}" /> 
+     <form action="/glist" method="get">
+      <input type="text" class="text" placeholder="请输入关键字" value="{{old('keyword')}}" name="keyword" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入关键字';}" /> 
       <input type="submit" value="搜索" /> 
+     </form>
      </div> 
     </div> 
    </div> 
@@ -202,9 +200,12 @@ button {
  
   @section('content')
   <div class="main"> 
-   <div class="container"> 
-   <!-- 轮播 start-->
-   @section('lun')
+    
+    @include('home.goods.advert')
+   
+    <div class="container"> 
+    <!-- 轮播 start-->
+    @section('lun')
     <div class="banner"> 
       <div id="carousel-example-generic" class="carousel slide img-responsive" data-ride="carousel">
         <!-- Indicators -->
@@ -274,13 +275,13 @@ button {
 		       ?>
 		        <ul>
 		       @foreach($cates as $k=>$v)
-		            <li><a href="#">{{$v->name}}</a>
+		            <li><a href="/glist?cate_id={{$v->id}}">{{$v->name}}</a>
 		                <ul>
 		                  @foreach($v->subcate as $a=>$b)
-		                  <li><a href="#" class="">{{$b->name}}</a>
+		                  <li><a href="/glist?cate_id={{$b->id}}" class="">{{$b->name}}</a>
 		                    <ul>
 		                      @foreach($b->subcate as $c=>$d)
-		                      <li><a href="#" class="thirdh">{{$d->name}}</a></li>
+		                      <li><a href="/glist?cate_id={{$d->id}}" class="thirdh">{{$d->name}}</a></li>
 		                      @endforeach
 		                    </ul>
 		                  </li>
@@ -515,8 +516,8 @@ button {
       <li><a href="/">主页</a></li> 
       <li><a href="#">关于我们</a></li> 
       <li><a href="#">新浪微博</a></li> 
-      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes"">在线客服</a></li> 
-      <li><a href="/admin">管理中心</a></li> 
+      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes">在线客服</a></li> 
+      <li><a href="/admin" target="_blank">管理中心</a></li> 
       <li><a href="#">加入我们</a></li> 
      </ul> 
     </div> 
@@ -607,13 +608,12 @@ button {
                 验证码：  
                 <input id="code" type="text" maxlength="6" placeholder="请输入验证码" name="code">
                     <a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="40" id="codeImg" border="0"><span></span>
-
                 {{csrf_field()}}
             </div>
             <div class="login">  
                 <button>登录</button>  
             </div> 
-             <span><a href="#" style="text-decoration:none;">忘记密码</a></span> 
+             <span><a href="/forget" style="text-decoration:none;">忘记密码</a></span> 
         </form>  
         <!-- 模态表单end -->
     </div><!-- /.modal-content -->
@@ -630,6 +630,7 @@ button {
         $url = $url + "/" + Math.random();
         document.getElementById('codeImg').src=$url;
   }
+  
 </script> 
 <!-- 模态提示框 end-->
  </body>

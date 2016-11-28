@@ -10,7 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Event::listen('illuminate.query',function($query){
+     // var_dump($query);
+ });
 //====================后台===========================
 //用户后台登录
 Route::get('/admin/login','CommonController@login');
@@ -36,6 +38,15 @@ Route::group(['middleware'=>'login'],function(){
 	//友情链接管理
 	Route::controller('frlink','LinkController');
 
+	//订单管理
+	Route::controller('dlist','DlistController');
+
+	//评价管理
+	Route::controller('comment','CommonController');
+	
+	//广告管理
+	Route::controller('advert','AdvertController');
+
 });
 
 //======================前台========================
@@ -45,7 +56,6 @@ Route::group(['middleware'=>'login'],function(){
 Route::get('/', function () {
     return view('home');
 });
-// Route::get('/','CommonController@index');
 
 /**
  * 前台
@@ -54,18 +64,21 @@ Route::get('/', function () {
 //商品列表
 Route::get('/glist','HomeController@glist');
 //商品详情
-Route::get('/detail','HomeController@detail');
+Route::get('/{id}.html','HomeController@detail')->where('id','\d+');
 
 
 //用户注册
 Route::get('/register','HomeController@register');
-Route::post('/doregister','HomeController@doregister');
+Route::post('/register','HomeController@doregister');
 
 //用户激活账号验证
 Route::get('/activate','HomeController@activate');
 // 找回密码
 Route::get('/forget','HomeController@forget');
-
+Route::post('/forget','HomeController@doforget');
+// 重置密码
+Route::get('/reset','HomeController@reset');
+Route::post('/reset','HomeController@doreset');
 
 // 前台用户登录
 Route::get('/login','HomeController@login');
@@ -76,13 +89,11 @@ Route::post('/dologin','HomeController@dologin');
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
 // 友情链接显示
-Route::get('/links', function () {
-    return view('home.link');
-});
+Route::get('/links', 'LinkController@show');
 
 //加入购物车操作
 Route::post('/cart/add','CartController@add');
-Route::get('/cart/index','CartController@index');
+Route::get('/cart','CartController@index');
 
 
 //订单创建
@@ -107,14 +118,27 @@ Route::post('/address/update','AddressController@update');
 Route::get('/center','UserController@center');
 
 // 订单列表
-Route::get('/order/index','OrderController@lists');
+Route::get('/order','OrderController@lists');
+
+
+//前台评价
+
+Route::get('/assess/add','CommonController@comment');
+
+
+//添加关注
+Route::get('/guan','GuanController@guan');
+
+//菜谱采集
+Route::get('/caiji','CaipuController@index');
+
+Route::get('/review','CommonController@review');
+Route::post('/review','CommonController@postReview');
 
 // 前台用户查看信息
 Route::get('/selfuser/info','SelfInfoController@info');
-// 用户修改信息
 Route::get('/selfuser/edit','SelfInfoController@edit');
-// 用户修改信息
 Route::post('/selfuser/update','SelfInfoController@update');
 
-
-
+//留言管理
+Route::controller('/notes','NotesController');
