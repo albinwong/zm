@@ -1,6 +1,43 @@
 @extends('layout.home')
 @section('content')
+<style type="text/css">
 
+	a:hover{
+		text-decoration: none;
+	}
+	.shop a{
+		color:white;
+	}
+	.spinner{
+		display: block;
+	    overflow: hidden;
+	    width: 100px;
+	}
+	
+	.spinner a{
+		background-color: #f7f7f7;
+	    border: 1px solid #d9d9d9;
+	    cursor: pointer;
+	    display: inline-block;
+	    float: left;
+	    height: 25px;
+	    outline: 0 none;
+	    width: 25px;
+	    text-align: center;
+	}
+	.spinner .qty{
+		 border-color: #d9d9d9;
+	    border-style: solid;
+	    border-width: 1px 0;
+	    color: #565656;
+	    float: left;
+	    height: 25px;
+	    line-height: 25px;
+	    outline: 0 none;
+	    text-align: center;
+	    width: 45px;
+	}
+</style>
 <div class="container clearfix">
 	<div class="col-md-12" style="height:80px;background:#f3f3f3;border:1px solid #e9e9e9;">
 		<div class="col-md-3 col-md-offset-1" style="padding-top:15px;"><a href="/">首页</a> / 购物车</div>
@@ -29,7 +66,7 @@
 						<a href="#" class="remove" title="Remove this item"><i class="glyphicon glyphicon-trash"></i></a>
 					</td>
 					<td class="cart-product-remove">
-						<input type="checkbox" name="data[{{$v['goods_id']}}][id]"  vlaue="{{$v['goods_id']}}">
+						<input type="checkbox" name="data[{{$v['goods_id']}}][id]"  vlaue="{{$v['goods_id']}}" class="single">
 					</td>
 
 					<td class="cart-product-thumbnail">
@@ -37,7 +74,7 @@
 					</td>
 
 					<td class="cart-product-name">
-						<a href="/{{$v['goods_id']}}.html">{{$v['info']->name}}</a>
+						<a href="">{{$v['info']->name}}</a>
 					</td>
 
 					<td class="cart-product-price">
@@ -45,16 +82,16 @@
 					</td>
 
 					<td class="cart-product-quantity">
-						<div class="quantity clearfix">
-							<input value="-" class="minus" type="button">
-							<input name="num" style="width:20px;text-align:center;" value="{{$v['num']}}" class="qty" type="text">
-							<input value="+" class="plus" type="button">
+						<div class="quantity clearfix spinner">
+							<a class="minus"><b>-</b></a>
+							<input name="num"  value="{{$v['num']}}" class="qty" type="text">
+							<a  class="plus"><b>+</b></a>
 							<input type="hidden" name="data[{{$v['goods_id']}}][kouwei]" value="{{$v['kouwei']}}">
 						</div>
 					</td>
 
 					<td class="cart-product-subtotal">
-					<span class="amount">￥{{$v['num'] * $v['info']->price}}</span>
+					<span class="amount">￥{{$v['num']*$v['info']->price}}</span>
 					</td>
 				</tr>
 				@endforeach
@@ -104,22 +141,19 @@
 				</script>
        
 				<tr class="cart_item">
-					<td colspan="6">
+					<td colspan="8">
 						<div class="row clearfix">
-							<div class="col-md-4 col-xs-4 nopadding">
-								
-							</div>
-							<div class="col-md-8 col-xs-8 nopadding">
+							<div class="col-md-3 col-xs-3 nopadding col-md-offset-9">
 								{{csrf_field()}}
-								<button href="#" class="button button-3d nomargin fright">提交订单</button>
-								<a href="/" class="button button-3d notopmargin fright">继续购物</a>
+                				<div class="col-md-4 btn btn-primary shop"><a href="/glist">继续购物</a></div>
+								<div class="col-md-3"><input value="提交订单" class="btn btn-danger" type="submit"></div>
 							</div>
 						</div>
 					</td>
 				</tr>
 			@else
 				<tr class="cart_item">
-					<td colspan="7" class="text-center" style="font-size:18px;padding-top:80px;">您的购物车空空的,快去<a href="/">添加</a>吧!!!</td>
+					<td colspan="7" class="text-center" style="font-size:18px;padding-top:80px;">您的购物车空空的,快去<a href="/glist">添加</a>吧!!!</td>
 				</tr>
 			@endif
 			</tbody>

@@ -19,9 +19,8 @@
 <script src="/homes/js/jquery.etalage.min.js"></script>
 <script src="/homes/js/jQuery.js"></script>
 <style type="text/css">
-	.flavor label{
-		
-
+	.media{
+		padding-top:20px;
 	}
 </style>
 <div class="col-md-9">
@@ -208,7 +207,45 @@
 					  <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane active" id="home">{{$one->zuof}}</div>
 					    <div role="tabpanel" class="tab-pane" id="profile">菜品追溯内容</div>
-					    <div role="tabpanel" class="tab-pane" id="messages">菜品评价</div>
+					    <div role="tabpanel" class="tab-pane" id="messages">
+							@foreach($data as $k=>$v)
+                            <div class="media">
+								<div class="col-md-2">
+									<a class="media-left media-middle" href="">
+                                		<img src="{{$v->profile}}" data-src="" style="width:40px;height:40px;" alt="" class="img-circle">
+                              		</a>
+                              		<br>
+                              		<div class="media-body">
+                               			<h4 class="media-heading"> {{$v->names}}</h4>
+                              		</div>
+								</div>  
+								<div class="col-md-6">                           
+	                                <div class="media-body" >
+	                                 <h5 class="media-heading" >{{$v->content}}</h5>
+	                                </div>
+	                                <br>
+	                                <div class="photo" id="tupian">
+	                                    <div class="media-body">
+	                                        <ul class="ul list-unstyled list-inline">
+	                                            <li data-src="{{$v->pics}}">
+	                                                <img src="{{$v->pics}}" width="40px;" alt="">
+	                                            </li>
+	                                        </ul> 
+	                                    </div>
+	                                    <div class="big-photo hide">
+	                                        <ul class="ul list-unstyled">
+	                                           <img src="{{$v->pics}}" width="200px;" alt="">
+	                                        </ul>
+	                                    </div>
+	                                </div>
+	                                <div class="media-body">
+	                                    {{date('Y年m月d日 H:i:s',$v->regtime)}}
+	                                </div>
+	                            </div>
+                            </div>
+                            <hr>
+                          @endforeach
+					    </div>
 					    <div role="tabpanel" class="tab-pane" id="settings">...</div>
 					  </div>
 					  <script type="text/javascript">
@@ -227,10 +264,7 @@
 
 				<div class="clearfix"> </div>
 				
-		      	<div class="col-md-9 pull-right" style="border:solid 1px red ">
-		      	{{$one->detail}}
-		     
-		      </div>
+		      	
 		      
 		   	<div class="clearfix"> </div>
 			</div>

@@ -114,7 +114,8 @@ Route::get('/order','OrderController@lists');
 
 
 //前台评价
-Route::get('/assess/add','CommonController@comment');
+Route::get('/review','CommonController@review');
+Route::post('/review','CommonController@postReview');
 
 //留言管理
 Route::controller('/notes','NotesController');

@@ -69,7 +69,6 @@
             <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 230px;" aria-label="Platform(s): activate to sort column ascending">评论内容</th>
             <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 230px;" aria-label="Platform(s): activate to sort column ascending">评论图片</th>
             <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 135px;" aria-label="Engine version: activate to sort column ascending">评论时间</th>
-            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" style="width: 135px;" aria-label="CSS grade: activate to sort column ascending">操作</th></tr>
         </thead>
         <tbody role="alert" aria-live="polite" aria-relevant="all">
 	        @foreach($comment as $k=>$v)
@@ -80,12 +79,6 @@
 	            <td class=" ">{{$v->content}}</td>
 	            <td class=" "><img src="{{$v->pics}}"></td>
 				<td class=" ">{{date('Y-m-d H:i:s',$v->regtime)}}</td>
-				<td class=" ">
-	                <span class="btn-group">
-	                    <a href="/comment/edit?id={{$v->id}}" class="btn btn-small"><i class="icon-pencil"></i></a>
-	                    <a href="/comment/delete?id={{$v->id}}" class="btn btn-small"><i class="icon-trash"></i></a>
-	                </span>
-	            </td>
 	        @endforeach
         </tbody>
       </table>

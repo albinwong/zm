@@ -200,12 +200,12 @@ button {
  
   @section('content')
   <div class="main"> 
-  @section('advert')
-  
-  @show
-   <div class="container"> 
-   <!-- 轮播 start-->
-   @section('lun')
+    
+    @include('home.goods.advert')
+   
+    <div class="container"> 
+    <!-- 轮播 start-->
+    @section('lun')
     <div class="banner"> 
       <div id="carousel-example-generic" class="carousel slide img-responsive" data-ride="carousel">
         <!-- Indicators -->
