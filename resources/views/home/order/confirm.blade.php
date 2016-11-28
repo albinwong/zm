@@ -33,6 +33,9 @@
 					<p>收货人: {{$v->name}}</p> 
 					<p>联系电话: {{$v->number}}</p>
 					<p>配送地址:{{getAreaName($v->sheng)}} {{getAreaName($v->shi)}} {{getAreaName($v->xian)}} {{$v->detail}}</p>
+					<p style = "float:right"><a href="/address/edit?id={{$v->id}}">修改&nbsp;&nbsp;</a></p>
+
+					<p style="float:right;"><a href="/address/delete?id={{$v->id}}">删除&nbsp;&nbsp;</a></p>
 				</div>
 				@endforeach
 			

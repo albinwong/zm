@@ -36,7 +36,6 @@
 	{
 		$res = DB::table('destoon_area')->where('areaid',$id)->first();
 		
-		
 		return $res->areaname;
 	}
 	function getOnePicByGoodsId($goods_id)
@@ -65,4 +64,5 @@
 				break;
 		}
 	}
+
  ?>
