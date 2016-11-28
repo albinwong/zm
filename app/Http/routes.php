@@ -118,6 +118,3 @@ Route::get('/assess/add','CommonController@comment');
 
 //留言管理
 Route::controller('/notes','NotesController');
-
-// 商品搜索
-// Route::get('/search','GoodsCOntroller@search');

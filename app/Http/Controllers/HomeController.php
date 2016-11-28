@@ -153,14 +153,13 @@ class HomeController extends Controller
      */
     public function detail($id)
     {
-        // dd($id);
         $goods = DB::table('cates')->get();
-        // dd($goods);
         // 根据id读取商品详细信息
         $one = DB::table('goods')->where('id',$id)->first();
         // dd($one);
         // 读取当前这个商品的图片信息
         $pics = DB::table('pics')->where('goods_id',$id)->first();
+        // dd($pics);
         if(!empty($one)){
             return view('home.goods.detail',['one'=>$one,'goods'=>$goods,'pics'=>$pics]);
             }else{

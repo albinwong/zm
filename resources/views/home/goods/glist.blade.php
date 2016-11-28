@@ -22,11 +22,11 @@
 	   	   	<div class="content_box"  style="margin-bottom:20px;">
 	   	   		
 	   	   	  	<div class="view view-fifth">
-		   	   	  	<a href="/detail?id={{$v->id}}">
+		   	   	  	<a href="/{{$v->id}}.html">
 		   	   	     	<img src="/homes/images/p1.jpg" class="img-responsive" alt=""> 
 		   	   	    </a>	
 			   	   	<div class="content_box-grid">
-			   	   	  	<a href="/detail?id={{$v->id}}"><p class="m_1">{{$v->name}}</p></a>
+			   	   	  	<a href="/{{$v->id}}.html"><p class="m_1">{{$v->name}}</p></a>
 			   	   	  	<div class="price">价格￥:
 					    	<span class="actual">{{$v->price}}</span>
 					  	</div>
