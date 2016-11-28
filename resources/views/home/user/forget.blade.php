@@ -18,24 +18,25 @@
 	}
 </style>
 <div class="form_mod">
-    <ul class="form_list">
-        <li class="item">
-            <span class="tit">登录名：</span>
-            <input id="username" class="" value="" placeholder="请输入邮箱全名" type="text">
-        </li>
-        <li class="item">
-            <span class="tit">验证码：</span>
-				<input class="fInput w93" value="" placeholder="" id="code" type="text">
-				<a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="35" id="codeImg" border="0"></a><span></span>
-				<a id="change_code" href="javascript:void(0);" class="form_prompt">换一换</a>
-                <span class="hid" id="codespan"><i class="W_icon icon_succ" id="codep"></i><i id="codemsg"></i></span>
-        </li>
-        <li class="item">
-            <div class="btn_mod col-sm-3">
-                <button>立即验证</button>
-            </div>	
-        </li>
-    </ul>
+    <form action="/forget" method="post">
+        <ul class="form_list">
+            <li class="item">
+                <span class="tit">邮&emsp;箱：</span>
+                <input name="email" placeholder="请输入邮箱全名" type="text">
+            </li>
+            <li class="item">
+                <span class="tit">验证码：</span>
+    				<input class="fInput w93" placeholder="请输入验证码" name="code" type="text">
+    				<a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新验证码" width="100" height="35" id="codeImg" border="0"></a><span></span>
+            </li>
+            {{csrf_field()}}
+            <li class="item">
+                <div class="btn_mod col-sm-3">
+                    <button>立即验证</button>
+                </div>	
+            </li>
+        </ul>
+    </form>
 </div>
 <div class="clearfix"></div>
 <script>  

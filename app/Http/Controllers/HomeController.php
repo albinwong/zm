@@ -28,6 +28,7 @@ class HomeController extends Controller
      */
     public function doregister(Request $request)
     {
+        // dd($request->all());
         // 表单验证
         $this->validate($request, [
             'username' =>'required|regex:/^\w{8,18}$/|unique:users,username',
@@ -43,7 +44,7 @@ class HomeController extends Controller
         if(session('milkcaptcha')!= $request->input('code')){
             return back()->with('error','验证码输入错误');
         }
-        $data = $request->except(['_token','repassword']);
+        $data = $request->except(['_token','repassword','code']);
         // 处理密码
         $data['password'] = Hash::make($data['password']);
         // 生成注册时间
@@ -58,7 +59,7 @@ class HomeController extends Controller
             Mail::send('home.emails', ['id'=>$user->id,'kd'=>$user->kd,'username'=>$user->username], function ($m) use ($user) {
                 $m->to($user->email, $user->username)->subject('您在追梦上的账号已创建，请激活您的账号!');
             });
-            return redirect('/login')->with('info','注册成功');
+            return redirect('/')->with('info','注册成功');
         }else{
             //回跳
             return back()->with('info','注册失败!');
@@ -79,9 +80,11 @@ class HomeController extends Controller
             return redirect('/')->with('warning','您的账号已激活,请勿重复操作!');
         }else{
             if($kd == $res->kd){
+                // 重新生成用户验证码
+                // $kd = str_random();
                 // 更新权限
-                $res = DB::table('users')->where('id',$id)->update(['auth'=>1]);
-                return redirect('/login')->with('info','恭喜您,已成功激活!');
+                $res = DB::table('users')->where('id',$id)->update(['auth'=>1,'kd'=>$kd]);
+                return redirect('/')->with('info','恭喜您,已成功激活!');
             }else{
                 return redirect('/')->with('warning','非法请求!');
             }
@@ -100,7 +103,9 @@ class HomeController extends Controller
     /**
      * 前台用户登录验证
      */
-    public function dologin(Request $request){
+    public function dologin(Request $request)
+    {
+
         //进行表单验证
         $this->validate($request,[
             'username'=>'required|regex:/^\w{8,18}$/',
@@ -114,12 +119,12 @@ class HomeController extends Controller
         ]);
 
         // 验证输入的验证码
-        if($request->input('code')== session('milkcaptcha')) {
+        if($request->input('code')!= session('milkcaptcha')) {
             return back()->with('error','您输入验证码错误');
         }
-
         //读取用户名信息
         $res = DB::table('users')->where('username',$request->input('username'))->first();
+        // 检测
         if(!$res){
             return back()->with('info','您输入用户名或密码错误');;
         }else{
@@ -146,12 +151,15 @@ class HomeController extends Controller
     /**
      * 商品详情
      */
-    public function detail(Request $request)
+    public function detail($id)
     {
-        $id = $request->input('id');
-        $goods = DB::table('goods')->get();
+        // dd($id);
+        $goods = DB::table('cates')->get();
         // dd($goods);
+        // 根据id读取商品详细信息
         $one = DB::table('goods')->where('id',$id)->first();
+        // dd($one);
+        // 读取当前这个商品的图片信息
         $pics = DB::table('pics')->where('goods_id',$id)->first();
         if(!empty($one)){
             return view('home.goods.detail',['one'=>$one,'goods'=>$goods,'pics'=>$pics]);
@@ -166,13 +174,23 @@ class HomeController extends Controller
      */
     public function glist(Request $request)
     {
-         $goods = DB::table('goods')->orderBy('id','desc')
-            ->select('goods.*','pics.path as paths')
-            ->join('pics','goods_id','=','goods.id')
-            ->get();
-
+        //读取数据
+        $goods = DB::table('goods')->orderBy('id','desc')->where(function($query) use ($request){
+        //获取关键字的内容
+        $k=$request->input('keyword');
+        if(!empty($k)){
+            $query->where('name','like','%'.$k.'%');
+        }
+        })->orWhere(function($query) use ($request){
+        //获取关键字的内容
+        $j = $request->input('cate_id');
+        // dd($j);
+        if(!empty($j)){
+            $query->where('cate_id','like','%'.$j.'%');
+        }
+        })->paginate($request->input('num', 20));
         $cate = DB::table('cates')->get();
-        return view('home.goods.glist',['goods'=>$goods,'cate'=>$cate]);
+        return view('home.goods.glist',['goods'=>$goods,'cate'=>$cate,'request'=>$request]);
     }
 
     
@@ -185,6 +203,88 @@ class HomeController extends Controller
         return view('home.user.forget');
     }
 
+
+    /**
+     * 密码找回验证
+     */
+    public function doforget(Request $request)
+    {
+        // 验证表单
+        $this->validate($request,[
+            'email'=>'required|regex:/^\w+@\w+\.\w+$/',
+            'code'=>'required|regex:/^\S{4,5}$/'
+            ],[
+            'email.required'=>'邮箱不能为空',
+            'email.regex'=>'邮箱验证输入有误',
+            'code.required'=>'验证码不能为空'
+            ]);
+        // 确认验证码
+        if(session('milkcaptcha')!= $request->input('code')){
+            return back()->with('error','验证码输入有误');
+        }else{
+            //查询输入的邮箱是否存在
+            $res = DB::table('users')->where('email',$request->input('email'))->first();
+            if($res){
+                 // 发送邮件
+                Mail::send('home.reset', ['id'=>$res->id,'kd'=>$res->kd,'username'=>$res->username], function ($m) use ($res) {
+                    $m->to($res->email, $res->username)->subject('【安全提醒】您在追梦订餐网上的账号有重置操作!');
+                });
+                //跳转
+                return redirect('/login')->with('info','邮件已发送至您邮箱,请注意查收!');    
+            }else{
+                return back()->with('error','邮箱不存在!');
+            }
+        
+        }
+    }
+
+    // 重置密码
+    public function reset(Request $request)
+    {
+        // 接收邮箱提交的信息
+        $id = $request->input('id');
+        $kd = $request->input('kd');
+        // 查询用户相关信息
+        $res = DB::table('users')->where('id',$id)->first();
+        // 判断用户的权限
+        if($res->auth == 0){
+            return redirect('/')->with('warning','您的账号暂未激活!');
+        }else{
+            if($kd != $res->kd){
+                return redirect('/')->with('warning','非法请求!');
+            }else{
+                // 提供密码
+                return view('home.user.reset',['res'=>$res]);
+            }
+        }
+    }
+
+
+    /**
+     * 重置用户密码
+     */
+    public function doreset(Request $request)
+    {
+        $this->validate($request,[
+            'password'=>'required|same:repassword'
+            ],[
+            'password.required'=>'密码不能为空',
+            'repassword.same'=>'两次密码不一致'
+            ]);
+        $data = $request->except(['_token','repassword']);
+        // 密码加密
+        $data['password'] = Hash::make($request->input('password'));
+        // 重新生成用户验证码
+        $data['kd'] = str_random();
+        // dd($data["password"]);
+
+        $res = DB::table('users')->where('id',$data['id'])->update(['password'=>$data['password'],'kd'=>$data['kd']]);
+        if($res){
+            return redirect('/')->with('info','密码更新成功!');
+        }else{
+            return back()->with('error','密码更新失败!');
+        }
+    }
 
     
 
