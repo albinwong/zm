@@ -73,7 +73,7 @@ button {
 <body>  
     <div class="login-box">  
         <h2 style="text-align:center">会员注册</h2>
-        <form action="/dologin" method="post">  
+        <form action="/register" method="post">  
             <div class="name">  
             用&nbsp;户&nbsp;名：
             <input type="text" name="username" placeholder="请输入您的用户名"><span></span>
@@ -97,7 +97,7 @@ button {
                 {{csrf_field()}}
             </div>
             <div class="login">  
-                <button>登录</button>  
+                <button type="submit">登录</button>  
             </div> 
         </form>  
     </div>  

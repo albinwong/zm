@@ -104,26 +104,6 @@
                                     </span>
                                 </a>
                             </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
                         </ul>
                         <div class="mws-dropdown-viewall">
                             <a href="#">View All Notifications</a>
@@ -155,28 +135,6 @@
                                 </a>
                             </li>
                             <li class="read">
-                                <a href="#">
-                                    <span class="sender">John Doe</span>
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
-                                <a href="#">
-                                    <span class="sender">John Doe</span>
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="unread">
                                 <a href="#">
                                     <span class="sender">John Doe</span>
                                     <span class="message">
@@ -306,6 +264,13 @@
                         <ul class="closed">
                             <li><a href="/frlink/add">添加链接</a></li>
                             <li><a href="/frlink/index">链接列表</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i> 留言管理</a>
+                        <ul class="closed">
+                            <li><a href="/notes/add">添加链接</a></li>
+                            <li><a href="/notes/index">留言列表</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -11,12 +11,19 @@ use DB;
 
 class LinkController extends Controller
 {
-	 public function getAdd(){
+    /**
+     * 添加友情链接
+     */
+	public function getAdd()
+    {
     	return view('admin.frlink.add');
     }
-    /*
-    	添加友情链接
+
+
+    /**
+     * 插入友情链接
      */
+
     public function postAdd(Request $request){
     	//进行表单验证
 		$this->validate($request,[

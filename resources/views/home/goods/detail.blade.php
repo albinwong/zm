@@ -23,6 +23,9 @@
 	.btn{
 		width:30px;
 		height:30px;
+
+	.media{
+		padding-top:20px;
 	}
 </style>
 <div class="col-md-9">
@@ -211,6 +214,7 @@
 
 		     <div class="col-md-8 pull-right" style="border:solid 0px red">
 		        <div id="myTabs">
+
 				  <ul class="nav nav-tabs" role="tablist">
 				    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">菜品介绍</a></li>
 				    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">菜品追溯</a></li>
@@ -225,12 +229,79 @@
 				  </div>
 				</div>
 			</div>
+					  <!-- Nav tabs -->
+					  <ul class="nav nav-tabs" role="tablist">
+					    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">菜品介绍</a></li>
+					    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">菜品追溯</a></li>
+					    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">菜品评价</a></li>
+					    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
+					  </ul>
+
+					  <!-- Tab panes -->
+					  <div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="home">{{$one->zuof}}</div>
+					    <div role="tabpanel" class="tab-pane" id="profile">菜品追溯内容</div>
+					    <div role="tabpanel" class="tab-pane" id="messages">
+							@foreach($data as $k=>$v)
+                            <div class="media">
+								<div class="col-md-2">
+									<a class="media-left media-middle" href="">
+                                		<img src="{{$v->profile}}" data-src="" style="width:40px;height:40px;" alt="" class="img-circle">
+                              		</a>
+                              		<br>
+                              		<div class="media-body">
+                               			<h4 class="media-heading"> {{$v->names}}</h4>
+                              		</div>
+								</div>  
+								<div class="col-md-6">                           
+	                                <div class="media-body" >
+	                                 <h5 class="media-heading" >{{$v->content}}</h5>
+	                                </div>
+	                                <br>
+	                                <div class="photo" id="tupian">
+	                                    <div class="media-body">
+	                                        <ul class="ul list-unstyled list-inline">
+	                                            <li data-src="{{$v->pics}}">
+	                                                <img src="{{$v->pics}}" width="40px;" alt="">
+	                                            </li>
+	                                        </ul> 
+	                                    </div>
+	                                    <div class="big-photo hide">
+	                                        <ul class="ul list-unstyled">
+	                                           <img src="{{$v->pics}}" width="200px;" alt="">
+	                                        </ul>
+	                                    </div>
+	                                </div>
+	                                <div class="media-body">
+	                                    {{date('Y年m月d日 H:i:s',$v->regtime)}}
+	                                </div>
+	                            </div>
+                            </div>
+                            <hr>
+                          @endforeach
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+					  </div>
+					  <script type="text/javascript">
+		      		$("#myTabs a").click(function (e) {
+					  e.preventDefault()
+					  $(this).tab('show') 
+					})
+						$('#myTabs a[href="#profile"]').tab('show');
+						$('#myTabs a:first').tab('show');
+						$('#myTabs a:last').tab('show');
+						$('#myTabs li:eq(2) a').tab('show');
+		      </script>
+
+					</div></div>
+
 		      <!-- 细说菜品  end -->
 				<div class="clearfix"> </div>
+
 		      	<div class="col-md-9 pull-right" style="border:solid 1px red ">
 		      	{{$one->detail}}
 		      </div>
-		   	<div class="clearfix"> </div>
+		   	  <div class="clearfix"> </div>
 			</div>
 				
 <div class="clearfix"> </div>   	

@@ -186,8 +186,10 @@ button {
       <div class="clearfix"></div> 
      </div> 
      <div class="search"> 
-      <input type="text" class="text" placeholder="请输入关键字" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入关键字';}" /> 
+     <form action="/glist" method="get">
+      <input type="text" class="text" placeholder="请输入关键字" value="{{old('keyword')}}" name="keyword" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入关键字';}" /> 
       <input type="submit" value="搜索" /> 
+     </form>
      </div> 
     </div> 
    </div> 
@@ -198,12 +200,12 @@ button {
  
   @section('content')
   <div class="main"> 
-  @section('advert')
-  
-  @show
-   <div class="container"> 
-   <!-- 轮播 start-->
-   @section('lun')
+    
+    @include('home.goods.advert')
+   
+    <div class="container"> 
+    <!-- 轮播 start-->
+    @section('lun')
     <div class="banner"> 
       <div id="carousel-example-generic" class="carousel slide img-responsive" data-ride="carousel">
         <!-- Indicators -->
@@ -273,13 +275,13 @@ button {
 		       ?>
 		        <ul>
 		       @foreach($cates as $k=>$v)
-		            <li><a href="#">{{$v->name}}</a>
+		            <li><a href="/glist?cate_id={{$v->id}}">{{$v->name}}</a>
 		                <ul>
 		                  @foreach($v->subcate as $a=>$b)
-		                  <li><a href="#" class="">{{$b->name}}</a>
+		                  <li><a href="/glist?cate_id={{$b->id}}" class="">{{$b->name}}</a>
 		                    <ul>
 		                      @foreach($b->subcate as $c=>$d)
-		                      <li><a href="#" class="thirdh">{{$d->name}}</a></li>
+		                      <li><a href="/glist?cate_id={{$d->id}}" class="thirdh">{{$d->name}}</a></li>
 		                      @endforeach
 		                    </ul>
 		                  </li>
