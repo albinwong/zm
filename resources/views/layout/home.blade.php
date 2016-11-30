@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/homes/css/bootstrap-theme.min.css">
   <script type="text/javascript" src="/homes/js/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script> 
+  <script type="text/javascript" src="/homes/js/moyan.js"></script> 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
   <script src="/homes/js/jquery.min.js"></script> 
   <!-- Custom Theme files --> 
@@ -619,19 +620,6 @@ ul,li {
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<script type="text/javascript">
-  $(function(){
-    $('#userLogin').click(function(){
-      $('.modal').modal();
-    }); 
-  });
-  function re_captcha() {
-    $url = "{{ URL('kit/captcha') }}";
-        $url = $url + "/" + Math.random();
-        document.getElementById('codeImg').src=$url;
-  }
-  
-</script> 
 <!-- 模态提示框 end-->
  </body>
 </html>

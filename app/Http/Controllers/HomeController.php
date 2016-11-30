@@ -138,7 +138,6 @@ class HomeController extends Controller
         }
     }
 
-
     /**
      * 用户订单
      */
@@ -156,9 +155,9 @@ class HomeController extends Controller
         $goods = DB::table('cates')->get();
         // 根据id读取商品详细信息
         $one = DB::table('goods')->where('id',$id)->first();
-        // dd($one);
         // 读取当前这个商品的图片信息
         $pics = DB::table('pics')->where('goods_id',$id)->first();
+
         $data = DB::table('comment')
                 ->select('comment.*','users.username as names','users.profile')
                 ->join('users','users.id','=','comment.user_id')->where('goods_id',$id)->get();
@@ -193,8 +192,6 @@ class HomeController extends Controller
         $cate = DB::table('cates')->get();
         return view('home.goods.glist',['goods'=>$goods,'cate'=>$cate,'request'=>$request]);
     }
-
-    
 
     /**
      * 密码找回
@@ -285,6 +282,15 @@ class HomeController extends Controller
         }else{
             return back()->with('error','密码更新失败!');
         }
+    }
+
+    /**
+     * 轮播前台显示
+     */
+    public static function lunbo(Request $request)
+    {
+        $res = DB::table('viwepager')->get();
+        return $res;
     }
 
     

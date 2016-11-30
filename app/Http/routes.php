@@ -49,6 +49,12 @@ Route::group(['middleware'=>'login'],function(){
 	//地址管理
 	Route::controller('addr','AddrController');
 
+	//后台留言管理
+	Route::controller('msg','MsgController');
+
+	// 轮播管理
+	Route::controller('viwe','ViwepagerController');
+
 });
 
 //======================前台========================
@@ -58,10 +64,6 @@ Route::group(['middleware'=>'login'],function(){
 Route::get('/', function () {
     return view('home');
 });
-
-/**
- * 前台
- */
 
 //商品列表
 Route::get('/glist','HomeController@glist');
@@ -87,7 +89,7 @@ Route::get('/login','HomeController@login');
 Route::post('/dologin','HomeController@dologin');
 
 
-// 下面我们可以设置相应的router访问这个验证码图片, 修改router.php：
+// 验证码图片
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
 
@@ -106,7 +108,7 @@ Route::post('/order/add','OrderController@add');
 Route::get('/order/delete','OrderController@delete');
 
 // 地址管理
-Route::get('/address/add','AddressController@add');//地址添加
+Route::get('/address/add','AddressController@add');
 Route::get('/address/get','AddressController@get');
 Route::post('/address/insert','AddressController@insert');
 // 地址的删除
@@ -124,7 +126,6 @@ Route::get('/center','UserController@center');
 Route::get('/order/index','OrderController@lists');
 
 //前台评价
-
 Route::get('/assess/add','CommonController@comment');
 
 //添加关注
@@ -145,3 +146,5 @@ Route::post('/selfuser/update','SelfinfoController@update');
 Route::controller('/notes','NotesController');
 //关于我们
 Route::controller('/us','UsController');
+//前台轮播显示
+Route::get('/test','HomeController@lunbo');

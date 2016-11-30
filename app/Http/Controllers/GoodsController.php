@@ -8,8 +8,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 
-
-
 class GoodsController extends Controller
 {
 	/**
@@ -109,7 +107,7 @@ class GoodsController extends Controller
 	                $v->name = str_repeat('&nbsp;', 10*$total). '|-----'.$v->name;
 	            }
         }
-        $id = $request->all();
+        $id = $request->input('id');
         // // dd($id);
         $goods = DB::table('goods')->where('id',$id)->first();
         $pics = DB::table('pics')->get();
@@ -160,4 +158,4 @@ class GoodsController extends Controller
         return redirect('/goods');
     }
    
-}   
+}

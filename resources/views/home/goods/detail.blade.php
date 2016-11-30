@@ -18,46 +18,46 @@
 <link rel="stylesheet" href="/homes/css/etalage.css">
 <script src="/homes/js/jquery.etalage.min.js"></script>
 <script src="/homes/js/jQuery.js"></script>
-<style type="text/css">
-	.media{
-		padding-top:20px;
-	}
-</style>
 <div class="col-md-9">
    <div class="single_image">
 	     <ul id="etalage" class="etalage" style="display: block; width: 314px; height: 552px;">
 			<li class="etalage_thumb thumb_1" style="display: none; background-image: none; opacity: 0;">
 				<a href="optionallink.html">
-					<img class="etalage_thumb_image" src="{{$pics->path}}" style="display: inline; width: 300px; height: 400px; opacity: 1;">
-					<img class="etalage_source_image" src="{{$pics->path}}" alt="">
+					<img class="etalage_thumb_image" src="/homes/images/s1.jpg" style="display: inline; width: 300px; height: 400px; opacity: 1;">
+					<img class="etalage_source_image" src="/homes/images/s1.jpg" alt="">
 				</a>
 			</li>
-			<li class="etalage_thumb thumb_2" style="background-image: none; display: none; opacity: 0;">
-				<img class="etalage_thumb_image" src="{{$pics->path}}" style="display: inline; width: 300px; height: 400px; opacity: 1;">
-				<img class="etalage_source_image" src="{{$pics->path}}" alt="">
+			<li class="etalage_thumb thumb_2 etalage_thumb_active" style="background-image: none; display: list-item; opacity: 1;">
+				<img class="etalage_thumb_image" src="/homes/images/s2.jpg" style="display: inline; width: 300px; height: 400px;">
+				<img class="etalage_source_image" src="/homes/images/s2.jpg" alt="">
 			</li>
-			<li class="etalage_thumb thumb_3" style="background-image: none; display: none; opacity: 0;">
-				<img class="etalage_thumb_image" src="{{$pics->path}}" style="display: inline; width: 300px; height: 400px; opacity: 1;">
-				<img class="etalage_source_image" src="{{$pics->path}}" alt="">
+			<li class="etalage_thumb thumb_3" style="background-image: none;">
+				<img class="etalage_thumb_image" src="/homes/images/s3.jpg" style="display: inline; width: 300px; height: 400px;">
+				<img class="etalage_source_image" src="/homes/images/s3.jpg" alt="">
 			</li>
-			<li class="etalage_thumb thumb_4" style="background-image: none; display: none; opacity: 0;">
-				<img class="etalage_thumb_image" src="{{$pics->path}}" style="display: inline; width: 300px; height: 400px; opacity: 1;">
-				<img class="etalage_source_image" src="{{$pics->path}}" alt="">
+			<li class="etalage_thumb thumb_4" style="background-image: none;">
+				<img class="etalage_thumb_image" src="/homes/images/s1.jpg" style="display: inline; width: 300px; height: 400px;">
+				<img class="etalage_source_image" src="/homes/images/s1.jpg" alt="">
 			</li>
-			<li class="etalage_thumb thumb_5 etalage_thumb_active" style="background-image: none; display: list-item; opacity: 1;">
-				<img class="etalage_thumb_image" src="{{$pics->path}}" style="display: inline; width: 300px; height: 400px; opacity: 1;">
-				<img class="etalage_source_image" src="{{$pics->path}}" alt="">
+			<li class="etalage_thumb thumb_5" style="background-image: none;">
+				<img class="etalage_thumb_image" src="/homes/images/s2.jpg" style="display: inline; width: 300px; height: 400px;">
+				<img class="etalage_source_image" src="/homes/images/s2.jpg" alt="">
 			</li>
-			<li class="etalage_thumb thumb_6" style="background-image: none; display: none; opacity: 0;">
-				<img class="etalage_thumb_image" src="{{$pics->path}}" style="display: inline; width: 300px; height: 400px; opacity: 1;">
-				<img class="etalage_source_image" src="{{$pics->path}}" alt="">
+			<li class="etalage_thumb thumb_6" style="background-image: none;">
+				<img class="etalage_thumb_image" src="/homes/images/s3.jpg" style="display: inline; width: 300px; height: 400px;">
+				<img class="etalage_source_image" src="/homes/images/s3.jpg" alt="">
 			</li>
 			<li class="etalage_thumb thumb_7" style="background-image: none; display: none; opacity: 0;">
-				<img class="etalage_thumb_image" src="{{$pics->path}}" style="display: inline; width: 300px; height: 400px; opacity: 1;">
-				<img class="etalage_source_image" src="{{$pics->path}}" alt="">
+				<img class="etalage_thumb_image" src="/homes/images/s1.jpg" style="display: inline; width: 300px; height: 400px; opacity: 1;">
+				<img class="etalage_source_image" src="/homes/images/s1.jpg" alt="">
 			</li>
-		<li class="etalage_magnifier" style="margin: 0px; padding: 0px; display: none; left: 6px; top: 67px; opacity: 0;"><div style="margin: 0px; padding: 0px; width: 195px; height: 179px;"><img style="margin: 0px; padding: 0px; width: 300px; height: 400px; display: inline; left: 0px; top: -61px;" src="{{$pics->path}}"></div></li><li class="etalage_icon" style="display: list-item; top: 290px; left: 20px; opacity: 1;">&nbsp;</li><li class="etalage_hint" style="display: none; margin: 0px; top: -15px; right: -15px;">&nbsp;</li><li class="etalage_zoom_area" style="margin: 0px; left: 324px; display: none; background-image: none; opacity: 0;"><div class="etalage_description" style="width: 546px; bottom: 6px; left: 6px; opacity: 0.7; display: none;"></div><div style="width: 586px; height: 538px;"><img class="etalage_zoom_img" style="width: 900px; height: 1200px; left: -252.644px; top: -500.371px;" src="{{$pics->path}}"></div></li><li class="etalage_small_thumbs" style="width: 314px; top: 424px;"><ul style="width: 1072px;"><li class="etalage_smallthumb_navtoend" style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -432px;"><img class="etalage_small_thumb" src="/homes/images/s1.jpg" style="width: 90px; height: 120px;" width="90"></li><li style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -432px;" class=""><img class="etalage_small_thumb" src="/homes/images/s1.jpg" style="width: 90px; height: 120px;" width="90"></li><li style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -432px;" class=""><img class="etalage_small_thumb" src="{{$pics->path}}" style="width: 90px; height: 120px;" width="90"></li><li style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -432px;" class=""><img class="etalage_small_thumb" src="/homes/images/s3.jpg" style="width: 90px; height: 120px;" width="90"></li><li style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -432px;" class="etalage_smallthumb_first"><img class="etalage_small_thumb" src="/homes/images/s1.jpg" style="width: 90px; height: 120px;" width="90"></li><li style="margin: 0px 10px 0px 0px; opacity: 1; left: -432px;" class="etalage_smallthumb_active"><img class="etalage_small_thumb" src="{{$pics->path}}" style="width: 90px; height: 120px;" width="90"></li><li style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -432px;" class="etalage_smallthumb_last"><img class="etalage_small_thumb" src="{{$pics->path}}" style="width: 90px; height: 120px;" width="90"></li><li style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -432px;" class=""><img class="etalage_small_thumb" src="{{$pics->path}}" style="width: 90px; height: 120px;" width="90"></li><li class="etalage_smallthumb_navtostart" style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -432px;"><img class="etalage_small_thumb" src="{{$pics->path}}" style="width: 90px; height: 120px;" width="90"></li></ul></li></ul>
-	    </div>
+			<li class="etalage_magnifier" style="margin: 0px; padding: 0px; display: none; left: 6px; top: 227px; opacity: 1;"><div style="margin: 0px; padding: 0px; width: 195px; height: 179px;"><img style="margin: 0px; padding: 0px; width: 300px; height: 400px; display: inline; left: 0px; top: -221px;" src="/homes/images/s2.jpg"></div></li>
+			<li class="etalage_icon" style="display: list-item; top: 290px; left: 20px; opacity: 1;">&nbsp;</li><li class="etalage_hint" style="display: none; margin: 0px; top: -15px; right: -15px;">&nbsp;</li><li class="etalage_zoom_area" style="margin: 0px; left: 324px; display: none; background-image: none; opacity: 0;">
+				<div class="etalage_description" style="width: 546px; bottom: 6px; left: 6px; opacity: 0.7; display: none;"></div>
+				<div style="width: 586px; height: 538px;"><img class="etalage_zoom_img" style="width: 900px; height: 1200px; left: 0px; top: -662px;" src="/homes/images/s2.jpg"></div>
+			</li>
+		</ul>
+    </div>
 	    <!-- 菜品  start -->
 	    <div class="single_right">
 	    	<br>
@@ -78,10 +78,6 @@
 				}
 			</style>
 			<div class="btn_form">
-			<ul class="product_but"> 
-	             <button id="guan" style="background:#FFFFF2;width:100px;height:40px;border:1px solid #ff730e;border-radius: 6px;letter-spacing: 15px;" class="pull-right"><li class="like">关注</a><i class="like1"> </i></li> </button>
-	             <div class="clearfix"></div> 
-            </ul>
 			   <form action="/cart/add" method="post">
 			   		<span class="">订购份数:</span>
 			   		<div class="btn-group btn-group-sm">
@@ -202,54 +198,14 @@
 					  <!-- Nav tabs -->
 					  <ul class="nav nav-tabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">菜品介绍</a></li>
-					    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">菜品追溯</a></li>
 					    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">菜品评价</a></li>
 					    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
 					  </ul>
 
 					  <!-- Tab panes -->
 					  <div class="tab-content">
-					    <div role="tabpanel" class="tab-pane active" id="home">{{$one->zuof}}</div>
-					    <div role="tabpanel" class="tab-pane" id="profile">菜品追溯内容</div>
-					    <div role="tabpanel" class="tab-pane" id="messages">
-							@foreach($data as $k=>$v)
-                            <div class="media">
-								<div class="col-md-2">
-									<a class="media-left media-middle" href="">
-                                		<img src="{{$v->profile}}" data-src="" style="width:40px;height:40px;" alt="" class="img-circle">
-                              		</a>
-                              		<br>
-                              		<div class="media-body">
-                               			<h4 class="media-heading"> {{$v->names}}</h4>
-                              		</div>
-								</div>  
-								<div class="col-md-6">                           
-	                                <div class="media-body" >
-	                                 <h5 class="media-heading" >{{$v->content}}</h5>
-	                                </div>
-	                                <br>
-	                                <div class="photo" id="tupian">
-	                                    <div class="media-body">
-	                                        <ul class="ul list-unstyled list-inline">
-	                                            <li data-src="{{$v->pics}}">
-	                                                <img src="{{$v->pics}}" width="40px;" alt="">
-	                                            </li>
-	                                        </ul> 
-	                                    </div>
-	                                    <div class="big-photo hide">
-	                                        <ul class="ul list-unstyled">
-	                                           <img src="{{$v->pics}}" width="200px;" alt="">
-	                                        </ul>
-	                                    </div>
-	                                </div>
-	                                <div class="media-body">
-	                                    {{date('Y年m月d日 H:i:s',$v->regtime)}}
-	                                </div>
-	                            </div>
-                            </div>
-                            <hr>
-                          @endforeach
-					    </div>
+					    <div role="tabpanel" class="tab-pane active" id="home">{!!$one->detail!!}</div>
+					    <div role="tabpanel" class="tab-pane" id="messages">菜品评价</div>
 					    <div role="tabpanel" class="tab-pane" id="settings">...</div>
 					  </div>
 					  <script type="text/javascript">
@@ -267,10 +223,6 @@
 		      <!-- 细说菜品  end -->
 
 				<div class="clearfix"> </div>
-				
-		      	
-		      
-		   	<div class="clearfix"> </div>
 			</div>
 				
 <div class="clearfix"> </div>   	

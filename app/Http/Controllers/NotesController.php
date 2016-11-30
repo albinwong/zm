@@ -74,38 +74,6 @@ class NotesController extends Controller
 		})->paginate($request->input('num', 10));
     	return view('home.notes.index',['res'=>$res,'request'=>$request]);
     }
-
-    /**
-     * 后台管理页面
-     */
-    public function getIndex(Request $request)
-    {
-        // 查询留言
-        $res = DB::table('notes')->orderBy('id','desc')->where(function($query) use ($request){
-        //获取关键字的内容
-        $k=$request->input('keyword');
-        if(!empty($k)){
-            $query->where('username','like','%'.$k.'%');
-        }
-        })->paginate($request->input('num', 10));
-        return view('admin.notes.index',['res'=>$res,'request'=>$request]);
-    }
-
-    /**
-     * 编辑回复留言
-     */
-    public function getEdit(Request $request)
-    {
-
-    }
-
-
-    /**
-     * 删除留言
-     */
-    public function getDetele(Request $request)
-    {
-
-    }
+   
 
 }
