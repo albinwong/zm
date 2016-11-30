@@ -105,7 +105,7 @@ Route::post('/order/confirm','OrderController@doconfirm');
 Route::get('/order/delete','OrderController@delete');
 
 // 地址管理
-Route::get('/address/add','AddressController@add');//地址添加
+Route::get('/address/add','AddressController@add');
 Route::get('/address/get','AddressController@get');
 Route::post('/address/insert','AddressController@insert');
 // 地址的删除
