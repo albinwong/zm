@@ -1,0 +1,25 @@
+.col-md-4, .col-md-1,.col-md-2,.col-md-3{
+	border:solid 1px #ddd;
+	height:100px;
+}
+
+.col-md-12, .col-lg-4, .col-lg-1,.col-lg-2,.col-lg-3, .col-lg-3, .col-md-6, .col-sm-12, .col-xs-12{
+	border:solid 1px yellowgreen;
+	height:100px;
+}
+.text-red{
+	color:red;
+}
+.padding-ten{
+	padding:10px;
+}
+.height-auto{
+	height:auto;
+}
+.hide{
+	display:none;
+}
+
+.border-red{
+	border:solid 1px red;
+}

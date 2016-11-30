@@ -1,6 +1,6 @@
 
 #MainPromotionBanner #SlidePlayer {position:relative;margin: 0 auto;}
-#MainPromotionBanner .Slides{padding: 0;margin: 0;list-style: none;height: 190px;overflow: hidden;}
+#MainPromotionBanner .Slides{padding: 0;margin: 0;list-style: none;height: 199:11 2016/11/280px;overflow: hidden;}
 #MainPromotionBanner .Slides li {float: left;width: 120px;height: 190px;}
 #MainPromotionBanner .Slides img{border:0;display: block;width: 120px;height: 190px;}
 #MainPromotionBanner .SlideTriggers{margin: 0;padding: 0;list-style: none; position: absolute; top: 165px; right: 0px;z-index: 10;height: 25px;}
