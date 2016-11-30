@@ -50,7 +50,7 @@
         </div>
         <div class="mws-panel-body no-padding">
             <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-             <form action="/admin/frlink/index" method="get">
+             <form action="/frlink/index" method="get">
             <div id="DataTables_Table_1_length" class="dataTables_length">
                 <label>显示
                 <select size="1" name="num" aria-controls="DataTables_Table_1">

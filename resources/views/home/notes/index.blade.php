@@ -35,7 +35,7 @@
   <div class="divider text-left"></div>
  
   <pre style="color:red;display:@if(empty($v->reply)) none @else block @endif">
-  	<strong class="pull-left" style="font-size:12px">管理回复:</strong><p><br>{!!$v->reply!!}</p>
+  	<strong class="pull-left" style="font-size:12px">管理回复:</strong><p><br>&emsp;&emsp;{!!$v->reply!!}</p>
   </pre>
 </div>
 @endforeach

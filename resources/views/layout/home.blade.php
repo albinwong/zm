@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/homes/css/bootstrap-theme.min.css">
   <script type="text/javascript" src="/homes/js/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script> 
+  <script type="text/javascript" src="/homes/js/moyan.js"></script> 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
   <script src="/homes/js/jquery.min.js"></script> 
   <!-- Custom Theme files --> 
@@ -22,7 +23,7 @@
   <!--webfonts--> 
   <link href="http://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" type="image/x-icon" href="/homes/images/logo.ico" media="screen" />
-  <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script>
   <style type="text/css">  
 .login{
     padding:20px;
@@ -66,7 +67,7 @@ ul,li {
   opacity: 0.7;
 }
 
-button {
+.login button {
     cursor: pointer;
     width: 100%;
     height: 44px;
@@ -515,8 +516,8 @@ button {
      <ul class="list1"> 
       <li><a href="/">主页</a></li> 
       <li><a href="#">关于我们</a></li> 
-      <li><a href="#">新浪微博</a></li> 
-      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes">在线客服</a></li> 
+      <li><a href="http://weibo.com/319333577/home?wvr=5&topnav=1&wvr=6&mod=logo#_rnd1480332445151">新浪微博</a></li> 
+      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes" target="_blank">在线客服</a></li> 
       <li><a href="/admin" target="_blank">管理中心</a></li> 
       <li><a href="#">加入我们</a></li> 
      </ul> 
@@ -543,7 +544,7 @@ button {
      </ul> 
     </div> 
     <div class="footer-grid footer-grid4"> 
-     <h3 class="m_2">Share to</h3> 
+     <h3 class="m_2">分享至</h3> 
      <ul class="footer_social"> 
       <div class="bshare-custom icon-medium">
         <a title="分享到QQ好友" class="bshare-qqim">
@@ -582,7 +583,7 @@ button {
     <div class="clearfix"> 
     </div> 
     <div class="copy col-md-offset-4"> 
-     <p>Copyright &copy; 2016.ZMXQN Co.Ltd All rights reserved.</p> 
+     <p>Copyright &copy; 2016.zm Co.,Ltd All rights reserved.</p> 
     </div> 
    </div> 
   </div> 
@@ -594,7 +595,7 @@ button {
     <div class="modal-content">
         <!-- 模态表单start -->
         <div class="login-box">  
-        <h1 style="text-align:center">会员登录</h1><br><br>
+        <h1 style="text-align:center;color:red;">会员登录</h1><br><br>
         <form action="/dologin" method="post">  
             <div class="name">  
             用户名：
@@ -619,19 +620,6 @@ button {
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<script type="text/javascript">
-  $(function(){
-    $('#userLogin').click(function(){
-      $('.modal').modal();
-    }); 
-  });
-  function re_captcha() {
-    $url = "{{ URL('kit/captcha') }}";
-        $url = $url + "/" + Math.random();
-        document.getElementById('codeImg').src=$url;
-  }
-  
-</script> 
 <!-- 模态提示框 end-->
  </body>
 </html>

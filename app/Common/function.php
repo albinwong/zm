@@ -65,4 +65,18 @@
 				break;
 		}
 	}
+
+	// 判断留言的类型
+	function getNotesType($id)
+	{
+		switch($id){
+			case '1':return '投诉';break;
+			case '2':return '建议';break;
+			case '3':return '意见';break;
+			default:return '咨询';break;
+		}
+	}
+
+
+
  ?>

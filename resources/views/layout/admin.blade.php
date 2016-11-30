@@ -69,97 +69,15 @@
                 
             </div>
         </div>
-        <!-- {{session('uid')}} -->
         <!-- User Tools (notifications, logout, profile, change password) -->
         <div id="mws-user-tools" class="clearfix">
-        
-            <!-- Notifications -->
-            <div id="mws-user-notif" class="mws-dropdown-menu">
-                <a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-exclamation-sign"></i></a>
-                
-                <!-- Unread notification count -->
-                <span class="mws-dropdown-notif">35</span>
-                
-                <!-- Notifications dropdown -->
-                <div class="mws-dropdown-box">
-                    <div class="mws-dropdown-content">
-                        <ul class="mws-notifications">
-                            <li class="read">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="read">
-                                <a href="#">
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="mws-dropdown-viewall">
-                            <a href="#">View All Notifications</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Messages -->
-            <div id="mws-user-message" class="mws-dropdown-menu">
-                <a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-envelope"></i></a>
-                
-                <!-- Unred messages count -->
-                <span class="mws-dropdown-notif">35</span>
-                
-                <!-- Messages dropdown -->
-                <div class="mws-dropdown-box">
-                    <div class="mws-dropdown-content">
-                        <ul class="mws-messages">
-                            <li class="read">
-                                <a href="#">
-                                    <span class="sender">John Doe</span>
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="read">
-                                <a href="#">
-                                    <span class="sender">John Doe</span>
-                                    <span class="message">
-                                        Lorem ipsum dolor sit amet
-                                    </span>
-                                    <span class="time">
-                                        January 21, 2012
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="mws-dropdown-viewall">
-                            <a href="#">View All Messages</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             <!-- User Information and functions section -->
             <div id="mws-user-info" class="mws-inset">
                 <!-- User Photo -->
                 <div id="mws-user-photo">
                     <?php 
                         $res = DB::table('users')->where('id',session('uid'))->first();
-                        // if(empty($res)) return false;
+                        if(empty($res))     return false;
                     ?>
                         <img src="{{$res->profile}}" alt="User Photo">
                 </div>
@@ -269,8 +187,14 @@
                     <li>
                         <a href="#"><i class="icon-list"></i> 留言管理</a>
                         <ul class="closed">
-                            <li><a href="/notes/add">添加链接</a></li>
-                            <li><a href="/notes/index">留言列表</a></li>
+                            <li><a href="/msg/index">留言列表</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i> 轮播管理</a>
+                        <ul class="closed">
+                            <li><a href="/viwe/add">添加轮播</a></li>
+                            <li><a href="/viwe/index">轮播列表</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -287,10 +211,9 @@
             
             </div>
             <!-- Inner Container End -->
-                       
             <!-- Footer -->
             <div id="mws-footer">
-                Copyright Your Website 2012. All Rights Reserved.
+                Copyright &copy; zm.com 2016. All Rights Reserved.
             </div>
             
         </div>

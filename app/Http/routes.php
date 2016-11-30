@@ -47,6 +47,12 @@ Route::group(['middleware'=>'login'],function(){
 	//广告管理
 	Route::controller('advert','AdvertController');
 
+	//后台留言管理
+	Route::controller('msg','MsgController');
+
+	// 轮播管理
+	Route::controller('viwe','ViwepagerController');
+
 });
 
 //======================前台========================
@@ -85,7 +91,7 @@ Route::get('/login','HomeController@login');
 Route::post('/dologin','HomeController@dologin');
 
 
-// 下面我们可以设置相应的router访问这个验证码图片, 修改router.php：
+// 验证码图片
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
 // 友情链接显示
@@ -114,7 +120,6 @@ Route::get('/order','OrderController@lists');
 
 
 //前台评价
-
 Route::get('/assess/add','CommonController@comment');
 
 
@@ -127,5 +132,8 @@ Route::get('/caiji','CaipuController@index');
 Route::get('/review','CommonController@review');
 Route::post('/review','CommonController@postReview');
 
-//留言管理
+//前台留言管理
 Route::controller('/notes','NotesController');
+
+//前台轮播显示
+Route::get('/test','HomeController@lunbo');

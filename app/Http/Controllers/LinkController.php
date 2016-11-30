@@ -61,7 +61,7 @@ class LinkController extends Controller
         //获取关键字的内容
         $k = $request->input('keyword');
         if(!empty($k)){
-            $query->where('linkename','like','%'.$k.'%');
+            $query->where('linkname','like','%'.$k.'%');
         }
         })->paginate($request->input('num', 10));
         return view('admin.frlink.index',['list'=>$data,'request'=>$request->all()]);

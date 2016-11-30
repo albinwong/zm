@@ -109,7 +109,7 @@ class GoodsController extends Controller
 	                $v->name = str_repeat('&nbsp;', 10*$total). '|-----'.$v->name;
 	            }
         }
-        $id = $request->all();
+        $id = $request->input('id');
         // // dd($id);
         $goods = DB::table('goods')->where('id',$id)->first();
         $pics = DB::table('pics')->get();
