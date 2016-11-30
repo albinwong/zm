@@ -135,7 +135,7 @@ ul,li {
                 }else{
                   echo "&emsp;<a href='/login' id='userLogin' onclick='return false;' style='text-decoration:none;color:#abc'>请登录</a> | <a href='/register' style='text-decoration:none;color:red;'>免费注册</a>";
                 }?>
-            </li><li>&nbsp;<a href="#" style="color:#abc">个人中心</a></li><li>&nbsp;<a href="/order" style="color:#abc">我的订单</a></li>
+            </li><li>&nbsp;<a href="/selfuser/info" style="color:#abc">个人中心</a></li><li>&nbsp;<a href="/order/index" style="color:#abc">我的订单</a></li>
           </ul>
       </div>
       </div>
@@ -175,7 +175,7 @@ ul,li {
          </ul> 
          <ul class="shopping_cart login">
          <a href="cart"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
-         <a href="order"><li class="shop_right"><span>我的订单</span></li></a>
+         <a href="/order/index"><li class="shop_right"><span>我的订单</span></li></a>
          <div class="clearfix"> </div>
         </ul>
          <div class="clearfix"></div> 

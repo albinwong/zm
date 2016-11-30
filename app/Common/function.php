@@ -36,7 +36,6 @@
 	{
 		$res = DB::table('destoon_area')->where('areaid',$id)->first();
 		
-		
 		return $res->areaname;
 	}
 	function getOnePicByGoodsId($goods_id)
@@ -66,6 +65,7 @@
 		}
 	}
 
+<<<<<<< HEAD
 	// 判断留言的类型
 	function getNotesType($id)
 	{
@@ -79,4 +79,6 @@
 
 
 
+=======
+>>>>>>> e2a871dfe7dc8e2d78a6ede5c482540f3045885e
  ?>

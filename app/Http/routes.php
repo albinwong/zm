@@ -106,11 +106,19 @@ Route::get('/cart','CartController@index');
 Route::post('/order/add','OrderController@add');
 Route::get('/order/confirm','OrderController@confirm');
 Route::post('/order/confirm','OrderController@doconfirm');
+Route::get('/order/delete','OrderController@delete');
 
-
-Route::get('/address/add','AddressController@add');
+// 地址管理
+Route::get('/address/add','AddressController@add');//地址添加
 Route::get('/address/get','AddressController@get');
 Route::post('/address/insert','AddressController@insert');
+// 地址的删除
+Route::get('/address/delete','AddressController@del');
+// 跳转地址的修改
+Route::get('/address/edit','AddressController@edit');
+// 执行修改
+Route::post('/address/update','AddressController@update');
+
 
 //个人中心
 Route::get('/center','UserController@center');
@@ -132,7 +140,16 @@ Route::get('/caiji','CaipuController@index');
 Route::get('/review','CommonController@review');
 Route::post('/review','CommonController@postReview');
 
+<<<<<<< HEAD
 //前台留言管理
+=======
+// 前台用户查看信息
+Route::get('/selfuser/info','SelfInfoController@info');
+Route::get('/selfuser/edit','SelfInfoController@edit');
+Route::post('/selfuser/update','SelfInfoController@update');
+
+//留言管理
+>>>>>>> e2a871dfe7dc8e2d78a6ede5c482540f3045885e
 Route::controller('/notes','NotesController');
 
 //前台轮播显示

@@ -107,10 +107,22 @@ class OrderController extends Controller
 			// 读取订单信息
 			 $orders = DB::table('orders')->where('user_id',session('uid'))->get();
 			foreach($orders as $k => $v){
-				$v->$goods = DB::table('goods_order')->join('goods','goods.id','=','goods_order.goods_id')->where('goods_order.order_id',$v->id)->get();
+				$v->goods = DB::table('goods_order')->join('goods','goods.id','=','goods_order.goods_id')->where('goods_order.order_id',$v->id)->get();
 			}
-			
 			// 显示模板
 			 return view('home.order.list',['orders'=>$orders]);
 		}
-}
+		public function delete(Request $request)
+		{
+			$id = $request->input('id');
+			// dd($id);
+	        $res = DB::table('orders')->where('id',$id)->delete();
+	        // dd($res);
+	        if($res){
+	            return redirect('/order/index')->with('info','删除成功');
+	        }else{
+	            return back()->with('info','删除失败');
+			}
+
+		}
+} 
