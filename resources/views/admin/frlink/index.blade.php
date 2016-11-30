@@ -50,12 +50,12 @@
         </div>
         <div class="mws-panel-body no-padding">
             <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
-             <form action="/admin/frlink/index" method="get">
+             <form action="/frlink/index" method="get">
             <div id="DataTables_Table_1_length" class="dataTables_length">
                 <label>显示
                 <select size="1" name="num" aria-controls="DataTables_Table_1">
                    
-                    <option value="5" @if(!empty($request['num']) && $request['num']==5)selected @endif>5</option>
+                    <option value="10" @if(!empty($request['num']) && $request['num']==10)selected @endif>10</option>
                     <option value="25" @if(!empty($request['num']) && $request['num']==25) selected @endif>25</option>
                     <option value="50" @if(!empty($request['num']) && $request['num']==50) selected @endif>50</option>
                     <option value="100" @if(!empty($request['num']) && $request['num']==100) selected @endif>100</option>
@@ -109,7 +109,7 @@
             <div class="dataTables_info" id="DataTables_Table_1_info">
             </div>
             <div  class="dataTables_paginate paging_full_numbers page" id="DataTables_Table_1_paginate">
-                 <div id = 'pages'>{!!$list->appends($request)->render()!!}</div>
+                 {!!$list->appends($request)->render()!!}
                     </div>
               </div>
            </div>

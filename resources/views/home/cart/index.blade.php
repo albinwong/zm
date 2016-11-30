@@ -84,7 +84,7 @@
 					<td class="cart-product-quantity">
 						<div class="quantity clearfix spinner">
 							<a class="minus"><b>-</b></a>
-							<input name="num"  value="{{$v['num']}}" class="qty" type="text">
+							<input name="data[{{$v['goods_id']}}][num]"  value="{{$v['num']}}" class="qty" type="text">
 							<a  class="plus"><b>+</b></a>
 							<input type="hidden" name="data[{{$v['goods_id']}}][kouwei]" value="{{$v['kouwei']}}">
 						</div>

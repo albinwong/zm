@@ -4,10 +4,10 @@
 <style type="text/css">
 	.dd{
 		float:right;
-		margin-top: 5px;
-		
+		margin-left: 10px;
 		
 	}
+
 </style>
 <section id="content">
 	<div class="content-wrap" style="padding:20px;">
@@ -22,7 +22,7 @@
 					<a href="/selfuser/edit" class="list-group-item">
 						修改个人信息
 					</a>
-					<a href="/order/index" class="list-group-item active">
+					<a href="/order/list " class="list-group-item active">
 						订单
 					</a>
 					<a href="/address/add" class="list-group-item">
@@ -66,13 +66,12 @@
                     @endforeach
 	 				
                </div>
-               
-               <!-- <button type="button" class="btn btn-default btn-lg">
-  					<span class="glyphicon glyphicon-star"></span>取消订单
-				</button -->
-           </div>
-
-            	<div><a href="/order/delete?id={{$v->id}}"><input class="dd" type="submit" value="取消订单"></a></div><br><br><br>
+     
+           	</div>
+          	<div id = "dd"><a href="/order/?id={{$v->id}}"><input class="dd" type="submit" value="去付款"></a></div>
+          	<div id = "dd"><a href="/order/delete?id={{$v->id}}"><input class="dd" type="submit" value="取消订单"></a></div>
+          	
+          	
             @endforeach
 		</div>
 		

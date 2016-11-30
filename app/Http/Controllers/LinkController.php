@@ -14,9 +14,9 @@ class LinkController extends Controller
     /**
      * 添加友情链接
      */
-	public function getAdd()
+    public function getAdd()
     {
-    	return view('admin.frlink.add');
+        return view('admin.frlink.add');
     }
 
 
@@ -25,14 +25,14 @@ class LinkController extends Controller
      */
 
     public function postAdd(Request $request){
-    	//进行表单验证
-		$this->validate($request,[
-			'url'=>'required|regex:/^[a-zA-z]+:\/\/[^\s]*$/|unique:frlink,url'
-		],[
-			'url.required'=>'连接地址不能为空',
-			'url.regex'=>'连接地址格式不正确',
-			'url.unique'=>'连接地址已存在'
-		]);
+        //进行表单验证
+        $this->validate($request,[
+            'url'=>'required|regex:/^[a-zA-z]+:\/\/[^\s]*$/|unique:frlink,url'
+        ],[
+            'url.required'=>'连接地址不能为空',
+            'url.regex'=>'连接地址格式不正确',
+            'url.unique'=>'连接地址已存在'
+        ]);
         $res = $request->except('_token');
         // echo $res->hasFile('logo');die;
 
@@ -54,23 +54,23 @@ class LinkController extends Controller
         
     }
 
-		// 查看友情链接
+        // 查看友情链接
     public function getIndex(Request $request){
         // 通过数据库查询就查询的数据传过去
         $data = DB::table('frlink')->orderBy('id','asc')->where(function($query) use ($request){
         //获取关键字的内容
         $k = $request->input('keyword');
         if(!empty($k)){
-            $query->where('linkename','like','%'.$k.'%');
+            $query->where('linkname','like','%'.$k.'%');
         }
         })->paginate($request->input('num', 10));
         return view('admin.frlink.index',['list'=>$data,'request'=>$request->all()]);
     }
 
 
-	//友情链接修改
+    //友情链接修改
     public function getEdit(Request $request){
-    	$id=$request->input('id');
+        $id=$request->input('id');
         $data =DB::table('frlink')->where('id',$id)->first();
         // dd($data);
         return view('admin.frlink.edit',['list'=>$data]);
@@ -78,7 +78,7 @@ class LinkController extends Controller
 
     // 进行友情链接的修改
     public function postEdit(Request $request){
-    	$id = $request->input('id');
+        $id = $request->input('id');
         // dd($request);
         $res = $request->except('_token');
         // 将获得的信息更新的数据库中
@@ -91,9 +91,9 @@ class LinkController extends Controller
     }
 
 
-	//删除友情链接
+    //删除友情链接
     public function getDelete(Request $request){
-    	$id = $request->input('id');
+        $id = $request->input('id');
         $res = DB::table('frlink')->where('id',$id)->delete();
         if($res){
             return redirect('/frlink/index')->with('info','删除成功');

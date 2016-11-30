@@ -18,10 +18,17 @@ class AddressController extends Controller
 	}
 	public function insert(Request $request)
 	{ 
+		$this->validate($request,[
+			
+			'number'=>'regex:/^1[3-8]\d{9}$/'
+			],[
+			
+			'number.regex'=>'手机号格式不正确'
+			]);
 		// 数据检测
 		// 插入数据库 
 		$data = $request->except(['_token']);
-		
+		// dd($data);
 
 		$data['user_id'] = session('uid');
 		// 执行插入

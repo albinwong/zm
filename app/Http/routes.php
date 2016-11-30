@@ -46,6 +46,8 @@ Route::group(['middleware'=>'login'],function(){
 	
 	//广告管理
 	Route::controller('advert','AdvertController');
+	//地址管理
+	Route::controller('addr','AddrController');
 
 });
 
@@ -88,18 +90,19 @@ Route::post('/dologin','HomeController@dologin');
 // 下面我们可以设置相应的router访问这个验证码图片, 修改router.php：
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
+
 // 友情链接显示
 Route::get('/links', 'LinkController@show');
 
 //加入购物车操作
 Route::post('/cart/add','CartController@add');
 Route::get('/cart','CartController@index');
-
+Route::get('/cart/delete','CartController@delete');
 
 //订单创建
 Route::post('/order/add','OrderController@add');
-Route::get('/order/confirm','OrderController@confirm');
-Route::post('/order/confirm','OrderController@doconfirm');
+ Route::post('/order/confirm','OrderController@doconfirm');
+ Route::get('/order/confirm','OrderController@confirm');
 Route::get('/order/delete','OrderController@delete');
 
 // 地址管理
@@ -118,13 +121,11 @@ Route::post('/address/update','AddressController@update');
 Route::get('/center','UserController@center');
 
 // 订单列表
-Route::get('/order','OrderController@lists');
-
+Route::get('/order/index','OrderController@lists');
 
 //前台评价
 
 Route::get('/assess/add','CommonController@comment');
-
 
 //添加关注
 Route::get('/guan','GuanController@guan');
@@ -136,9 +137,11 @@ Route::get('/review','CommonController@review');
 Route::post('/review','CommonController@postReview');
 
 // 前台用户查看信息
-Route::get('/selfuser/info','SelfInfoController@info');
-Route::get('/selfuser/edit','SelfInfoController@edit');
-Route::post('/selfuser/update','SelfInfoController@update');
+Route::get('/selfuser/info','SelfinfoController@info');
+Route::get('/selfuser/edit','SelfinfoController@edit');
+Route::post('/selfuser/update','SelfinfoController@update');
 
 //留言管理
 Route::controller('/notes','NotesController');
+//关于我们
+Route::controller('/us','UsController');

@@ -117,11 +117,11 @@ class HomeController extends Controller
             'password.regex'=>'密码格式不正确',
             'code'=>'验证码输入错误'
         ]);
-
         // 验证输入的验证码
         if($request->input('code')!= session('milkcaptcha')) {
             return back()->with('error','您输入验证码错误');
         }
+
         //读取用户名信息
         $res = DB::table('users')->where('username',$request->input('username'))->first();
         // 检测
@@ -159,11 +159,13 @@ class HomeController extends Controller
         // dd($one);
         // 读取当前这个商品的图片信息
         $pics = DB::table('pics')->where('goods_id',$id)->first();
-        // dd($pics);
+        $data = DB::table('comment')
+                ->select('comment.*','users.username as names','users.profile')
+                ->join('users','users.id','=','comment.user_id')->where('goods_id',$id)->get();
         if(!empty($one)){
-            return view('home.goods.detail',['one'=>$one,'goods'=>$goods,'pics'=>$pics]);
-            }else{
-               return back()->withInput();
+            return view('home.goods.detail',['one'=>$one,'goods'=>$goods,'pics'=>$pics,'data'=>$data]);
+        }else{
+            return back()->withInput();
         }
     }
 
