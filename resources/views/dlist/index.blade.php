@@ -76,21 +76,19 @@
                 <th >联系电话:</th>
                 <th >收货地址:</th>
                 <th >订单时间:</th>
-                <th >商品价格:</th>
-                <th >物流状态:</th>
+                
             </tr>
         </thead>
        @foreach($list as $k=>$v)
         <tbody role="alert"  >
             <tr class="@if($k % 2 == 1) odd @else even @endif" >
-                <td class=" ">{{$v->ddh}}</td>
+                <td class=" ">{{$v->id}}</td>
                 <td class=" ">{{$v->user_id}}</td>
-                <td class=" ">{{$v->oname}}</td> 
-                <td class=" ">{{$v->ophone}}</td>
-                <td class=" ">{{$v->oaddress}}</td>
-                <td class=" ">{{$v->otime}}</td>
-                <td class=" ">{{$v->tprice}}</td>
-                <td class=" ">{{getSendStatus($v->send)}}</td>
+                <td class=" ">{{$v->username}}</td> 
+                <td class=" ">{{$v->phone}}</td>
+                <td class=" ">{{$v->address}}</td>
+                <td class=" ">{{$v->regtime}}</td>
+               
             </tr>
         </tbody>
         @endforeach

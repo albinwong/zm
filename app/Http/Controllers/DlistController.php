@@ -16,8 +16,8 @@ class DlistController extends Controller
 
     public function getIndex(Request $request)
     {   
-        $list = DB::table('order')->orderBy('user_id')
-            ->join('users','users.id','=','order.user_id')
+        $list = DB::table('orders')->orderBy('user_id')
+            ->join('users','users.id','=','orders.user_id')
             ->get();
         
         return view('dlist.index',['request'=>$request,'list'=>$list]);

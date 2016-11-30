@@ -197,6 +197,13 @@
                             <li><a href="/viwe/index">轮播列表</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i> 地址管理</a>
+                        <ul class="closed">
+                           
+                            <li><a href="/addr/index">地址列表</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>         
         </div>

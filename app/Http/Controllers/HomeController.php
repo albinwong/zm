@@ -157,8 +157,7 @@ class HomeController extends Controller
         $one = DB::table('goods')->where('id',$id)->first();
         // 读取当前这个商品的图片信息
         $pics = DB::table('pics')->where('goods_id',$id)->first();
-        // dd($pics);
-        // die;
+
         $data = DB::table('comment')
                 ->select('comment.*','users.username as names','users.profile')
                 ->join('users','users.id','=','comment.user_id')->where('goods_id',$id)->get();
