@@ -140,16 +140,12 @@ Route::get('/caiji','CaipuController@index');
 Route::get('/review','CommonController@review');
 Route::post('/review','CommonController@postReview');
 
-<<<<<<< HEAD
-//前台留言管理
-=======
 // 前台用户查看信息
 Route::get('/selfuser/info','SelfInfoController@info');
 Route::get('/selfuser/edit','SelfInfoController@edit');
 Route::post('/selfuser/update','SelfInfoController@update');
 
 //留言管理
->>>>>>> e2a871dfe7dc8e2d78a6ede5c482540f3045885e
 Route::controller('/notes','NotesController');
 
 //前台轮播显示
