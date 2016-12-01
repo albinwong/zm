@@ -92,8 +92,17 @@ class CartController extends Controller
                 unset($carts[$k]);
             }
         }
+<<<<<<< HEAD
         //dd($carts);
         session(['user.cart'=>$carts]);
+=======
+        // session()->forget('user.cart');
+        // unset($carts[$jian]);
+        //dd($carts);
+        // \Session::put('user.cart',$carts);
+        session(['user.cart'=>$carts]);
+        // dd(session('user.cart'));
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
 
          
     }

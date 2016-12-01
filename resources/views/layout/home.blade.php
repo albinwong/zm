@@ -167,15 +167,32 @@ ul,li {
 
          <ul class="nav navbar-nav menu1"> 
           <li><a href="/">首页</a></li> 
+<<<<<<< HEAD
           <li><a href="fruits.html">Fruits &amp; Veg</a></li> 
           <li><a href="products.html">Food Products</a></li> 
            <li><a href="/track">足迹</a></li> 
           <li><a href="/clock">时钟</a></li> 
+=======
+          <?php 
+            $cates = \App\Http\Controllers\CateController::getAllCates(0);
+           ?>
+           @foreach($cates as $k=>$v)
+          <li><a href="/glist?cate_id={{$v->id}}">{{$v->name}}</a></li> 
+          @endforeach
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
           <li><a href="/notes/show">留言板</a></li> 
          </ul> 
          <ul class="shopping_cart login">
+<<<<<<< HEAD
          <a href="cart"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
          <a href="order"><li class="shop_right"><span>我的订单</span></li></a>
+<<<<<<< HEAD
+=======
+=======
+         <a href="/cart"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
+         <a href="/order/index"><li class="shop_right"><span>我的订单</span></li></a>
+>>>>>>> 305a82c34f1e617f02213a5231fd4b224cf1dfe0
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
          <div class="clearfix"> </div>
         </ul>
          <div class="clearfix"></div> 
@@ -263,37 +280,37 @@ ul,li {
    @show 
    
     <div class="row content">
-	<!-- 左侧内容start -->
+  <!-- 左侧内容start -->
     @section('content_left')
      <div class="col-md-3 content_top">
      @section('menu')
-	     <!-- 菜单 start -->
-	      <div class="category_box">
-	     	<h3 class="cate_head">特色菜系</h3> 
-		      <div class="box">
-		      <?php 
-		        $cates = \App\Http\Controllers\CateController::getAllCates(0);
-		       ?>
-		        <ul>
-		       @foreach($cates as $k=>$v)
-		            <li><a href="/glist?cate_id={{$v->id}}">{{$v->name}}</a>
-		                <ul>
-		                  @foreach($v->subcate as $a=>$b)
-		                  <li><a href="/glist?cate_id={{$b->id}}" class="">{{$b->name}}</a>
-		                    <ul>
-		                      @foreach($b->subcate as $c=>$d)
-		                      <li><a href="/glist?cate_id={{$d->id}}" class="thirdh">{{$d->name}}</a></li>
-		                      @endforeach
-		                    </ul>
-		                  </li>
-		                  @endforeach
-		                  </ul>
-		            </li>
-		        @endforeach
-		        </ul>
-		      </div>
-	  	  </div>
-	     <!-- 菜单 end -->
+       <!-- 菜单 start -->
+        <div class="category_box">
+        <h3 class="cate_head">特色菜系</h3> 
+          <div class="box">
+          <?php 
+            $cates = \App\Http\Controllers\CateController::getAllCates(0);
+           ?>
+            <ul>
+           @foreach($cates as $k=>$v)
+                <li><a href="/glist?cate_id={{$v->id}}">{{$v->name}}</a>
+                    <ul>
+                      @foreach($v->subcate as $a=>$b)
+                      <li><a href="/glist?cate_id={{$b->id}}" class="">{{$b->name}}</a>
+                        <ul>
+                          @foreach($b->subcate as $c=>$d)
+                          <li><a href="/glist?cate_id={{$d->id}}" class="thirdh">{{$d->name}}</a></li>
+                          @endforeach
+                        </ul>
+                      </li>
+                      @endforeach
+                      </ul>
+                </li>
+            @endforeach
+            </ul>
+          </div>
+        </div>
+       <!-- 菜单 end -->
      @show
       <ul class="product_reviews"> 
        <h3><i class="arrow"> </i><span>Product Reviews</span></h3> 
@@ -331,7 +348,7 @@ ul,li {
     <!-- 左侧内容end -->
     <!-- 右侧内容start -->
     @section('content_right')
-    	@section('rexiao')
+      @section('rexiao')
      <!-- 内容右侧start -->
      <div class="col-md-9"> 
       <!-- 今日热销 start -->
@@ -366,144 +383,144 @@ ul,li {
        <div class="clearfix"> 
        </div> 
       </ul> 
-    	@show
-     	 <!-- 今日热销 end -->
-      	<!-- 右侧下部start -->
-     	 @section('detail')
-	      <ul class="feature"> 
-	       <h3><i class="arrow"> </i><span>促销</span></h3> 
-	      </ul> 
-	      <div class="row content_bottom"> 
-	       <div class="col-md-3"> 
-	        <div class="content_box">
-	         <a href="single.html"> 
-	          <div class="view view-fifth"> 
-	           <img src="/homes/images/p1.jpg" class="img-responsive" alt="" /> 
-	           <div class="content_box-grid"> 
-	            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-	            <div class="price">
-	             Price: 
-	             <span class="actual">$12.00</span> 
-	            </div> 
-	            <ul class="product_but"> 
-	             <li class="but3">Buy</li> 
-	             <li class="like"><span>120</span><i class="like1"> </i></li> 
-	             <div class="clearfix"> 
-	             </div> 
-	            </ul> 
-	            <div class="mask"> 
-	             <div class="info">
-	              Quick View
-	             </div> 
-	            </div> 
-	           </div> 
-	          </div> </a> 
-	        </div> 
-	       </div> 
-	       <div class="col-md-3"> 
-	        <div class="content_box">
-	         <a href="single.html"> 
-	          <div class="view view-fifth"> 
-	           <img src="/homes/images/p4.jpg" class="img-responsive" alt="" /> 
-	           <div class="content_box-grid"> 
-	            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-	            <div class="price">
-	             Price: 
-	             <span class="actual">$12.00</span> 
-	            </div> 
-	            <ul class="product_but"> 
-	             <li class="but3">Buy</li> 
-	             <li class="like"><span>120</span><i class="like1"> </i></li> 
-	             <div class="clearfix"> 
-	             </div> 
-	            </ul> 
-	            <div class="mask"> 
-	             <div class="info">
-	              Quick View
-	             </div> 
-	            </div> 
-	           </div> 
-	          </div> </a> 
-	        </div> 
-	       </div> 
-	       <div class="col-md-3"> 
-	        <div class="content_box">
-	         <a href="single.html"> 
-	          <div class="view view-fifth"> 
-	           <img src="/homes/images/p3.jpg" class="img-responsive" alt="" /> 
-	           <div class="content_box-grid"> 
-	            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-	            <div class="price">
-	             Price: 
-	             <span class="actual">$12.00</span> 
-	            </div> 
-	            <ul class="product_but"> 
-	             <li class="but3">Buy</li> 
-	             <li class="like"><span>120</span><i class="like1"> </i></li> 
-	             <div class="clearfix"> 
-	             </div> 
-	            </ul> 
-	            <div class="mask"> 
-	             <div class="info">
-	              Quick View
-	             </div> 
-	            </div> 
-	           </div> 
-	          </div> </a> 
-	        </div> 
-	       </div> 
-	       <div class="col-md-3"> 
-	        <div class="content_box">
-	         <a href="single.html"> 
-	          <div class="view view-fifth"> 
-	           <img src="/homes/images/p2.jpg" class="img-responsive" alt="" /> 
-	           <div class="content_box-grid"> 
-	            <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
-	            <div class="price">
-	             Price: 
-	             <span class="actual">$12.00</span> 
-	            </div> 
-	            <ul class="product_but"> 
-	             <li class="but3">Buy</li> 
-	             <li class="like"><span>120</span><i class="like1"> </i></li> 
-	             <div class="clearfix"> 
-	             </div> 
-	            </ul> 
-	            <div class="mask"> 
-	             <div class="info">
-	              Quick View
-	             </div> 
-	            </div> 
-	           </div> 
-	          </div> </a> 
-	        </div> 
-	       </div> 
-	      </div> 
-	 	 @show
-		<!-- 右侧下部end -->
+      @show
+       <!-- 今日热销 end -->
+        <!-- 右侧下部start -->
+       @section('detail')
+        <ul class="feature"> 
+         <h3><i class="arrow"> </i><span>促销</span></h3> 
+        </ul> 
+        <div class="row content_bottom"> 
+         <div class="col-md-3"> 
+          <div class="content_box">
+           <a href="single.html"> 
+            <div class="view view-fifth"> 
+             <img src="/homes/images/p1.jpg" class="img-responsive" alt="" /> 
+             <div class="content_box-grid"> 
+              <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+              <div class="price">
+               Price: 
+               <span class="actual">$12.00</span> 
+              </div> 
+              <ul class="product_but"> 
+               <li class="but3">Buy</li> 
+               <li class="like"><span>120</span><i class="like1"> </i></li> 
+               <div class="clearfix"> 
+               </div> 
+              </ul> 
+              <div class="mask"> 
+               <div class="info">
+                Quick View
+               </div> 
+              </div> 
+             </div> 
+            </div> </a> 
+          </div> 
+         </div> 
+         <div class="col-md-3"> 
+          <div class="content_box">
+           <a href="single.html"> 
+            <div class="view view-fifth"> 
+             <img src="/homes/images/p4.jpg" class="img-responsive" alt="" /> 
+             <div class="content_box-grid"> 
+              <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+              <div class="price">
+               Price: 
+               <span class="actual">$12.00</span> 
+              </div> 
+              <ul class="product_but"> 
+               <li class="but3">Buy</li> 
+               <li class="like"><span>120</span><i class="like1"> </i></li> 
+               <div class="clearfix"> 
+               </div> 
+              </ul> 
+              <div class="mask"> 
+               <div class="info">
+                Quick View
+               </div> 
+              </div> 
+             </div> 
+            </div> </a> 
+          </div> 
+         </div> 
+         <div class="col-md-3"> 
+          <div class="content_box">
+           <a href="single.html"> 
+            <div class="view view-fifth"> 
+             <img src="/homes/images/p3.jpg" class="img-responsive" alt="" /> 
+             <div class="content_box-grid"> 
+              <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+              <div class="price">
+               Price: 
+               <span class="actual">$12.00</span> 
+              </div> 
+              <ul class="product_but"> 
+               <li class="but3">Buy</li> 
+               <li class="like"><span>120</span><i class="like1"> </i></li> 
+               <div class="clearfix"> 
+               </div> 
+              </ul> 
+              <div class="mask"> 
+               <div class="info">
+                Quick View
+               </div> 
+              </div> 
+             </div> 
+            </div> </a> 
+          </div> 
+         </div> 
+         <div class="col-md-3"> 
+          <div class="content_box">
+           <a href="single.html"> 
+            <div class="view view-fifth"> 
+             <img src="/homes/images/p2.jpg" class="img-responsive" alt="" /> 
+             <div class="content_box-grid"> 
+              <p class="m_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p> 
+              <div class="price">
+               Price: 
+               <span class="actual">$12.00</span> 
+              </div> 
+              <ul class="product_but"> 
+               <li class="but3">Buy</li> 
+               <li class="like"><span>120</span><i class="like1"> </i></li> 
+               <div class="clearfix"> 
+               </div> 
+              </ul> 
+              <div class="mask"> 
+               <div class="info">
+                Quick View
+               </div> 
+              </div> 
+             </div> 
+            </div> </a> 
+          </div> 
+         </div> 
+        </div> 
+     @show
+    <!-- 右侧下部end -->
 
       
-     	<!-- 分页start -->
-   	 	@section('fenye')
-      	<ul class="dc_pagination dc_paginationA dc_paginationA06"> 
-	       <li><a href="#">1</a></li> 
-	       <li><a href="#" class="current">2</a></li> 
-	       <li><a href="#">3</a></li> 
-	       <li><a href="#">4</a></li> 
-	       <li><a href="#">5</a></li> 
-	       <li><a href="#">...</a></li> 
-	       <li><a href="#">19</a></li> 
-	       <li><a href="#">20</a></li> 
-	       <li><a href="#" class="previous">Next&gt;</a></li> 
-	       <li><a href="#" class="next">Last&gt;&gt;</a></li> 
+      <!-- 分页start -->
+      @section('fenye')
+        <ul class="dc_pagination dc_paginationA dc_paginationA06"> 
+         <li><a href="#">1</a></li> 
+         <li><a href="#" class="current">2</a></li> 
+         <li><a href="#">3</a></li> 
+         <li><a href="#">4</a></li> 
+         <li><a href="#">5</a></li> 
+         <li><a href="#">...</a></li> 
+         <li><a href="#">19</a></li> 
+         <li><a href="#">20</a></li> 
+         <li><a href="#" class="previous">Next&gt;</a></li> 
+         <li><a href="#" class="next">Last&gt;&gt;</a></li> 
         </ul>
-   	 	@show
-	      <!-- 分页end  -->
-	     </div> 
-	    </div> 
-	   </div> 
-	  </div> 
-  	@show
+      @show
+        <!-- 分页end  -->
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+    @show
   <!-- 内容右部 end-->
   @show
   <!-- 内容end -->
@@ -515,7 +532,7 @@ ul,li {
      <h3 class="m_2">关于我们</h3> 
      <ul class="list1"> 
       <li><a href="/">主页</a></li> 
-      <li><a href="#">关于我们</a></li> 
+      <li><a href="/us">关于我们</a></li> 
       <li><a href="http://weibo.com/319333577/home?wvr=5&topnav=1&wvr=6&mod=logo#_rnd1480332445151">新浪微博</a></li> 
       <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes" target="_blank>在线客服"</a></li> 
       <li><a href="/admin" target="_blank">管理中心</a></li> 

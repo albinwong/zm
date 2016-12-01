@@ -54,7 +54,6 @@
 		<thead>
 			<tr>
 				<th class="cart-product-remove">&nbsp;</th>
-				<th class="all">全选<input type="checkbox"></th>
 				<th class="cart-product-thumbnail">图片</th>
 				<th class="cart-product-name">名称</th>
 				<th class="cart-product-price">价格</th>
@@ -70,9 +69,12 @@
 				<tr class="cart_item">
 					<td class="cart-product-remove">
 						<li class="remove" title="Remove this item"><i class="glyphicon glyphicon-trash"></i></li>
+<<<<<<< HEAD
 					</td>
 					<td class="cart-product-remove">
 						<input type="checkbox" name="data[{{$v['goods_id']}}][id]"  value="{{$v['goods_id']}}" class="single">
+=======
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
 					</td>
 					<td class="cart-product-thumbnail">
 						<a href="#"><img width="64" height="64" src="{{$v['img']->path}}" alt="Checked Canvas Shoes" width="64" height="64"></a>
@@ -141,8 +143,14 @@
 	                    bb = aa.substr(1);
 	                    q.parent().parent().parent().find('.xiaoji').html('￥'+q.val()*Number(bb));
 
+<<<<<<< HEAD
 	                });
 	                    
+=======
+	                })
+	                    
+
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
 	                //删除
 	                $('.remove').click(function(){
 	                	var id = $(this).parent().parent().find('.single').val();
