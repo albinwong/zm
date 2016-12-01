@@ -288,20 +288,11 @@ class HomeController extends Controller
     /**
      * 轮播前台显示
      */
-    public static function lunbo(Request $request)
+    public static function lunbo($id)
     {
         $res = DB::table('viwepager')->get();
-        $arr = [];
-        foreach($res as $k=>$v){
-            // 递归获取当前子分类
-            
-            $arr[] = $v;
-        }
-        return $arr;
         return $res;
     }
-
-    
 
 
 }

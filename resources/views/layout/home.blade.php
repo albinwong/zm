@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="/homes/css/bootstrap-theme.min.css">
   <script type="text/javascript" src="/homes/js/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script> 
-  <script type="text/javascript" src="/homes/js/moyan.js"></script> 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
   <script src="/homes/js/jquery.min.js"></script> 
   <!-- Custom Theme files --> 
@@ -24,6 +23,7 @@
   <link href="http://fonts.googleapis.com/css?family=Exo+2:100,200,300,400,500,600,700,800,900" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" type="image/x-icon" href="/homes/images/logo.ico" media="screen" />
   <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script>
+
   <style type="text/css">  
 .login{
     padding:20px;
@@ -135,7 +135,7 @@ ul,li {
                 }else{
                   echo "&emsp;<a href='/login' id='userLogin' onclick='return false;' style='text-decoration:none;color:#abc'>请登录</a> | <a href='/register' style='text-decoration:none;color:red;'>免费注册</a>";
                 }?>
-            </li><li>&nbsp;<a href="/selfuser/info" style="color:#abc">个人中心</a></li><li>&nbsp;<a href="/order/index" style="color:#abc">我的订单</a></li>
+            </li><li>&nbsp;<a href="#" style="color:#abc">个人中心</a></li><li>&nbsp;<a href="/order" style="color:#abc">我的订单</a></li>
           </ul>
       </div>
       </div>
@@ -167,15 +167,17 @@ ul,li {
 
          <ul class="nav navbar-nav menu1"> 
           <li><a href="/">首页</a></li> 
-          <li><a href="fruits.html">Fruits &amp; Veg</a></li> 
-          <li><a href="products.html">Food Products</a></li> 
-          <li><a href="store.html">Locate Store</a></li> 
-          <li><a href="club.html">Fan Club</a></li> 
+          <?php 
+	        $cates = \App\Http\Controllers\CateController::getAllCates(0);
+	       ?>
+	       @foreach($cates as $k=>$v)
+          <li><a href="/glist?cate_id={{$v->id}}">{{$v->name}}</a></li> 
+          @endforeach 
           <li><a href="/notes/show">留言板</a></li> 
          </ul> 
          <ul class="shopping_cart login">
          <a href="cart"><li class="shop_left"><i class="cart"> </i><span>购物车</span></li></a>
-         <a href="/order/index"><li class="shop_right"><span>我的订单</span></li></a>
+         <a href="order"><li class="shop_right"><span>我的订单</span></li></a>
          <div class="clearfix"> </div>
         </ul>
          <div class="clearfix"></div> 
@@ -517,7 +519,7 @@ ul,li {
       <li><a href="/">主页</a></li> 
       <li><a href="#">关于我们</a></li> 
       <li><a href="http://weibo.com/319333577/home?wvr=5&topnav=1&wvr=6&mod=logo#_rnd1480332445151">新浪微博</a></li> 
-      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes" target="_blank">在线客服</a></li> 
+      <li><a href="http://wpa.qq.com/msgrd?v=3&uin=365354990&site=qq&menu=yes" target="_blank>在线客服"</a></li> 
       <li><a href="/admin" target="_blank">管理中心</a></li> 
       <li><a href="#">加入我们</a></li> 
      </ul> 
@@ -526,7 +528,7 @@ ul,li {
      <h3 class="m_2">Company</h3> 
      <ul class="list1"> 
       <li><a href="/links">友情链接</a></li>
-      <li><a href="#">diam nonummy nibh euismod</a></li> 
+      <li><a href="/chang">常见问题</a></li> 
       <li><a href="#">nostrud exerci tation</a></li> 
       <li><a href="#">hendrerit in vulputate velit</a></li> 
       <li><a href="#">soluta nobis eleifend option</a></li> 
@@ -611,6 +613,7 @@ ul,li {
                     <a onclick="javascript:re_captcha();" ><img src="{{ URL('kit/captcha/1') }}"  alt="验证码" title="刷新图片" width="100" height="40" id="codeImg" border="0"><span></span>
                 {{csrf_field()}}
             </div>
+            <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="login">  
                 <button>登录</button>  
             </div> 
@@ -620,6 +623,126 @@ ul,li {
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+<script type="text/javascript">
+ 
+  function re_captcha() {
+    $url = "{{ URL('kit/captcha') }}";
+        $url = $url + "/" + Math.random();
+        document.getElementById('codeImg').src=$url;
+  }
+ $(function(){
+    $('#userLogin').click(function(){
+      $('.modal').modal();
+    }); 
+  });
+ // 登录表单 start
+ // 注册表单start
+    // 用户名元素
+    //检测变量
+    var CUSER = false;
+    var CPASS = false;
+    var CCODE = false;
+
+    //用户名元素
+    $('input[name=username]').focus(function(){
+        // 修改当前元素的样式
+        $(this).css('border','solid 1px blue');
+        //显示文本
+        $(this).next().show().html('请输入您的用户名').css('color','#888');
+        CUSER = false;
+    }).blur(function(){
+        //获取元素的值
+        var v = $(this).val();
+        //声明正则
+        var reg = /^\w{8,18}$/;
+        if(!reg.test(v)) {
+            //
+            $(this).css('border','solid 1px red');
+            //修改文本
+            $(this).next().html('用户名或密码错误').css('color','red').show();
+            CUSER = false;
+        }else{
+            var input = $(this);
+            //发送ajax请求 验证用户名是否存在
+            $.ajax({
+                url: '/check/user',
+                type: 'get',
+                data: {username:v},
+                success: function(data){
+                    if(data != '0'){
+                        input.css('border','solid 1px red');
+                        input.next().html('用户名或密码错误').css('color','red');
+                        CUSER = false;
+                    }else{
+                        input.css('border','solid 1px #ddd');
+                        input.next().html('√').css('color','green');
+                        CUSER = true;
+                    }
+                },
+                async: false
+            });
+        }
+    });
+
+    //密码元素
+    $('input[name=password]').focus(function(){
+        $(this).css('border','solid 1px blue');
+        $(this).next().html('请输入6~16位非空白字符!').css('color','#888').show();
+        CPASS = false;
+    }).blur(function(){
+        //获取元素的值
+        var v = $(this).val();
+        //声明正则
+        var reg = /^\S{6,20}$/;
+        //检测
+        var res = reg.test(v);
+        if(!res) {
+            $(this).css('border','solid 1px red');
+            $(this).next().html('用户名或密码错误').css('color','red').show();
+            CPASS = false;
+        }else{
+            $(this).css('border','solid 1px #ddd');
+            $(this).next().html('√').css('color','green');
+            CPASS = true;
+        }
+    });
+
+    //验证码
+    $('input[name=code]').focus(function(){
+        $(this).css('border','solid 1px blue');
+       $(this).next().next().next().next().show().html('请输入验证码').css('color','#888');
+       CCODE = false;
+    }).blur(function(){
+        //获取元素的值
+        var v = $(this).val();
+        //声明正则
+        var reg = /^\w{5}$/;
+        //检测
+        var res = reg.test(v);
+        if(!res) {
+            $(this).css('border','solid 1px red');
+            $(this).next().html('验证码格式错误').css('color','red').show();
+            CCODE = false;
+        }else{
+            $(this).css('border','solid 1px #ddd');
+            $(this).next().html('√').css('color','green');
+            CCODE = true;
+        }
+    });
+
+
+    //表单的提交事件
+    $('form').submit(function(){
+        $('input').trigger('blur');
+        //检测元素的值是否正确
+        if(CUSER && CPASS && CCODE) {
+            return true;            
+        }
+        return false;
+    });
+
+
+// 注册表单end  
+</script> 
 <!-- 模态提示框 end-->
- </body>
-</html>
+ </body>/

@@ -102,11 +102,183 @@ button {
         </form>  
     </div>  
 </body>
-<script>  
-  function re_captcha() {
+<script src="/homes/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">  
+ function re_captcha() {
     $url = "{{ URL('kit/captcha') }}";
-        $url = $url + "/" + Math.random();
-        document.getElementById('codeImg').src=$url;
+    $url = $url + "/" + Math.random();
+    document.getElementById('codeImg').src=$url;
   }
+$(function(){
+// 注册表单start
+    // 用户名元素
+    //检测变量
+    var CUSER = false;
+    var CPASS = false;
+    var CMAIL = false;
+
+    //用户名元素
+    $('input[name=username]').focus(function(){
+        // 修改当前元素的样式
+        $(this).css('border','solid 1px blue');
+        //显示文本
+        $(this).next().show().html('请输入8~18位字母数字下划线').css('color','#888');
+    }).blur(function(){
+        //获取元素的值
+        var v = $(this).val();
+        //声明正则
+        var reg = /^\w{8,18}$/;
+        if(!reg.test(v)) {
+            //
+            $(this).css('border','solid 1px red');
+            //修改文本
+            $(this).next().html('用户名格式错误').css('color','red').show();
+            CUSER = false;
+        }else{
+            var input = $(this);
+            //发送ajax请求 验证用户名是否存在
+            $.ajax({
+                url: '/check/user',
+                type: 'get',
+                data: {username:v},
+                success: function(data){
+                    if(data == '0'){
+                        input.css('border','solid 1px red');
+                        input.next().html('用户名已存在!请换一个!!').css('color','red');
+                        CUSER = false;
+                    }else{
+                        input.css('border','solid 1px #ddd');
+                        input.next().html('√').css('color','green');
+                        CUSER = true;
+                    }
+                },
+                async: false
+            });
+        }
+    });
+
+    //邮箱元素
+    $('input[name=email]').focus(function(){
+        // 修改当前元素的样式
+        $(this).css('border','solid 1px blue');
+        //显示文本
+        $(this).next().show().html('请输入您的常用邮箱').css('color','#888');
+        CMAIL = false;
+    });
+    $('input[name=email]').blur(function(){
+        //获取元素的值
+        var v = $(this).val();
+        //声明正则
+        var reg = /^\w+@\w+\.(com.cn|cn|com|hk|edu|org)$/;
+        if(!reg.test(v)) {
+            //
+            $(this).css('border','solid 1px red');
+            //修改文本
+            $(this).next().html('邮箱格式错误').css('color','red').show();
+            CMAIL = false;
+        }else{
+            var input = $(this);
+            //发送ajax请求 验证用户名是否存在
+            $.ajax({
+                url: '/check/email',
+                type: 'get',
+                data: {email:v},
+                success: function(data){
+                    if(data == '0'){
+                        input.css('border','solid 1px red');
+                        input.next().html('邮箱已注册!!请换一个!!').css('color','red');
+                        CMAIL = false;
+                    }else{
+                        input.css('border','solid 1px #ddd');
+                        input.next().html('√').css('color','green');
+                        CMAIL = true;
+                    }
+                },
+                async: false
+            });
+        }
+    });
+
+    //密码元素
+    $('input[name=password]').focus(function(){
+        $(this).css('border','solid 1px blue');
+        $(this).next().html('请输入6~16位非空白字符!').css('color','#888').show();
+        CPASS = false;
+    }).blur(function(){
+        //获取元素的值
+        var v = $(this).val();
+        //声明正则
+        var reg = /^\S{6,20}$/;
+        //检测
+        var res = reg.test(v);
+        if(!res) {
+            $(this).css('border','solid 1px red');
+            $(this).next().html('密码格式错误').css('color','red').show();
+            CPASS = false;
+        }else{
+            $(this).css('border','solid 1px #ddd');
+            $(this).next().html('√').css('color','green');
+            CPASS = true;
+        }
+    });
+
+    //密码元素
+    $('input[name=repassword]').focus(function(){
+        $(this).css('border','solid 1px blue');
+        $(this).next().html('请输入6~16位非空白字符!').css('color','#888').show();
+        CPASS = false;
+    }).blur(function(){
+        //获取元素的值
+        var v = $(this).val();
+        //声明正则
+        var reg = /^\S{6,20}$/;
+        //检测
+        var res = reg.test(v);
+        if(!res) {
+            $(this).css('border','solid 1px red');
+            $(this).next().html('密码格式错误').css('color','red').show();
+            CPASS = false;
+        }else{
+            $(this).css('border','solid 1px #ddd');
+            $(this).next().html('√').css('color','green');
+            CPASS = true;
+        }
+    });
+
+     //验证码
+    $('input[name=code]').focus(function(){
+        $(this).css('border','solid 1px blue');
+       $(this).next().next().next().next().show().html('请输入验证码').css('color','#888');
+       CCODE = false;
+    }).blur(function(){
+        //获取元素的值
+        var v = $(this).val();
+        //声明正则
+        var reg = /^\w{5}$/;
+        //检测
+        var res = reg.test(v);
+        if(!res) {
+            $(this).css('border','solid 1px red');
+            $(this).next().html('验证码格式错误').css('color','red').show();
+            CCODE = false;
+        }else{
+            $(this).css('border','solid 1px #ddd');
+            $(this).next().html('√').css('color','green');
+            CCODE = true;
+        }
+    });
+
+    //表单的提交事件
+    $('form').submit(function(){
+        $('input').trigger('blur');
+        //检测元素的值是否正确
+        if(CUSER && CPASS && CMAIl) {
+            return true;            
+        }
+        return false;
+    });
+
+// 注册表单end
+  });
 </script>
 </html>  

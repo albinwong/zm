@@ -146,3 +146,8 @@ Route::controller('/notes','NotesController');
 
 //前台轮播显示
 Route::get('/test','HomeController@lunbo');
+
+//表单验证
+Route::get('/check/user','CheckController@user');
+Route::get('/check/email','CheckController@email');
+Route::get('/check/pwd','CheckController@pwd');

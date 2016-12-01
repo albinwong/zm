@@ -18,12 +18,8 @@
 <link rel="stylesheet" href="/homes/css/etalage.css">
 <script src="/homes/js/jquery.etalage.min.js"></script>
 <script src="/homes/js/jQuery.js"></script>
-<style type="text/css">
-	.flavor label{
-		
-
-	}
-</style>
+  <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script>
+  
 <div class="col-md-9">
    <div class="single_image">
 	     <ul id="etalage" class="etalage" style="display: block; width: 314px; height: 552px;">
