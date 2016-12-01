@@ -152,13 +152,23 @@ class HomeController extends Controller
      */
     public function detail($id)
     {
+        if(empty(session('zuji'))){
+            \Session::push('zuji','');
+        }
+        $track = !in_array($id,session('zuji'));
+        if($track){
+            \Session::push('zuji',$id);
+        }
         $goods = DB::table('cates')->get();
         // 根据id读取商品详细信息
         $one = DB::table('goods')->where('id',$id)->first();
         // 读取当前这个商品的图片信息
         $pics = DB::table('pics')->where('goods_id',$id)->first();
+<<<<<<< HEAD
         // dd($pics);
-        // die;
+=======
+
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
         $data = DB::table('comment')
                 ->select('comment.*','users.username as names','users.profile')
                 ->join('users','users.id','=','comment.user_id')->where('goods_id',$id)->get();
@@ -167,6 +177,30 @@ class HomeController extends Controller
         }else{
             return back()->withInput();
         }
+    }
+
+    /**
+     * 足迹
+     */
+    public function track(Request $request)
+    {
+         $id = session('zuji');
+         $track = DB::table('goods')->whereIn('id',$id)->get();
+        //dd($track);
+        if(!empty($track)){
+          foreach($track as $k => $v){
+            // $img = DB::table('pics')->where('goods_id',$v->id)->first();
+            // dd($img);
+             // $img = DB::table('pics')->join('goods','pics.goods_id','=','goods.id')->select('goods.*','pics.path')->first(); 
+            }  
+        }else{
+           return back()->with('你还没有浏览商品哦');
+        }
+        // dd($track);
+        //分配变量 解析模板
+        return view('home.goods.track',['track'=>$track]);
+
+        
     }
 
 
@@ -294,5 +328,18 @@ class HomeController extends Controller
         return $res;
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    /**
+     * 时钟
+     */
+    public function clock(){
+        return view('home.goods.clock');
+    }
+
+=======
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
+>>>>>>> f1e404c080887460c34580b77ab0f5d492bd60ec
 
 }

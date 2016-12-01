@@ -16,7 +16,7 @@
 </div>	
 <div class="container clearfix">
 	<div class="alert alert-success col-md-5 col-md-offset-4" role="alert" style="margin-top:50px;margin-bottom:50px;">
-      	<strong>恭喜您!!</strong> 成功加入购物车!您可以直接进入<a href="/cart/index">购物车</a>&nbsp;&nbsp;&nbsp;<a href="/glist">继续购物</a>
+      	<strong>恭喜您!!</strong> 成功加入购物车!您可以直接进入<a href="/cart">购物车</a>&nbsp;&nbsp;&nbsp;<a href="/glist">继续购物</a>
 	</div>
 </div>
 </div>
