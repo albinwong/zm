@@ -1,7 +1,6 @@
 @extends('layout.home')
 @section('content')
 <style type="text/css">
-
 	a:hover{
 		text-decoration: none;
 	}
@@ -37,6 +36,13 @@
 	    text-align: center;
 	    width: 45px;
 	}
+	.zong{
+		border:solid 1px #ddd;
+	}
+	.total{
+		color: red;
+		font-size: 20px;
+	}
 </style>
 <div class="container clearfix">
 	<div class="col-md-12" style="height:80px;background:#f3f3f3;border:1px solid #e9e9e9;">
@@ -56,25 +62,24 @@
 				<th class="cart-product-subtotal">小计</th>
 			</tr>
 		</thead>
-		<form action="/order/add" method="post">
+		<form action="/order/confirm" method="get">
 			<tbody>
 
 			@if(!empty($carts))
-				@foreach($carts as $k=>$v)
+				@foreach($carts as $k=> $v)
 				<tr class="cart_item">
 					<td class="cart-product-remove">
-						<a href="#" class="remove" title="Remove this item"><i class="glyphicon glyphicon-trash"></i></a>
+						<li class="remove" title="Remove this item"><i class="glyphicon glyphicon-trash"></i></li>
 					</td>
 					<td class="cart-product-remove">
-						<input type="checkbox" name="data[{{$v['goods_id']}}][id]"  vlaue="{{$v['goods_id']}}" class="single">
+						<input type="checkbox" name="data[{{$v['goods_id']}}][id]"  value="{{$v['goods_id']}}" class="single">
 					</td>
-
 					<td class="cart-product-thumbnail">
 						<a href="#"><img width="64" height="64" src="{{$v['img']->path}}" alt="Checked Canvas Shoes" width="64" height="64"></a>
 					</td>
 
 					<td class="cart-product-name">
-						<a href="">{{$v['info']->name}}</a>
+						<a href="/{{$v['goods_id']}}.html">{{$v['info']->name}}</a>
 					</td>
 
 					<td class="cart-product-price">
@@ -86,25 +91,27 @@
 							<a class="minus"><b>-</b></a>
 							<input name="num"  value="{{$v['num']}}" class="qty" type="text">
 							<a  class="plus"><b>+</b></a>
-							<input type="hidden" name="data[{{$v['goods_id']}}][kouwei]" value="{{$v['kouwei']}}">
 						</div>
 					</td>
 
 					<td class="cart-product-subtotal">
-					<span class="amount">￥{{$v['num']*$v['info']->price}}</span>
+						<input type="hidden" name="data[{{$v['goods_id']}}][kouwei]" value="{{$v['kouwei']}}">
+						<span class="xiaoji">￥{{$v['num']*$v['info']->price}}</span>
 					</td>
 				</tr>
 				@endforeach
 
 				<script type="text/javascript">
 	        	//全选
-	        	$('.all').click(function(){
-	        		if($('.single').attr('checked')!='checked'){
-	        			$('.single').attr('checked','checked');
-	        		}else{
-	        			$('.single').removeAttr('checked');
-	        		}
-	        	});
+	            $('.all').click(function(){
+	                if($(this).attr('checked')=='checked'){
+	                    $('.single').attr('checked','checked');
+	                }else{
+	                    $('.single').removeAttr('checked');
+	                }
+	            });
+
+	        	
 	        	//加减数量
 	                var q = $('.qty');
 	                q.keyup(function(event){
@@ -122,24 +129,41 @@
 	                    if(q.val()<1){
 	                        q.val(1);
 	                    }
-	                    q.parent().parent().parent().parent().find('.xiaoji').html('￥'+q.val()*{{$v['info']->price}});
+	                    aa = q.parent().parent().parent().find('.amount').html();
+	                    bb = aa.substr(1);
+	                    q.parent().parent().parent().find('.xiaoji').html('￥'+q.val()*Number(bb));
+	                    
 	                });
 	                $('.plus').click(function(){
 	                    var q = $(this).parent().find('.qty');
 	                    q.val(Number(q.val())+1);
-	                    q.parent().parent().parent().parent().find('.xiaoji').html('￥'+q.val()*{{$v['info']->price}});
-	                })
+	                	aa = q.parent().parent().parent().find('.amount').html();
+	                    bb = aa.substr(1);
+	                    q.parent().parent().parent().find('.xiaoji').html('￥'+q.val()*Number(bb));
+
+	                });
+	                    
 	                //删除
 	                $('.remove').click(function(){
 	                	var id = $(this).parent().parent().find('.single').val();
-	                	// alert(id);
+	                	//alert(id);
 	                	$.get('/cart/delete',{'id':id},function(data){
-	                		console.log(data);
+	                		// console.log(data);
+	                		// alert(data);
 	                	});
 	                	 $(this).parent().parent().remove();
 	                })
 				</script>
-       
+       			<tr class="cart_item zong">
+       				<td colspan='8'>
+       					<div class="col-md-2 col-md-offset-8">
+       						总价(不含运费):    
+       					</div>
+       					<div class="col-md-2 total">
+       						  ￥ 
+       					</div>
+       				</td>
+       			</tr>
 				<tr class="cart_item">
 					<td colspan="8">
 						<div class="row clearfix">

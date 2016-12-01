@@ -146,9 +146,3 @@ Route::controller('/notes','NotesController');
 
 //前台轮播显示
 Route::get('/test','HomeController@lunbo');
-
-//时钟
-Route::get('/clock','HomeController@clock');
-
-//足迹
-Route::get('/track','HomeController@track');
