@@ -54,7 +54,10 @@
 		<thead>
 			<tr>
 				<th class="cart-product-remove">&nbsp;</th>
+<<<<<<< HEAD
 				<th class="all">全选<input type="checkbox"  id="chkAll" value="goods_id[]"></th>
+=======
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 				<th class="cart-product-thumbnail">图片</th>
 				<th class="cart-product-name">名称</th>
 				<th class="cart-product-price">价格</th>
@@ -62,7 +65,7 @@
 				<th class="cart-product-subtotal">小计</th>
 			</tr>
 		</thead>
-		<form action="/order/add" method="post">
+		<form action="/order/confirm" method="get">
 			<tbody>
 
 			@if(!empty($carts))
@@ -70,9 +73,18 @@
 				<tr class="cart_item">
 					<td class="cart-product-remove">
 						<li class="remove" title="Remove this item"><i class="glyphicon glyphicon-trash"></i></li>
+<<<<<<< HEAD
 					</td>
 					<td class="cart-product-remove">
 						<input type="checkbox" name="data[{{$v['goods_id']}}][id]"  value="{{$v['goods_id']}}" class="single">
+=======
+<<<<<<< HEAD
+					</td>
+					<td class="cart-product-remove">
+						<input type="checkbox" name="data[{{$v['goods_id']}}][id]"  value="{{$v['goods_id']}}" class="single">
+=======
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 					</td>
 					<td class="cart-product-thumbnail">
 						<a href="#"><img width="64" height="64" src="{{$v['img']->path}}" alt="Checked Canvas Shoes" width="64" height="64"></a>
@@ -95,7 +107,10 @@
 					</td>
 
 					<td class="cart-product-subtotal">
+<<<<<<< HEAD
 						<input type="hidden" name="data[{{$v['goods_id']}}][id]"  value="{{$v['goods_id']}}">
+=======
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 						<input type="hidden" name="data[{{$v['goods_id']}}][kouwei]" value="{{$v['kouwei']}}">
 						<span class="xiaoji">￥{{$v['num']*$v['info']->price}}</span>
 					</td>
@@ -105,6 +120,7 @@
 				<script type="text/javascript">
 	        
 	        	//全选
+<<<<<<< HEAD
 			    var num = 1;
 			    $('#chkAll').click(function(){
 			    	if(num % 2 ==1){
@@ -114,6 +130,17 @@
 			    	}
 			    	num++;
 			    });
+=======
+	            $('.all').click(function(){
+	                if($(this).attr('checked')=='checked'){
+	                    $('.single').attr('checked','checked');
+	                }else{
+	                    $('.single').removeAttr('checked');
+	                }
+	            });
+
+	        	
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 	        	//加减数量
 	                var q = $('.qty');
 	                q.keyup(function(event){
@@ -143,8 +170,19 @@
 	                    bb = aa.substr(1);
 	                    q.parent().parent().parent().find('.xiaoji').html('￥'+q.val()*Number(bb));
 
+<<<<<<< HEAD
 	                });
 	                    
+=======
+<<<<<<< HEAD
+	                });
+	                    
+=======
+	                })
+	                    
+
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 	                //删除
 	                $('.remove').click(function(){
 	                	var id = $(this).parent().parent().find('.single').val();
@@ -156,6 +194,19 @@
 	                	 $(this).parent().parent().remove();
 	                })
 				</script>
+<<<<<<< HEAD
+=======
+       			<tr class="cart_item zong">
+       				<td colspan='8'>
+       					<div class="col-md-2 col-md-offset-8">
+       						总价(不含运费):    
+       					</div>
+       					<div class="col-md-2 total">
+       						  ￥ 
+       					</div>
+       				</td>
+       			</tr>
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 				<tr class="cart_item">
 					<td colspan="8">
 						<div class="row clearfix">

@@ -1,11 +1,9 @@
 @extends('layout.home')
 @section('title','地址添加')
 @section('content')
-<section id="content">
-
+<section id="content"> 
 	<div class="content-wrap" style="padding:20px;">
 		<div class="container clearfix">
-
 		<!-- 左侧菜单 start -->
 			<div class="col-md-3">
 				<div class="list-group">
@@ -15,16 +13,13 @@
 					<a href="/selfuser/edit" class="list-group-item">
 						修改个人信息
 					</a>
-					
 					</a>
 					<a href="/order" class="list-group-item">
 						订单
 					</a>
 					<a href="/address/add" class="list-group-item active">
 						收货地址
-					</a>
-					
-					
+					</a>		
 				</div>
 			</div>
 		<!-- 左侧菜单 end -->
@@ -69,8 +64,7 @@
 		<script type="text/javascript">
 		$(function(){
 			// 获取省份的信息
-			
-			
+	
 			$.get('/address/get',{'pid':0},function(data){
 				// 遍历数据进行添加
 				for(var i=0;i<data.length;i++){

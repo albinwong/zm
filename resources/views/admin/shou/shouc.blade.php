@@ -70,22 +70,40 @@
         <thead>
             <tr>
                 <th >用户ID:</th>
+<<<<<<< HEAD:resources/views/admin/shou/shouc.blade.php
                 <th >用户名:</th>
                 <th >商品ID:</th>
                 <th >商品名称:</th>
                 <th >商品价格:</th>
                 <th >关注状态:</th>
+=======
+                <th >收货人:</th>
+                <th >联系电话:</th>
+                <th >收货地址:</th>
+                <th >订单时间:</th>
+                
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd:resources/views/dlist/index.blade.php
             </tr>
         </thead>
         <tbody role="alert"  >
        @foreach($shouc as $k=>$v)
             <tr class="@if($k % 2 == 1) odd @else even @endif" >
+<<<<<<< HEAD:resources/views/admin/shou/shouc.blade.php
                 <td class=" ">{{$v->uid}}</td>
                 <td class=" ">{{$v->username}}</td>
                 <td class=" ">{{$v->goods_id}}</td> 
                 <td class=" ">{{$v->name}}</td> 
                 <td class=" ">{{$v->price}}</td>
                 <td class=" ">@if($v->status==1) 已关注 @else 关注 @endif </td>
+=======
+                <td class=" ">{{$v->id}}</td>
+                <td class=" ">{{$v->user_id}}</td>
+                <td class=" ">{{$v->username}}</td> 
+                <td class=" ">{{$v->phone}}</td>
+                <td class=" ">{{$v->address}}</td>
+                <td class=" ">{{$v->regtime}}</td>
+               
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd:resources/views/dlist/index.blade.php
             </tr>
         @endforeach
         </tbody>

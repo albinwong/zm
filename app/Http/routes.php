@@ -46,6 +46,8 @@ Route::group(['middleware'=>'login'],function(){
 	
 	//广告管理
 	Route::controller('advert','AdvertController');
+	//地址管理
+	Route::controller('addr','AddrController');
 
 	//后台留言管理
 	Route::controller('msg','MsgController');
@@ -136,6 +138,7 @@ Route::post('/dologin','HomeController@dologin');
 // 验证码图片
 Route::get('kit/captcha/{tmp}', 'KitController@captcha');
 
+
 // 友情链接显示
 Route::get('/links', 'LinkController@show');
 
@@ -143,8 +146,17 @@ Route::get('/links', 'LinkController@show');
 Route::post('/cart/add','CartController@add');
 Route::get('/cart','CartController@index');
 Route::get('/cart/delete','CartController@delete');
+<<<<<<< HEAD
 
 
+=======
+
+//订单创建
+Route::post('/order/add','OrderController@add');
+ Route::post('/order/confirm','OrderController@doconfirm');
+ Route::get('/order/confirm','OrderController@confirm');
+Route::get('/order/delete','OrderController@delete');
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 
 
 //菜谱采集
@@ -153,24 +165,65 @@ Route::get('/caiji','CaipuController@index');
 Route::get('/review','CommonController@review');
 Route::post('/review','CommonController@postReview');
 
+<<<<<<< HEAD
 
 //留言管理
 Route::controller('/notes','NotesController');
+=======
+// 订单列表
+Route::get('/order/index','OrderController@lists');
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 
 //表单验证
 Route::get('/check/user','CheckController@user');
 Route::get('/check/email','CheckController@email');
 Route::get('/check/pwd','CheckController@pwd');
 
+<<<<<<< HEAD
 
+=======
+//添加关注
+Route::get('/guan','GuanController@guan');
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 
 
 //关于我们
 Route::controller('/us','UsController');
 
+<<<<<<< HEAD
 //常见问题
 Route::get('/chang','ChangController@chang');
 
 //关注管理
 Route::get('/shouc','GuanController@shouc');
 
+=======
+// 前台用户查看信息
+Route::get('/selfuser/info','SelfinfoController@info');
+Route::get('/selfuser/edit','SelfinfoController@edit');
+Route::post('/selfuser/update','SelfinfoController@update');
+
+//留言管理
+Route::controller('/notes','NotesController');
+//关于我们
+Route::controller('/us','UsController');
+//前台轮播显示
+Route::get('/test','HomeController@lunbo');
+<<<<<<< HEAD
+
+//表单验证
+Route::get('/check/user','CheckController@user');
+Route::get('/check/email','CheckController@email');
+Route::get('/check/pwd','CheckController@pwd');
+=======
+<<<<<<< HEAD
+
+//时钟
+Route::get('/clock','HomeController@clock');
+
+//足迹
+Route::get('/track','HomeController@track');
+=======
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
+>>>>>>> f1e404c080887460c34580b77ab0f5d492bd60ec
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd

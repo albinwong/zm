@@ -8,7 +8,7 @@ use session;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class SelfInfoController extends Controller
+class SelfinfoController extends Controller
 {
     public function info()
 	{
@@ -28,6 +28,13 @@ class SelfInfoController extends Controller
 	// 执行修改信息
 	public function update(Request $request)
 	{
+		$this->validate($request,[
+			'email'=>'required|regex:/^\w+@\w+\.\w+$/',
+			'phone'=>'regex:/^1[3-8]\d{9}$/'
+		],[
+			'email.regex'=>'邮箱格式不正确',
+			'phone.regex'=>'手机号格式不正确'
+		]);
 		$data = $request->except('_token','id');
 		// dd($data);
 		// 获取上传图像的名称
@@ -53,4 +60,3 @@ class SelfInfoController extends Controller
 	}
 	
 }
-// 

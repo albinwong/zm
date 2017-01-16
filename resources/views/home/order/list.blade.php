@@ -1,6 +1,20 @@
 @extends('home.user.center')
 @section('title','订单列表')
 @section('content')
+<<<<<<< HEAD
+=======
+<style type="text/css">
+	.dd{
+		float:right;
+		margin-left: 10px;
+		
+	}
+
+</style>
+<section id="content">
+	<div class="content-wrap" style="padding:20px;">
+		<div class="container clearfix">
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 
 <div class="container-fluid">
 	<div class="content-wrap" style="padding:20px">
@@ -65,6 +79,7 @@
 	          		<a href="/order/confirm?orderid={{$v->id}}" class=" pull-left btn btn-md btn-info " >去付款</a>
 	          	@elseif($v->status==2)
 
+<<<<<<< HEAD
 	      			<a href="/review?orderid={{$v->id}}" class=" pull-left btn btn-md btn-info ">确认收货</a>
 	          	@else
 				@endif	
@@ -74,6 +89,28 @@
 			<div class="clearfix"></div>
 			@endforeach
 			</div>
+=======
+                    	<div class="col-md-3">
+                    		<h5>数量: {{$b->num}}</h5>
+                    	</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                    @endforeach
+	 				
+               </div>
+     
+           	</div>
+          	<div id = "dd"><a href="/order/?id={{$v->id}}"><input class="dd" type="submit" value="去付款"></a></div>
+          	<div id = "dd"><a href="/order/delete?id={{$v->id}}"><input class="dd" type="submit" value="取消订单"></a></div>
+          	
+          	
+            @endforeach
+		</div>
+		
+		
+		</div>
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 	</div>
 	
 </div>

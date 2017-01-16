@@ -19,7 +19,11 @@ class CartController extends Controller
     {
         //提取信息
         $data = $request->except(['_token']);
+<<<<<<< HEAD
         //dd($data);
+=======
+         //dd($data);
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
         //检测商品是否在购物车中
         $status = $this->checkGoodsExists($data['goods_id']);
         if(!$status){
@@ -35,7 +39,11 @@ class CartController extends Controller
     public function index(Request $request)
     { 
         $carts = $request->session()->get('user.cart');
+<<<<<<< HEAD
         //dd($carts);
+=======
+        //var_dump($carts);
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
         $Total = 0;
          if(!empty($carts)){
 
@@ -92,14 +100,25 @@ class CartController extends Controller
                 unset($carts[$k]);
             }
         }
+<<<<<<< HEAD
         //dd($carts);
         session(['user.cart'=>$carts]);
+=======
+<<<<<<< HEAD
+        //dd($carts);
+        session(['user.cart'=>$carts]);
+=======
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
         // session()->forget('user.cart');
         // unset($carts[$jian]);
         //dd($carts);
         // \Session::put('user.cart',$carts);
         session(['user.cart'=>$carts]);
         // dd(session('user.cart'));
+<<<<<<< HEAD
+=======
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 
          
     }

@@ -200,10 +200,17 @@
                     <li>
                         <a href="#"><i class="icon-list"></i> 地址管理</a>
                         <ul class="closed">
+<<<<<<< HEAD
                             <li><a href="/addr/index">地址列表</a></li>
                         </ul>
                     </li>
 
+=======
+                           
+                            <li><a href="/addr/index">地址列表</a></li>
+                        </ul>
+                    </li>
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
                 </ul>
             </div>         
         </div>

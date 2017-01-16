@@ -47,26 +47,6 @@
                 <input id="register-form-password" name="phone" value="{{$userinfo->phone}}" class="form-control" type="text"readonly>
             </div>
 			
-<!--             <div class="col_full">
-                <label for="register-form-password">地址:</label>
-                <div>
-                <select name="sheng" id="prov" class="form-control col-md-3" style="width:30%;margin-right:5px;">
-                	<option value=""></option>
-                </select>
-                <select name="shi" id="city" class="form-control col-md-3" style="width:30%;margin-right:5px;">
-                	<option value=""></option>
-                </select>
-                <select name="xian" id="xian" class="form-control col-md-3" style="width:30%;margin-right:5px;">
-                	<option value=""></option>
-                </select>
-                </div>
-            </div>
-            <div class="col_full">
-                <label for="register-form-password">详细地址:</label>
-                <textarea class="form-control" name="detail" id="" cols="10" rows="5">
-                	
-                </textarea>
-            </div> -->
             <div class="col_full nobottommargin">
             {{csrf_field()}}
                 <!-- <button class="button button-3d button-black nomargin" id="register-form-submit" value="login">添加</button> -->

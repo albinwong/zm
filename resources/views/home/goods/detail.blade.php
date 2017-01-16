@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="/homes/css/etalage.css">
 <script src="/homes/js/jquery.etalage.min.js"></script>
 <script src="/homes/js/jQuery.js"></script>
+<<<<<<< HEAD
 <style type="text/css">
 	.media{
 		padding-top:20px;
@@ -25,6 +26,17 @@
 	.btn{
 		width:30px;
 		height:30px;
+=======
+<<<<<<< HEAD
+  <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script>
+  
+=======
+<<<<<<< HEAD
+  <script type="text/javascript" src="/homes/js/bootstrap.min.js"></script>
+  <style type="text/css">
+	.media{
+		padding-top:20px;
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 	}
 	#flavor1 li{
 			text-align:center;
@@ -35,6 +47,9 @@
 			cursor:pointer;
 		}
 </style>
+=======
+>>>>>>> dacfa8dd5aa50ff2cfb31b5437c15193c8ef0fb5
+>>>>>>> f1e404c080887460c34580b77ab0f5d492bd60ec
 <div class="col-md-9">
    <div class="single_image">
      <ul id="etalage" class="etalage" style="display: block; width: 314px; height: 552px;">
@@ -221,15 +236,19 @@
 					  <ul class="nav nav-tabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">菜品介绍</a></li>
 					    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">菜品评价</a></li>
-					    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"></a></li>
 					  </ul>
 
 					  <!-- Tab panes -->
 					  <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane active" id="home">{!!$one->detail!!}</div>
+<<<<<<< HEAD
 					   
 					    <div role="tabpanel" class="tab-pane" id="messages">
 							@foreach($data as $k=>$v)
+=======
+					    <div role="tabpanel" class="tab-pane" id="messages">
+					    	@foreach($data as $k=>$v)
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
                             <div class="media">
 								<div class="col-md-2">
 									<a class="media-left media-middle" href="">
@@ -237,12 +256,20 @@
                               		</a>
                               		<br>
                               		<div class="media-body">
+<<<<<<< HEAD
                                			<h4 class="media-heading"> {{$v->name}}</h4>
+=======
+                               			<h4 class="media-heading"> {{$v->names}}</h4>
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
                               		</div>
 								</div>  
 								<div class="col-md-6">                           
 	                                <div class="media-body" >
+<<<<<<< HEAD
 	                                 <h5 class="media-heading" >{{$v->detail}}</h5>
+=======
+	                                 <h5 class="media-heading" >{{$v->content}}</h5>
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 	                                </div>
 	                                <br>
 	                                <div class="photo" id="tupian">
@@ -255,7 +282,11 @@
 	                                    </div>
 	                                    <div class="big-photo hide">
 	                                        <ul class="ul list-unstyled">
+<<<<<<< HEAD
 	                                           <img src="{{$v->pics}}" width="200px;" alt="">
+=======
+	                                           <img src="{{$v->pics}}" width="80px" height="70px" alt="">
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 	                                        </ul>
 	                                    </div>
 	                                </div>
@@ -267,7 +298,10 @@
                             <hr>
                           @endforeach
 					    </div>
+<<<<<<< HEAD
 					    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+=======
+>>>>>>> 48ce04e62417305a8dcc05f0a5d1719a086b7dbd
 					  </div>
 					  <script type="text/javascript">
 		      		$("#myTabs a").click(function (e) {
