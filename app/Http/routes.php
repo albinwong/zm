@@ -69,6 +69,52 @@ Route::get('/glist','HomeController@glist');
 Route::get('/{id}.html','HomeController@detail')->where('id','\d+');
 
 
+	//订单创建
+	Route::post('/order/add','OrderController@add');
+	Route::get('/order/confirm','OrderController@confirm');
+	Route::post('/order/confirm','OrderController@doconfirm');
+	Route::get('/order/delete','OrderController@delete');
+	// 订单列表
+	Route::get('/order','OrderController@lists');
+	Route::get('/order/lists','OrderController@lists');
+
+	// 地址管理
+	Route::get('/address/add','AddressController@add');
+	Route::get('/address/get','AddressController@get');
+	Route::post('/address/insert','AddressController@insert');
+	// 地址的删除
+	Route::get('/address/delete','AddressController@del');
+	// 跳转地址的修改
+	Route::get('/address/edit','AddressController@edit');
+	// 执行修改
+	Route::post('/address/update','AddressController@update');
+
+
+	//个人中心
+	Route::get('/center','UserController@center');
+
+	//前台评价
+	Route::get('/assess/add','CommonController@comment');
+
+
+	//添加关注
+	Route::get('/guan','GuanController@guan');
+
+	// 前台用户查看信息
+	Route::get('/selfuser/info','SelfinfoController@info');
+	Route::get('/selfuser/edit','SelfinfoController@edit');
+	Route::post('/selfuser/update','SelfinfoController@update');
+
+	//地址管理
+	Route::controller('addr','AddrController');
+
+	//订单完成页面
+	Route::get('/finish','OrderController@finish');
+
+	//足迹
+	Route::get('/track','HomeController@track');
+
+
 //用户注册
 Route::get('/register','HomeController@register');
 Route::post('/register','HomeController@doregister');
@@ -96,39 +142,10 @@ Route::get('/links', 'LinkController@show');
 //加入购物车操作
 Route::post('/cart/add','CartController@add');
 Route::get('/cart','CartController@index');
+Route::get('/cart/delete','CartController@delete');
 
 
-//订单创建
-Route::post('/order/add','OrderController@add');
-Route::get('/order/confirm','OrderController@confirm');
-Route::post('/order/confirm','OrderController@doconfirm');
-Route::get('/order/delete','OrderController@delete');
 
-// 地址管理
-Route::get('/address/add','AddressController@add');
-Route::get('/address/get','AddressController@get');
-Route::post('/address/insert','AddressController@insert');
-// 地址的删除
-Route::get('/address/delete','AddressController@del');
-// 跳转地址的修改
-Route::get('/address/edit','AddressController@edit');
-// 执行修改
-Route::post('/address/update','AddressController@update');
-
-
-//个人中心
-Route::get('/center','UserController@center');
-
-// 订单列表
-Route::get('/order','OrderController@lists');
-
-
-//前台评价
-Route::get('/assess/add','CommonController@comment');
-
-
-//添加关注
-Route::get('/guan','GuanController@guan');
 
 //菜谱采集
 Route::get('/caiji','CaipuController@index');
@@ -136,13 +153,24 @@ Route::get('/caiji','CaipuController@index');
 Route::get('/review','CommonController@review');
 Route::post('/review','CommonController@postReview');
 
-// 前台用户查看信息
-Route::get('/selfuser/info','SelfInfoController@info');
-Route::get('/selfuser/edit','SelfInfoController@edit');
-Route::post('/selfuser/update','SelfInfoController@update');
 
 //留言管理
 Route::controller('/notes','NotesController');
 
-//前台轮播显示
-Route::get('/test','HomeController@lunbo');
+//表单验证
+Route::get('/check/user','CheckController@user');
+Route::get('/check/email','CheckController@email');
+Route::get('/check/pwd','CheckController@pwd');
+
+
+
+
+//关于我们
+Route::controller('/us','UsController');
+
+//常见问题
+Route::get('/chang','ChangController@chang');
+
+//关注管理
+Route::get('/shouc','GuanController@shouc');
+

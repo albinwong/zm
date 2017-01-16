@@ -92,32 +92,27 @@ class CommonController extends Controller
     
     public function postReview(Request $request)
     {
-        // $data = $request->all();
-        //   dd($data);
-
-          //获取数据
+        //获取数据
         $data = $request->except('_token');
-        //dd($data);
          //处理图片
         //待拼接的数据
         $d=[];
         $tmp = [];
-        if($request->hasFile('pics'))
-        {   
-            // $res = self::getReviewInfo();
-            //获取所有的文件对象
-            $files=$request->file('pics');
-            foreach($files as $k=>$v){
-                $fileName=time().rand(100000,999999);
-                $suffix=$v->getClientOriginalExtension();
-                //拼接文件名
-                $fileName=$fileName.'.'.$suffix;
-                //目录
-                $dir='./Uploads/'.date('Ymd').'/';
-                $v->move($dir,$fileName);
-                //拼接ok的图片路径(绝对路径)
-                $tmp['pics']=trim($dir.$fileName,'.');
-            }
+        if($request->hasFile('pics')){   
+          // $res = self::getReviewInfo();
+          //获取所有的文件对象
+          $files=$request->file('pics');
+          foreach($files as $k=>$v){
+              $fileName=time().rand(100000,999999);
+              $suffix=$v->getClientOriginalExtension();
+              //拼接文件名
+              $fileName=$fileName.'.'.$suffix;
+              //目录
+              $dir='./Uploads/'.date('Ymd').'/';
+              $v->move($dir,$fileName);
+              //拼接ok的图片路径(绝对路径)
+              $tmp['pics']=trim($dir.$fileName,'.');
+          }
            
         }
          // $tmp['goods_id']=$gid;

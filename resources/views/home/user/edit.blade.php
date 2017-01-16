@@ -15,7 +15,7 @@
 					<a href="/selfuser/edit" class="list-group-item active">
 						修改个人信息
 					</a>
-                    <a href="/order/index" class="list-group-item">
+                    <a href="/order" class="list-group-item">
                         订单
                     </a>
                     <a href="/address/add" class="list-group-item">

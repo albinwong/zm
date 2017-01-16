@@ -52,6 +52,7 @@ class UserController extends Controller
 			$data['profile'] = '/Uploads/'.$fileName;
 		}
 
+		$data['regtime'] = time();
 		//插入数据库
     	$res = DB::table('users')->insert($data);
 		

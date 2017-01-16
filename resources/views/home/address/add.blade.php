@@ -17,7 +17,7 @@
 					</a>
 					
 					</a>
-					<a href="/order/index" class="list-group-item">
+					<a href="/order" class="list-group-item">
 						订单
 					</a>
 					<a href="/address/add" class="list-group-item active">

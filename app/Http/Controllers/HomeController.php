@@ -59,7 +59,7 @@ class HomeController extends Controller
             Mail::send('home.emails', ['id'=>$user->id,'kd'=>$user->kd,'username'=>$user->username], function ($m) use ($user) {
                 $m->to($user->email, $user->username)->subject('您在追梦上的账号已创建，请激活您的账号!');
             });
-            return redirect('/')->with('info','注册成功');
+            return redirect('/')->with('info','注册成功,请尽快前往注册邮箱激活账号!');
         }else{
             //回跳
             return back()->with('info','注册失败!');
@@ -77,7 +77,7 @@ class HomeController extends Controller
         $res = DB::table('users')->where('id',$id)->first();
         // 判断用户的权限
         if($res->auth != 0){
-            return redirect('/')->with('warning','您的账号已激活,请勿重复操作!');
+            return redirect('/')->with('info','您的账号已激活,请勿重复操作!');
         }else{
             if($kd == $res->kd){
                 // 重新生成用户验证码
@@ -86,7 +86,7 @@ class HomeController extends Controller
                 $res = DB::table('users')->where('id',$id)->update(['auth'=>1,'kd'=>$kd]);
                 return redirect('/')->with('info','恭喜您,已成功激活!');
             }else{
-                return redirect('/')->with('warning','非法请求!');
+                return redirect('/')->with('info','非法请求!');
             }
         }
     }
@@ -119,7 +119,7 @@ class HomeController extends Controller
         ]);
         // 验证输入的验证码
         if($request->input('code')!= session('milkcaptcha')) {
-            return back()->with('error','您输入验证码错误');
+            return back()->with('info','您输入验证码错误');
         }
 
         //读取用户名信息
@@ -131,9 +131,9 @@ class HomeController extends Controller
             //检测密码
             if(Hash::check($request->input('password'),$res->password)){
                     session(['uid' => $res->id,'uname'=>$res->username]);
-                    return redirect('/');
+                    return redirect('/')->with('info','登录成功');
             }else{
-                return back()->with('error','您输入用户名或密码错误');;
+                return back()->with('info','您输入用户名或密码错误');;
             }
         }
     }
@@ -152,13 +152,18 @@ class HomeController extends Controller
      */
     public function detail($id)
     {
+         if(empty(session('zuji'))){
+            \Session::push('zuji','');
+        }
+        $track = !in_array($id,session('zuji'));
+        if($track){
+            \Session::push('zuji',$id);
+        }
         $goods = DB::table('cates')->get();
         // 根据id读取商品详细信息
         $one = DB::table('goods')->where('id',$id)->first();
         // 读取当前这个商品的图片信息
-        $pics = DB::table('pics')->where('goods_id',$id)->first();
-        // dd($pics);
-        // die;
+        $pics = DB::table('pics')->where('goods_id',$id)->get();
         $data = DB::table('comment')
                 ->select('comment.*','users.username as names','users.profile')
                 ->join('users','users.id','=','comment.user_id')->where('goods_id',$id)->get();
@@ -171,12 +176,32 @@ class HomeController extends Controller
 
 
     /**
+     * 足迹
+     */
+    public function track(Request $request)
+    {
+         $id = session('zuji');
+         // dd($id);
+         $track = DB::table('goods')->join('pics','goods.id','=','pics.goods_id')->select('goods.*','pics.path')->orderBy('id','asc')->get();
+        //dd($track);
+        if(empty($track)){
+           return back()->with('info','你还没有浏览商品哦');
+        }
+        //分配变量 解析模板
+        return view('home.goods.track',['track'=>$track]);
+
+        
+    }
+
+
+
+    /**
      * 商品列表页
      */
     public function glist(Request $request)
     {
         //读取数据
-        $goods = DB::table('goods')->orderBy('id','desc')->where(function($query) use ($request){
+        $goods = DB::table('goods')->orderBy('id','desc')->join('pics','goods.id','=','pics.goods_id')->select('goods.*','pics.path')->where(function($query) use ($request){
         //获取关键字的内容
         $k=$request->input('keyword');
         if(!empty($k)){
@@ -191,6 +216,7 @@ class HomeController extends Controller
         }
         })->paginate($request->input('num', 20));
         $cate = DB::table('cates')->get();
+        // dd($goods);
         return view('home.goods.glist',['goods'=>$goods,'cate'=>$cate,'request'=>$request]);
     }
 
@@ -219,7 +245,7 @@ class HomeController extends Controller
             ]);
         // 确认验证码
         if(session('milkcaptcha')!= $request->input('code')){
-            return back()->with('error','验证码输入有误');
+            return back()->with('info','验证码输入有误');
         }else{
             //查询输入的邮箱是否存在
             $res = DB::table('users')->where('email',$request->input('email'))->first();
@@ -229,9 +255,9 @@ class HomeController extends Controller
                     $m->to($res->email, $res->username)->subject('【安全提醒】您在追梦订餐网上的账号有重置操作!');
                 });
                 //跳转
-                return redirect('/login')->with('info','邮件已发送至您邮箱,请注意查收!');    
+                return redirect('/')->with('info','邮件已发送至您邮箱,请注意查收!');    
             }else{
-                return back()->with('error','邮箱不存在!');
+                return back()->with('info','邮箱不存在!');
             }
         
         }
@@ -247,10 +273,10 @@ class HomeController extends Controller
         $res = DB::table('users')->where('id',$id)->first();
         // 判断用户的权限
         if($res->auth == 0){
-            return redirect('/')->with('warning','您的账号暂未激活!');
+            return redirect('/')->with('info','您的账号暂未激活!');
         }else{
             if($kd != $res->kd){
-                return redirect('/')->with('warning','非法请求!');
+                return redirect('/')->with('info','非法请求!');
             }else{
                 // 提供密码
                 return view('home.user.reset',['res'=>$res]);
@@ -281,27 +307,19 @@ class HomeController extends Controller
         if($res){
             return redirect('/')->with('info','密码更新成功!');
         }else{
-            return back()->with('error','密码更新失败!');
+            return back()->with('info','密码更新失败!');
         }
     }
 
     /**
      * 轮播前台显示
      */
-    public static function lunbo(Request $request)
+    public static function lunbo($id)
     {
         $res = DB::table('viwepager')->get();
-        $arr = [];
-        foreach($res as $k=>$v){
-            // 递归获取当前子分类
-            
-            $arr[] = $v;
-        }
-        return $arr;
         return $res;
     }
 
-    
 
 
 }

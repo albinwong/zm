@@ -46,22 +46,11 @@
 	function getStatusNameById($id)
 	{
 		switch ($id) {
-			case '0':
-			case '1':
-				return '待付款';
-				break;
-			case '2':
-				return '已付款';
-				break;
-			case '3':
-				return '已派送';
-				break;
-			case '4':
-				return '待评价';
-				break;
-			default:
-				
-				break;
+			case '0':return '待付款';break;
+			case '1':return '已付款';break;
+			case '2':return '待收货';break;
+			case '3':return '已收货,待评价';break;
+			default:return '完成';break;
 		}
 	}
 

@@ -157,5 +157,31 @@ class GoodsController extends Controller
         }
         return redirect('/goods');
     }
-   
+
+    /**
+     * 热销首页
+     */
+    public static function rexiao($id)
+    {
+        $rx = DB::table('goods')->join('pics','goods.id','=','pics.goods_id')->select('goods.*','pics.path')->orderBy('sold','desc')->limit(3)->get();
+        return $rx;
+    }
+
+    /**
+     * 特价促销
+     */
+    public static function cuxiao($id)
+    {
+        $cx = DB::table('goods')->join('pics','goods.id','=','pics.goods_id')->select('goods.*','pics.path')->orderBy('price','asc')->limit(12)->get();
+        return $cx;
+    }
+
+    /**
+     * 最新商品评论
+     */
+    public static function tuijian($id)
+    {
+        $tj = DB::table('goods')->join('pics','goods.id','=','pics.goods_id')->select('goods.*','pics.path')->orderBy('views','asc')->limit(3)->get();
+        return $tj;
+    }
 }

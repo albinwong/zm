@@ -94,6 +94,7 @@
                     <a href="/user/delete?id={{$v->id}}" class="btn btn-small"><i class="icon-trash"></i></a>
                 </span>
             </td>
+            </tr>
         @endforeach
         </tbody>
       </table>

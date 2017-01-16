@@ -6,7 +6,10 @@
 	<div class="product-filter">
 	 <div class="sort"><b>留言类型:</b>
 	     <select name="type">
-			<option value="#">Default</option>
+			<option value="#">咨询</option>
+			<option value="#">建议</option>
+			<option value="#">投诉</option>
+			<option value="#">意见</option>
 		  </select>
 	 </div>
 	 <div class="limit"><b>关键字:</b>

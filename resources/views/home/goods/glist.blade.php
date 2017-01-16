@@ -4,16 +4,6 @@
 @endsection
 @section('content_right')
 <div class="col-md-9" style="padding-top:10px;"> 
-	<!-- 分类标签 start -->
-	<div class="col-md-12"  >
-		<ol class="breadcrumb">
-			<li><span class="glyphicon glyphicon-tags"></span></li>
-			@foreach($cate as $k=>$v)
-			<li><a href="#">{{$v->name}}</a></li>
-			@endforeach
-		</ol>
-    </div><br><br>
-	<!-- 分类标签 end -->
 	<!-- 商品列表 start -->
     <div class="row content_bottom"> 
     	@foreach($goods as $k=>$v)
@@ -23,7 +13,7 @@
 	   	   		
 	   	   	  	<div class="view view-fifth">
 		   	   	  	<a href="/{{$v->id}}.html">
-		   	   	     	<img src="/homes/images/p1.jpg" class="img-responsive" alt=""> 
+		   	   	     	<img src="{{$v->path}}" style="width:200px;height:140px;" class="img-responsive" alt=""> 
 		   	   	    </a>	
 			   	   	<div class="content_box-grid">
 			   	   	  	<a href="/{{$v->id}}.html"><p class="m_1">{{$v->name}}</p></a>
@@ -31,7 +21,7 @@
 					    	<span class="actual">{{$v->price}}</span>
 					  	</div>
 						<ul class="product_but">
-						 	<a href="#"><li class="but3">加入购物车</li></a>
+						 	<a href="/{{$v->id}}.html"><li class="but3">加入购物车</li></a>
 						  	<li> <span class="glyphicon glyphicon-hand-right col-xs-2" style="color:red">:{{$v->sold}}</span><span> </span></li>
 						  	<div class="clearfix"> </div>
 						</ul>

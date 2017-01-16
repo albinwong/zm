@@ -107,7 +107,7 @@
                         <li><a href="/logout">退出</a></li>
                     </ul>
                 </div>
-            </div>
+            </div>s
         </div>
     </div>
     
@@ -159,9 +159,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"><i class="icon-list"></i> 优惠管理</a>
+                        <a href="#"><i class="icon-list"></i> 关注管理</a>
                         <ul class="closed">
-                            <li><a href="/shou">优惠列表</a></li>
+                            <li><a href="/shouc">关注列表</a></li>
                         </ul>
                     </li>
                     <li>
@@ -197,6 +197,13 @@
                             <li><a href="/viwe/index">轮播列表</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="#"><i class="icon-list"></i> 地址管理</a>
+                        <ul class="closed">
+                            <li><a href="/addr/index">地址列表</a></li>
+                        </ul>
+                    </li>
+
                 </ul>
             </div>         
         </div>
@@ -205,7 +212,31 @@
         <div id="mws-container" class="clearfix">
         
             <!-- Inner Container Start -->
-            <div class="container">
+                @if(session('info'))
+                <div class="mws-form-message info">
+                    {{session('info')}}
+                </div>
+                @endif
+
+                @if(session('error'))
+                <div class="mws-form-message error">
+                    {{session('error')}}
+                </div>
+                @endif
+
+                @if(session('warning'))
+                <div class="mws-form-message warning">
+                    {{session('warning')}}
+                </div>
+                @endif
+
+                 @if(session('alert'))
+                <div class="mws-form-message alert">
+                    {{session('alert')}}
+                </div>
+                @endif
+
+
                 @section('content')
                 @show
             
